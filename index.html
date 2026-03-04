@@ -7,42 +7,70 @@
     <title>Farhan Faiq Renardi | Data Scientist Portfolio</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             overflow-x: hidden;
-            background-color: #F8FAFC; /* Theme 1: Clean Tech Base */
-            color: #212529;
+            background-color: #ffffff; 
+            color: #1d1d1f; 
             transition: background-color 0.4s ease, color 0.4s ease;
         }
         
         section { padding: 80px 0; }
         
-        /* Gradient Background for Hero - PATCH APPLIED */
+        /* Gradient Background for Hero - WIDESPREAD APPLE STYLE */
         .hero-section {
-            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 122, 255, 0.06) 0%, transparent 100%),
-                        linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            border-bottom: 1px solid #e9ecef;
-            transition: background 0.4s ease, border-color 0.4s ease;
+            background-color: #ffffff;
+            /* Ellipse 250% membuat cahaya melebar rata ke kiri & kanan, titik pusat di -20% (di atas layar) */
+            background-image: radial-gradient(ellipse 250% 120% at 50% -20%, rgba(0, 122, 255, 0.15) 0%, rgba(0, 122, 255, 0.05) 50%, transparent 100%);
+            transition: background 0.4s ease;
+        }
+
+        /* Apple-style text gradient for subtitle */
+        .text-gradient-apple {
+            background: linear-gradient(90deg, #007AFF 0%, #33C5FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        /* Apple-style Typography for Summary */
+        .apple-summary-text {
+            font-size: 1.35rem; 
+            line-height: 1.5; 
+            font-weight: 500; 
+            letter-spacing: -0.3px;
+        }
+
+        /* Custom styling for Contact button */
+        .custom-btn-contact {
+            background-color: #ffffff;
+            color: #1d1d1f !important;
+            border-color: #ced4da;
+        }
+        .custom-btn-contact:hover {
+            background-color: #f5f5f7;
         }
 
         /* Project Card Styling */
         .project-card { 
             height: 100%; 
             border: none;
-            border-radius: 12px;
+            border-radius: 16px; 
             background: #ffffff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-            transition: all 0.3s ease; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04); 
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease; 
         }
         .project-card:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
+            transform: scale(1.02) translateY(-5px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
         }
 
         /* Carousel Image Styling */
@@ -57,17 +85,7 @@
             margin-bottom: 50px;
             padding-bottom: 15px;
             font-weight: 700;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background-color: #0d6efd;
-            border-radius: 2px;
+            letter-spacing: -0.5px;
         }
 
         /* ================= FLOATING THEME TOGGLE ================= */
@@ -122,16 +140,13 @@
             white-space: nowrap;
             position: relative;
             padding: 20px 0;
-            /* Apply fade effect at the left and right edges of the slider */
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
         .slider-track {
             display: inline-flex;
-            /* 40 seconds rotation duration, adjust if too fast/slow */
             animation: scroll 40s linear infinite; 
         }
-        /* Pause on hover */
         .slider-track:hover {
             animation-play-state: paused;
         }
@@ -144,13 +159,11 @@
             height: 140px;
             margin: 0 15px;
             background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             white-space: normal;
             text-align: center;
-            
-            /* Addition to prevent elements from overflowing the box */
             padding: 15px; 
             box-sizing: border-box; 
             overflow: hidden; 
@@ -166,7 +179,6 @@
         .slide-icon-img {
             height: 48px;
             width: auto;
-            /* Addition to limit maximum image width to prevent overflow */
             max-width: 110px; 
             margin-bottom: 12px;
             object-fit: contain;
@@ -178,54 +190,59 @@
         }
         @keyframes scroll {
             0% { transform: translateX(0); }
-            /* Shift 50% to the left because content will be duplicated via JS */
             100% { transform: translateX(-50%); } 
         }
 
         /* ================= DARK MODE STYLES ================= */
         body.dark-mode {
-            background-color: #0F172A; 
-            color: #F8FAFC;
+            background-color: #000000; 
+            color: #F5F5F7;
         }
         
-        /* Dark Mode Hero - PATCH APPLIED */
+        /* Dark Mode Hero - WIDESPREAD APPLE STYLE */
         body.dark-mode .hero-section {
-            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 122, 255, 0.12) 0%, transparent 100%),
-                        linear-gradient(135deg, #0F172A 0%, #1e293b 100%);
-            border-color: #334155;
+            background-color: transparent;
+            background-image: radial-gradient(ellipse 250% 120% at 50% -20%, rgba(0, 122, 255, 0.25) 0%, rgba(0, 122, 255, 0.08) 50%, transparent 100%);
         }
         
-        body.dark-mode .text-dark { color: #F8FAFC !important; }
-        body.dark-mode .text-secondary { color: #94a3b8 !important; }
-        body.dark-mode .project-card {
-            background-color: #1E293B;
-            color: #F8FAFC;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        body.dark-mode .custom-btn-contact {
+            background-color: #1c1c1e;
+            color: #F5F5F7 !important;
+            border-color: #333336;
         }
-        body.dark-mode .text-muted { color: #cbd5e1 !important; }
-        body.dark-mode .section-title { color: #F8FAFC; }
-        body.dark-mode .border-dark { border-color: #475569 !important; }
-        body.dark-mode .badge.bg-dark { background-color: #334155 !important; }
-        body.dark-mode #projects { background-color: #0F172A !important; }
-        
-        /* Dark Mode for Slider Items */
-        body.dark-mode .slide-item {
-            background-color: #1E293B;
-            color: #F8FAFC;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        body.dark-mode .dark-invert {
-            filter: invert(1) brightness(2); /* Whiten black logo during dark mode */
+        body.dark-mode .custom-btn-contact:hover {
+            background-color: #2c2c2e;
         }
 
-        /* Dark Mode Modal Styling */
+        body.dark-mode .text-dark { color: #F5F5F7 !important; }
+        body.dark-mode .text-secondary { color: #86868b !important; } 
+        body.dark-mode .project-card {
+            background-color: #1c1c1e;
+            color: #F5F5F7;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        body.dark-mode .text-muted { color: #86868b !important; }
+        body.dark-mode .section-title { color: #F5F5F7; }
+        body.dark-mode .border-dark { border-color: #424245 !important; }
+        body.dark-mode .badge.bg-dark { background-color: #333336 !important; }
+        body.dark-mode #projects { background-color: #000000 !important; }
+        
+        body.dark-mode .slide-item {
+            background-color: #1c1c1e;
+            color: #F5F5F7;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        body.dark-mode .dark-invert {
+            filter: invert(1) brightness(2); 
+        }
+
         body.dark-mode .modal-content {
-            background-color: #1E293B;
-            color: #F8FAFC;
-            border-color: #334155;
+            background-color: #1c1c1e;
+            color: #F5F5F7;
+            border-color: #333336;
         }
         body.dark-mode .modal-header, body.dark-mode .modal-footer {
-            border-color: #334155;
+            border-color: #333336;
         }
         body.dark-mode .btn-close {
             filter: invert(1);
@@ -242,29 +259,31 @@
         </div>
     </div>
 
-    <header class="hero-section text-center py-5 d-flex align-items-center" style="min-height: 80vh;">
-        <div class="container" data-aos="fade-up" data-aos-duration="1000">
-            <h1 class="display-2 fw-bolder text-dark mb-3" style="letter-spacing: -1.5px;">Farhan Faiq Renardi</h1>
-            <h2 class="fs-4 text-primary mb-4 fw-semibold">Data Scientist | Industrial Engineering Graduate</h2>
-            <p class="fs-5 mx-auto text-secondary mb-5" style="max-width: 750px; line-height: 1.6; letter-spacing: 0.2px;">
-                Data Scientist specializing in transforming complex datasets into strategic, actionable insights that propel business growth and innovation. Expert in machine learning, deep learning, transfer learning, and model interpretability, with proven expertise in developing scalable data pipelines using Python, TensorFlow, and scikit-learn.
+    <header class="hero-section text-center py-5 d-flex align-items-center" style="min-height: 85vh;">
+        <div class="container" data-aos="zoom-in" data-aos-duration="1200">
+            <h1 class="display-5 fw-bolder text-dark mb-3" style="letter-spacing: -1.2px;">Farhan Faiq Renardi</h1>
+            <h2 class="fs-4 mb-4 fw-bold text-gradient-apple" style="letter-spacing: -0.5px;">Data Scientist | Industrial Engineering Graduate</h2>
+            
+            <p class="mx-auto text-secondary mb-5 apple-summary-text" style="max-width: 800px;">
+                Data Scientist specializing in transforming complex datasets into <span class="text-dark fw-bold">strategic, actionable insights</span> that propel business growth and innovation. Expert in <span class="text-dark fw-bold">machine learning, deep learning</span>, and <span class="text-dark fw-bold">transfer learning</span>, with proven expertise in developing <span class="text-dark fw-bold">scalable data pipelines</span> using Python, TensorFlow, and scikit-learn.
             </p>
+            
             <div class="mt-4">
-                <a href="https://www.linkedin.com/in/farhanfaiq" class="btn btn-primary btn-lg px-4 me-2 mb-2 shadow-sm" target="_blank">LinkedIn Profile</a>
-                <button type="button" class="btn btn-outline-primary btn-lg px-4 me-2 mb-2 shadow-sm bg-white" data-bs-toggle="modal" data-bs-target="#cvModal">View CV</button>
-                <a href="mailto:farhanfaiqrenardi@gmail.com" class="btn btn-outline-dark btn-lg px-4 mb-2 shadow-sm text-dark bg-white border-dark">Contact Me</a>
+                <a href="https://www.linkedin.com/in/farhanfaiq" class="btn btn-primary btn-lg px-4 me-2 mb-2 shadow-sm rounded-pill" target="_blank">LinkedIn Profile</a>
+                <button type="button" class="btn btn-outline-primary btn-lg px-4 me-2 mb-2 shadow-sm bg-white rounded-pill" data-bs-toggle="modal" data-bs-target="#cvModal">View CV</button>
+                <button type="button" class="btn btn-lg px-4 mb-2 shadow-sm custom-btn-contact rounded-pill" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Me</button>
             </div>
         </div>
     </header>
 
     <section id="experience" class="container">
-        <h3 class="text-center section-title" data-aos="fade-up">Professional Experience</h3>
+        <h3 class="text-center section-title" data-aos="zoom-in-up">Professional Experience</h3>
         
         <div class="row justify-content-center mt-5">
             <div class="col-lg-10">
-                <div class="row mb-5 align-items-center" data-aos="fade-right" data-aos-delay="100">
+                <div class="row mb-5 align-items-center" data-aos="zoom-in-right" data-aos-delay="100">
                     <div class="col-md-3 text-md-end">
-                        <span class="badge bg-primary fs-6 px-3 py-2">Nov 2025 - Present</span>
+                        <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill">Nov 2025 - Present</span>
                     </div>
                     <div class="col-md-9 border-start border-primary border-3 ps-4 py-2">
                         <h4 class="h5 fw-bold mb-1">Data Analyst</h4>
@@ -277,9 +296,9 @@
                     </div>
                 </div>
 
-                <div class="row mb-4 align-items-center" data-aos="fade-left" data-aos-delay="200">
+                <div class="row mb-4 align-items-center" data-aos="zoom-in-left" data-aos-delay="200">
                     <div class="col-md-3 text-md-end">
-                        <span class="badge bg-dark fs-6 px-3 py-2">Sep 2024 - Feb 2025</span>
+                        <span class="badge bg-dark fs-6 px-3 py-2 rounded-pill">Dec 2023 - Feb 2024</span>
                     </div>
                     <div class="col-md-9 border-start border-dark border-3 ps-4 py-2">
                         <h4 class="h5 fw-bold mb-1">Data Analyst</h4>
@@ -295,12 +314,12 @@
         </div>
     </section>
 
-    <section id="projects" style="background-color: #f1f4f8;">
+    <section id="projects" style="background-color: transparent;">
         <div class="container">
-            <h3 class="text-center section-title" data-aos="fade-up">Featured Projects</h3>
+            <h3 class="text-center section-title" data-aos="zoom-in-up">Featured Projects</h3>
 
             <div class="mb-5 mt-5">
-                <h4 class="h5 mb-4 text-primary fw-bold" data-aos="fade-up">
+                <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI" style="height: 24px;" class="me-2"> 
                     Data Analytics & Dashboards
                 </h4>
@@ -339,30 +358,30 @@
             </div>
 
             <div class="mb-5">
-                <h4 class="h5 mb-4 text-primary fw-bold" data-aos="fade-up"><i class="devicon-tensorflow-original colored me-2"></i> Machine Learning</h4>
+                <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up"><i class="devicon-tensorflow-original colored me-2"></i> Machine Learning</h4>
                 <div class="row g-4">
-                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
                         <div class="card project-card p-4 d-flex flex-column">
                             <h5 class="fw-bold">Male Pattern Baldness Classification</h5>
                             <p class="small text-primary mb-3">Transfer Learning (EfficientNetB3), Python</p>
                             <p class="text-muted flex-grow-1">Developed a deep learning image classification model predicting male pattern baldness. Implemented pre-trained EfficientNetB3 architecture achieving 88% test accuracy.</p>
-                            <button type="button" class="btn btn-outline-primary mt-3 w-100" data-bs-toggle="modal" data-bs-target="#hfDemoModal">Try Interactive Demo</button>
+                            <button type="button" class="btn btn-outline-primary mt-3 w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#hfDemoModal">Try Interactive Demo</button>
                         </div>
                     </div>
-                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
                         <div class="card project-card p-4 d-flex flex-column">
                             <h5 class="fw-bold">Employee Profile Match-Up Optimization</h5>
                             <p class="small text-primary mb-3">Logistic Regression, Scikit-learn</p>
                             <p class="text-muted flex-grow-1">Simplified and re-engineered an existing employee-role matching model for Telkom Indonesia to improve interpretability and stakeholder usability using Logistic Regression.</p>
-                            <a href="https://github.com/farhanrenardi" class="btn btn-primary mt-3 w-100" target="_blank">Try Interactive Demo</a>
+                            <a href="https://github.com/farhanrenardi" class="btn btn-primary mt-3 w-100 rounded-pill" target="_blank">Try Interactive Demo</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div>
-                <h4 class="h5 mb-4 text-primary fw-bold" data-aos="fade-up"><i class="devicon-django-plain colored me-2"></i> Information Systems</h4>
-                <div class="card project-card p-4" data-aos="fade-up" data-aos-delay="100">
+                <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up"><i class="devicon-django-plain colored me-2"></i> Information Systems</h4>
+                <div class="card project-card p-4" data-aos="zoom-in" data-aos-delay="100">
                     <div class="row align-items-center">
                         <div class="col-lg-5 mb-4 mb-lg-0">
                             <h5 class="fw-bold">Logistics Information System</h5>
@@ -415,15 +434,15 @@
 
     <section id="skills" class="text-center mt-5 mb-5 overflow-hidden">
         <div class="container">
-            <h3 class="section-title" data-aos="fade-up">Technical Stack</h3>
-            <p class="text-muted mb-4" data-aos="fade-up" data-aos-delay="100">Tools, technologies, and concepts I use to solve business problems.</p>
+            <h3 class="section-title" data-aos="zoom-in-up">Technical Stack</h3>
+            <p class="text-muted mb-4" data-aos="zoom-in-up" data-aos-delay="100">Tools, technologies, and concepts I use to solve business problems.</p>
         </div>
         
-        <div class="slider-container" data-aos="fade-in" data-aos-delay="200">
+        <div class="slider-container" data-aos="zoom-in" data-aos-delay="200">
             <div class="slider-track" id="sliderTrack">
                 
                 <div class="slide-item">
-                    <i class="devicon-python-plain colored slide-icon"></i>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/960px-Python-logo-notext.svg.png" class="slide-icon-img" alt="Python">
                     <p class="fw-bold mb-0">Python</p>
                 </div>
                 <div class="slide-item">
@@ -529,7 +548,7 @@
 
     <footer class="bg-dark text-white text-center py-5">
         <div class="container">
-            <h4 class="mb-3">Farhan Faiq Renardi</h4>
+            <h4 class="mb-3 fw-bold">Farhan Faiq Renardi</h4>
             <div class="mb-4">
                 <a href="https://www.linkedin.com/in/farhanfaiq" class="text-white text-decoration-none mx-2 fs-5" target="_blank"><i class="devicon-linkedin-plain"></i></a>
                 <a href="https://github.com/farhanrenardi" class="text-white text-decoration-none mx-2 fs-5" target="_blank"><i class="devicon-github-original"></i></a>
@@ -538,21 +557,43 @@
         </div>
     </footer>
 
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+            <div class="modal-content" style="border-radius: 20px;">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="contactModalLabel">Get in Touch</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <p class="text-muted mb-4">Choose how you'd like to connect with me.</p>
+                    <div class="d-grid gap-3">
+                        <a href="https://wa.me/6282266520790" target="_blank" class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm" style="background-color: #25D366; border-radius: 12px; transition: transform 0.2s;">
+                            <i class="fa-brands fa-whatsapp fs-4 me-2"></i> WhatsApp / Phone
+                        </a>
+                        <a href="mailto:farhanfaiqrenardi@gmail.com" class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm" style="background-color: #EA4335; border-radius: 12px; transition: transform 0.2s;">
+                            <i class="fa-solid fa-envelope fs-4 me-2"></i> Email (Gmail)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="cvModal" tabindex="-1" aria-labelledby="cvModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 20px;">
                 <div class="modal-header border-bottom-0 pb-0">
                     <h5 class="modal-title fw-bold" id="cvModalLabel">Curriculum Vitae - Farhan Faiq Renardi</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-3" style="height: 75vh;">
-                    <iframe id="cvIframe" data-src="CV_Farhan Faiq_Engineer.pdf" width="100%" height="100%" style="border: 1px solid #dee2e6; border-radius: 8px;">
+                    <iframe id="cvIframe" data-src="CV_Farhan Faiq_Engineer.pdf" width="100%" height="100%" style="border: 1px solid #dee2e6; border-radius: 12px;">
                         Your browser does not support iframes. Please click the Download CV button below.
                     </iframe>
                 </div>
                 <div class="modal-footer border-top-0 pt-0">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="CV_Farhan Faiq_Engineer.pdf" download="CV_Farhan Faiq_Engineer.pdf" class="btn btn-primary px-4">Download PDF</a>
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                    <a href="CV_Farhan Faiq_Engineer.pdf" download="CV_Farhan Faiq_Engineer.pdf" class="btn btn-primary px-4 rounded-pill">Download PDF</a>
                 </div>
             </div>
         </div>
@@ -560,17 +601,17 @@
 
     <div class="modal fade" id="hfDemoModal" tabindex="-1" aria-labelledby="hfDemoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 20px;">
                 <div class="modal-header border-bottom-0 pb-0">
                     <h5 class="modal-title fw-bold" id="hfDemoModalLabel">Male Pattern Baldness Predictor Demo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-3" style="height: 75vh;">
-                    <iframe id="hfDemoIframe" data-src="https://hunsolooo-male-pattern-baldness.hf.space" width="100%" height="100%" frameborder="0" style="border: 1px solid #dee2e6; border-radius: 8px;"></iframe>
+                    <iframe id="hfDemoIframe" data-src="https://hunsolooo-male-pattern-baldness.hf.space" width="100%" height="100%" frameborder="0" style="border: 1px solid #dee2e6; border-radius: 12px;"></iframe>
                 </div>
                 <div class="modal-footer border-top-0 pt-0">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="https://hunsolooo-male-pattern-baldness.hf.space" target="_blank" class="btn btn-primary px-4">Open in New Tab</a>
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                    <a href="https://hunsolooo-male-pattern-baldness.hf.space" target="_blank" class="btn btn-primary px-4 rounded-pill">Open in New Tab</a>
                 </div>
             </div>
         </div>
@@ -582,10 +623,10 @@
     <script>
         // 1. Initialize AOS Animation
         AOS.init({
-            once: true,
-            offset: 100,
-            duration: 800,
-            easing: 'ease-in-out-cubic',
+            once: false,
+            offset: 80,
+            duration: 900, 
+            easing: 'ease-out-cubic',
         });
 
         // 2. Theme Toggle Logic
@@ -593,7 +634,6 @@
         const toggleInnerIcon = document.getElementById('toggleInnerIcon');
         const body = document.body;
         
-        // Check user preference saved in LocalStorage
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             body.classList.add('dark-mode');
@@ -601,7 +641,6 @@
             toggleInnerIcon.textContent = '🌙';
         }
 
-        // Event listener when button is clicked
         toggleContainer.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             toggleContainer.classList.toggle('dark');
