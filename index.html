@@ -23,9 +23,10 @@
         
         section { padding: 80px 0; }
         
-        /* Gradient Background for Hero */
+        /* Gradient Background for Hero - PATCH APPLIED */
         .hero-section {
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 122, 255, 0.06) 0%, transparent 100%),
+                        linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
             border-bottom: 1px solid #e9ecef;
             transition: background 0.4s ease, border-color 0.4s ease;
         }
@@ -121,16 +122,16 @@
             white-space: nowrap;
             position: relative;
             padding: 20px 0;
-            /* Memberikan efek pudar/fade di ujung kiri dan kanan slider */
+            /* Apply fade effect at the left and right edges of the slider */
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
         .slider-track {
             display: inline-flex;
-            /* Durasi 40 detik untuk berputar, sesuaikan jika terlalu cepat/lambat */
+            /* 40 seconds rotation duration, adjust if too fast/slow */
             animation: scroll 40s linear infinite; 
         }
-        /* Berhenti saat disorot mouse */
+        /* Pause on hover */
         .slider-track:hover {
             animation-play-state: paused;
         }
@@ -149,7 +150,7 @@
             white-space: normal;
             text-align: center;
             
-            /* Tambahan untuk mencegah elemen keluar kotak */
+            /* Addition to prevent elements from overflowing the box */
             padding: 15px; 
             box-sizing: border-box; 
             overflow: hidden; 
@@ -165,7 +166,7 @@
         .slide-icon-img {
             height: 48px;
             width: auto;
-            /* Tambahan untuk membatasi lebar maksimal gambar agar tidak offside */
+            /* Addition to limit maximum image width to prevent overflow */
             max-width: 110px; 
             margin-bottom: 12px;
             object-fit: contain;
@@ -177,7 +178,7 @@
         }
         @keyframes scroll {
             0% { transform: translateX(0); }
-            /* Menggeser 50% ke kiri karena konten akan digandakan via JS */
+            /* Shift 50% to the left because content will be duplicated via JS */
             100% { transform: translateX(-50%); } 
         }
 
@@ -186,10 +187,14 @@
             background-color: #0F172A; 
             color: #F8FAFC;
         }
+        
+        /* Dark Mode Hero - PATCH APPLIED */
         body.dark-mode .hero-section {
-            background: linear-gradient(135deg, #0F172A 0%, #1e293b 100%);
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 122, 255, 0.12) 0%, transparent 100%),
+                        linear-gradient(135deg, #0F172A 0%, #1e293b 100%);
             border-color: #334155;
         }
+        
         body.dark-mode .text-dark { color: #F8FAFC !important; }
         body.dark-mode .text-secondary { color: #94a3b8 !important; }
         body.dark-mode .project-card {
@@ -210,7 +215,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         body.dark-mode .dark-invert {
-            filter: invert(1) brightness(2); /* Memutihkan logo hitam saat mode gelap */
+            filter: invert(1) brightness(2); /* Whiten black logo during dark mode */
         }
 
         /* Dark Mode Modal Styling */
@@ -239,9 +244,9 @@
 
     <header class="hero-section text-center py-5 d-flex align-items-center" style="min-height: 80vh;">
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
-            <h1 class="display-3 fw-bold text-dark">Farhan Faiq Renardi</h1>
-            <h2 class="h3 text-primary mb-4 fw-light">Aspiring Data Scientist | Industrial Engineering Graduate</h2>
-            <p class="lead max-w-75 mx-auto text-secondary mb-5" style="max-width: 700px;">
+            <h1 class="display-2 fw-bolder text-dark mb-3" style="letter-spacing: -1.5px;">Farhan Faiq Renardi</h1>
+            <h2 class="fs-4 text-primary mb-4 fw-semibold">Data Scientist | Industrial Engineering Graduate</h2>
+            <p class="fs-5 mx-auto text-secondary mb-5" style="max-width: 750px; line-height: 1.6; letter-spacing: 0.2px;">
                 Data Scientist specializing in transforming complex datasets into strategic, actionable insights that propel business growth and innovation. Expert in machine learning, deep learning, transfer learning, and model interpretability, with proven expertise in developing scalable data pipelines using Python, TensorFlow, and scikit-learn.
             </p>
             <div class="mt-4">
@@ -542,7 +547,7 @@
                 </div>
                 <div class="modal-body p-3" style="height: 75vh;">
                     <iframe id="cvIframe" data-src="CV_Farhan Faiq_Engineer.pdf" width="100%" height="100%" style="border: 1px solid #dee2e6; border-radius: 8px;">
-                        Browser Anda tidak mendukung iframe. Silakan klik tombol Download CV di bawah.
+                        Your browser does not support iframes. Please click the Download CV button below.
                     </iframe>
                 </div>
                 <div class="modal-footer border-top-0 pt-0">
@@ -572,7 +577,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
@@ -589,7 +593,7 @@
         const toggleInnerIcon = document.getElementById('toggleInnerIcon');
         const body = document.body;
         
-        // Cek preferensi user yang tersimpan di LocalStorage
+        // Check user preference saved in LocalStorage
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             body.classList.add('dark-mode');
@@ -597,7 +601,7 @@
             toggleInnerIcon.textContent = '🌙';
         }
 
-        // Event listener saat tombol diklik
+        // Event listener when button is clicked
         toggleContainer.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             toggleContainer.classList.toggle('dark');
