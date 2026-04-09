@@ -1,38 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="description"
+        content="Portfolio of Farhan Faiq Renardi, Data Scientist and Industrial Engineering Graduate specializing in data pipelines, analytics, machine learning, and actionable insights.">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Farhan Faiq Renardi | Data Scientist Portfolio">
+    <meta property="og:description"
+        content="Data Scientist specializing in transforming complex datasets into strategic, actionable insights that propel business growth and innovation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://farhanrenardi.github.io/">
+    <!-- Favicon -->
+
+
     <title>Farhan Faiq Renardi | Data Scientist Portfolio</title>
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
+
+
     <style>
-        body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            overflow-x: hidden;
-            background-color: #ffffff; 
-            color: #1d1d1f; 
-            transition: background-color 0.4s ease, color 0.4s ease;
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1d1d1f;
+            --secondary-text: #86868b;
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --border-color: rgba(0, 0, 0, 0.05);
+            --accent-color: #007AFF;
+            --glass-bg: rgba(255, 255, 255, 0.7);
         }
-        
-        section { padding: 80px 0; }
-        
-        /* Gradient Background for Hero - WIDESPREAD APPLE STYLE */
+
+        :root[data-bs-theme="dark"] {
+            --bg-color: #000000;
+            --text-color: #F5F5F7;
+            --secondary-text: #a1a1a6;
+            --card-bg: #1c1c1e;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-color: #0A84FF;
+            --glass-bg: rgba(28, 28, 30, 0.7);
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 100vh;
+            background-color: var(--bg-color) !important;
+            color: var(--text-color) !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            scroll-behavior: smooth;
+        }
+
+        section {
+            padding: 80px 0;
+            scroll-margin-top: 30px;
+            background-color: transparent !important;
+        }
+
+        /* ================= SIDE NAVIGATION PILL ================= */
+        .side-nav-pill {
+            position: fixed;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 15px 10px;
+            border-radius: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .side-nav-link {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-text);
+            text-decoration: none;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .side-nav-link:hover,
+        .side-nav-link.active {
+            color: var(--accent-color);
+            background: rgba(0, 122, 255, 0.1);
+        }
+
+        .side-nav-link .nav-label {
+            position: absolute;
+            right: 45px;
+            background: var(--text-color);
+            color: var(--bg-color);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+
+        .side-nav-link:hover .nav-label {
+            opacity: 1;
+            visibility: visible;
+            right: 40px;
+        }
+
+        /* ================= BACK TO TOP ================= */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .hero-section {
-            background-color: #ffffff;
-            /* Ellipse 250% membuat cahaya melebar rata ke kiri & kanan, titik pusat di -20% (di atas layar) */
-            background-image: radial-gradient(ellipse 250% 120% at 50% -20%, rgba(0, 122, 255, 0.35) 0%, rgba(0, 122, 255, 0.15) 50%, transparent 100%);
+            background-color: transparent !important;
+            background-image: radial-gradient(ellipse 250% 120% at 50% -20%, rgba(0, 122, 255, 0.3) 0%, rgba(0, 122, 255, 0.1) 50%, transparent 100%);
             transition: background 0.4s ease;
         }
 
-        /* Apple-style text gradient for subtitle */
         .text-gradient-apple {
             background: linear-gradient(90deg, #007AFF 0%, #33C5FF 100%);
             -webkit-background-clip: text;
@@ -41,43 +169,41 @@
             display: inline-block;
         }
 
-        /* Apple-style Typography for Summary */
         .apple-summary-text {
-            font-size: 1.35rem; 
-            line-height: 1.5; 
-            font-weight: 500; 
+            font-size: 1.35rem;
+            line-height: 1.5;
+            font-weight: 500;
             letter-spacing: -0.3px;
         }
 
-        /* Custom styling for Contact button */
         .custom-btn-contact {
-            background-color: #ffffff;
-            color: #1d1d1f !important;
-            border-color: #ced4da;
+            background-color: var(--card-bg);
+            color: var(--text-color) !important;
+            border-color: var(--border-color);
         }
+
         .custom-btn-contact:hover {
-            background-color: #f5f5f7;
+            background-color: var(--glass-bg);
         }
 
-        /* Project Card Styling */
-        .project-card { 
-            height: 100%; 
-            border: none;
-            border-radius: 16px; 
-            background: #ffffff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04); 
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease; 
-        }
-        .project-card:hover { 
-            transform: scale(1.02) translateY(-5px); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+        .project-card {
+            height: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            background: var(--card-bg);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
         }
 
-        /* Carousel Image Styling */
-        .carousel-item img { 
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-item img {
             width: 100%;
-            height: auto;  
-            border-radius: 12px; 
+            height: auto;
+            border-radius: 12px;
         }
 
         .section-title {
@@ -86,30 +212,33 @@
             padding-bottom: 15px;
             font-weight: 700;
             letter-spacing: -0.5px;
+            color: var(--text-color);
         }
 
-        /* ================= FLOATING THEME TOGGLE ================= */
+        /* ================= THEME TOGGLE ================= */
         .theme-toggle-container {
             position: fixed;
-            top: 50%; 
-            right: 20px; 
+            top: 50%;
+            left: 20px;
             transform: translateY(-50%);
             z-index: 9999;
-            background: linear-gradient(135deg, #a855f7, #3b82f6); 
+            background: linear-gradient(135deg, #a855f7, #3b82f6);
             border-radius: 30px;
             padding: 5px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             cursor: pointer;
             width: 76px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: transform 0.2s ease;
+            transition: all 0.2s ease;
         }
+
         .theme-toggle-container:hover {
             transform: translateY(-50%) scale(1.05);
         }
+
         .theme-toggle-btn {
             width: 30px;
             height: 30px;
@@ -121,11 +250,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
-        .theme-toggle-container.dark .theme-toggle-btn {
-            transform: translateX(36px); 
+
+        [data-bs-theme="dark"] .theme-toggle-container .theme-toggle-btn {
+            transform: translateX(36px);
+            background-color: #0b0f19;
+            color: white;
         }
+
         .theme-icon {
             font-size: 16px;
             z-index: 1;
@@ -133,7 +266,6 @@
             user-select: none;
         }
 
-        /* ================= INFINITE SLIDER STYLES ================= */
         .slider-container {
             width: 100%;
             overflow: hidden;
@@ -143,13 +275,16 @@
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
+
         .slider-track {
             display: inline-flex;
-            animation: scroll 40s linear infinite; 
+            animation: scroll 40s linear infinite;
         }
+
         .slider-track:hover {
             animation-play-state: paused;
         }
+
         .slide-item {
             display: inline-flex;
             flex-direction: column;
@@ -158,97 +293,88 @@
             width: 160px;
             height: 140px;
             margin: 0 15px;
-            background: #ffffff;
+            background: var(--card-bg);
             border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             white-space: normal;
             text-align: center;
-            padding: 15px; 
-            box-sizing: border-box; 
-            overflow: hidden; 
+            padding: 15px;
+            box-sizing: border-box;
+            overflow: hidden;
         }
+
         .slide-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
+
         .slide-icon {
             font-size: 3rem;
             margin-bottom: 12px;
         }
+
         .slide-icon-img {
             height: 48px;
             width: auto;
-            max-width: 110px; 
+            max-width: 110px;
             margin-bottom: 12px;
             object-fit: contain;
         }
+
         .slide-icon-emoji {
             font-size: 2.8rem;
             line-height: 1;
             margin-bottom: 12px;
         }
+
         @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } 
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
-        /* ================= DARK MODE STYLES ================= */
-        body.dark-mode {
-            background-color: #000000; 
-            color: #F5F5F7;
-        }
-        
-        /* Dark Mode Hero - WIDESPREAD APPLE STYLE */
-        body.dark-mode .hero-section {
-            background-color: transparent;
-            background-image: radial-gradient(ellipse 250% 120% at 50% -20%, rgba(0, 122, 255, 0.45) 0%, rgba(0, 122, 255, 0.15) 50%, transparent 100%);
-        }
-        
-        body.dark-mode .custom-btn-contact {
-            background-color: #1c1c1e;
-            color: #F5F5F7 !important;
-            border-color: #333336;
-        }
-        body.dark-mode .custom-btn-contact:hover {
-            background-color: #2c2c2e;
+        /* ================= DARK MODE OVERRIDES ================= */
+        :root[data-bs-theme="dark"] .text-dark {
+            color: var(--text-color) !important;
         }
 
-        body.dark-mode .text-dark { color: #F5F5F7 !important; }
-        body.dark-mode .text-secondary { color: #86868b !important; } 
-        body.dark-mode .project-card {
-            background-color: #1c1c1e;
-            color: #F5F5F7;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        body.dark-mode .text-muted { color: #86868b !important; }
-        body.dark-mode .section-title { color: #F5F5F7; }
-        body.dark-mode .border-dark { border-color: #424245 !important; }
-        body.dark-mode .badge.bg-dark { background-color: #333336 !important; }
-        body.dark-mode #projects { background-color: #000000 !important; }
-        
-        body.dark-mode .slide-item {
-            background-color: #1c1c1e;
-            color: #F5F5F7;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        body.dark-mode .dark-invert {
-            filter: invert(1) brightness(2); 
+        :root[data-bs-theme="dark"] .text-secondary {
+            color: var(--secondary-text) !important;
         }
 
-        body.dark-mode .modal-content {
-            background-color: #1c1c1e;
-            color: #F5F5F7;
-            border-color: #333336;
+        :root[data-bs-theme="dark"] .text-muted {
+            color: var(--secondary-text) !important;
         }
-        body.dark-mode .modal-header, body.dark-mode .modal-footer {
-            border-color: #333336;
+
+        :root[data-bs-theme="dark"] .badge.bg-dark {
+            background-color: #333336 !important;
         }
-        body.dark-mode .btn-close {
+
+        :root[data-bs-theme="dark"] .dark-invert {
+            filter: invert(1) brightness(2);
+        }
+
+        :root[data-bs-theme="dark"] .modal-content {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+
+        :root[data-bs-theme="dark"] .modal-header,
+        :root[data-bs-theme="dark"] .modal-footer {
+            border-color: var(--border-color);
+        }
+
+        :root[data-bs-theme="dark"] .btn-close {
             filter: invert(1);
         }
 
-        /* ================= BLOB LOADER ================= */
         .blob-loader {
             width: 70px;
             height: 70px;
@@ -260,13 +386,164 @@
         }
 
         @keyframes pulse-blob {
-            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.7); }
-            70% { transform: scale(1.1); box-shadow: 0 0 0 25px rgba(0, 122, 255, 0); }
-            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(0, 122, 255, 0); }
+            0% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.7);
+            }
+
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 25px rgba(0, 122, 255, 0);
+            }
+
+            100% {
+                transform: scale(0.9);
+                box-shadow: 0 0 0 0 rgba(0, 122, 255, 0);
+            }
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        #preloader.fade-out {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        /* ================= GROK-STYLE LOADER ================= */
+        .grok-loader {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 25px;
+        }
+
+        .grok-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #b0b0b0;
+            border-radius: 2px;
+            animation: grok-pulse 1.5s infinite ease-in-out;
+        }
+
+        .grok-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .grok-dot:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .grok-dot:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .grok-dot:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .grok-dot:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .grok-dot:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .grok-dot:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .grok-dot:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        .grok-dot:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes grok-pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
         }
     </style>
+
+    <script>
+        // Early theme detection to prevent flash of wrong theme
+        (function () {
+            var s = localStorage.getItem('theme');
+            var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (s === 'dark' || (!s && d)) {
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
+
 <body>
+    <!-- FULL PAGE PRELOADER (Grok-Style) -->
+    <div id="preloader">
+        <div class="grok-loader">
+            <div class="grok-dot"></div>
+            <div class="grok-dot"></div>
+            <div class="grok-dot"></div>
+            <div class="grok-dot"></div>
+            <div class="grok-dot"></div>
+            <div class="grok-dot"></div>
+            <div class="grok-dot"></div>
+            <div class="grok-dot"></div>
+            <div class="grok-dot"></div>
+        </div>
+        <p style="letter-spacing: -0.3px; color: #b0b0b0; font-size: 14px; font-weight: 500; margin-top: 8px;">Loading
+        </p>
+    </div>
+
+    <!-- SIDE NAVIGATION PILL -->
+    <nav class="side-nav-pill">
+        <a href="#" class="side-nav-link active" title="Home">
+            <i class="fa-solid fa-house"></i>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="#experience" class="side-nav-link" title="Experience">
+            <i class="fa-solid fa-briefcase"></i>
+            <span class="nav-label">Experience</span>
+        </a>
+        <a href="#projects" class="side-nav-link" title="Projects">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span class="nav-label">Projects</span>
+        </a>
+        <a href="#skills" class="side-nav-link" title="Skills">
+            <i class="fa-solid fa-gears"></i>
+            <span class="nav-label">Skills</span>
+        </a>
+    </nav>
 
     <div class="theme-toggle-container" id="floatingThemeToggle" title="Toggle Light/Dark Mode">
         <span class="theme-icon">🌙</span>
@@ -279,296 +556,361 @@
     <header class="hero-section text-center py-5 d-flex align-items-center" style="min-height: 85vh;">
         <div class="container" data-aos="zoom-in" data-aos-duration="1200">
             <h1 class="display-5 fw-bolder text-dark mb-3" style="letter-spacing: -1.2px;">Farhan Faiq Renardi</h1>
-            <h2 class="fs-4 mb-4 fw-bold text-gradient-apple" style="letter-spacing: -0.5px;">Data Scientist | Industrial Engineering Graduate</h2>
-            
+            <h2 class="fs-4 mb-4 fw-bold text-gradient-apple" style="letter-spacing: -0.5px;">Data Scientist |
+                Industrial Engineering Graduate</h2>
+
             <p class="mx-auto text-secondary mb-5 apple-summary-text" style="max-width: 800px;">
-                Data Scientist specializing in transforming complex datasets into <span class="text-dark fw-bold">strategic, actionable insights</span> that propel business growth and innovation. Expert in <span class="text-dark fw-bold">machine learning, deep learning</span>, and <span class="text-dark fw-bold">transfer learning</span>, with proven expertise in developing <span class="text-dark fw-bold">scalable data pipelines</span> using Python, TensorFlow, and scikit-learn.
+                Data Scientist specializing in transforming complex datasets into <span
+                    class="text-dark fw-bold">strategic, actionable insights</span> that propel business growth and
+                innovation. Expert in <span class="text-dark fw-bold">machine learning, deep learning</span>, and <span
+                    class="text-dark fw-bold">transfer learning</span>, with proven expertise in developing <span
+                    class="text-dark fw-bold">scalable data pipelines</span> using Python, TensorFlow, and scikit-learn.
             </p>
-            
+
             <div class="mt-4">
-                <a href="https://www.linkedin.com/in/farhanfaiq" class="btn btn-primary btn-lg px-4 me-2 mb-2 shadow-sm rounded-pill" target="_blank">LinkedIn Profile</a>
-                <button type="button" class="btn btn-outline-primary btn-lg px-4 me-2 mb-2 shadow-sm bg-white rounded-pill" data-bs-toggle="modal" data-bs-target="#cvModal">View CV</button>
-                <button type="button" class="btn btn-lg px-4 mb-2 shadow-sm custom-btn-contact rounded-pill" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Me</button>
+                <a href="https://www.linkedin.com/in/farhanfaiq"
+                    class="btn btn-primary btn-lg px-4 me-2 mb-2 shadow-sm rounded-pill" target="_blank">LinkedIn
+                    Profile</a>
+                <button type="button" class="btn btn-outline-primary btn-lg px-4 me-2 mb-2 shadow-sm rounded-pill"
+                    data-bs-toggle="modal" data-bs-target="#cvModal">View CV</button>
+                <button type="button" class="btn btn-lg px-4 mb-2 shadow-sm custom-btn-contact rounded-pill"
+                    data-bs-toggle="modal" data-bs-target="#contactModal">Contact Me</button>
             </div>
         </div>
     </header>
 
-    <section id="experience" class="container">
-        <h3 class="text-center section-title" data-aos="zoom-in-up">Professional Experience</h3>
-        
-        <div class="row justify-content-center mt-5">
-            <div class="col-lg-10">
-                <div class="row mb-5 align-items-center" data-aos="zoom-in-right" data-aos-delay="100">
-                    <div class="col-md-3 text-md-end">
-                        <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill">Nov 2025 - Present</span>
-                    </div>
-                    <div class="col-md-9 border-start border-primary border-3 ps-4 py-2">
-                        <h4 class="h5 fw-bold mb-1">Data Scientist</h4>
-                        <p class="text-secondary fw-semibold mb-2">Telkom Indonesia (HCSP Division)</p>
-                        <ul class="text-muted mb-0">
-                            <li>Processed, cleaned, and preprocessed large datasets using Python to ensure data quality.</li>
-                            <li>Built and optimized automated data scraping and parsing pipelines from multiple web sources.</li>
-                            <li>Conducted Exploratory Data Analysis (EDA) and generated actionable insights to support decision making.</li>
-                        </ul>
-                    </div>
-                </div>
+    <main>
+        <section id="experience" class="container">
+            <h3 class="text-center section-title" data-aos="zoom-in-up">Professional Experience</h3>
 
-                <div class="row mb-4 align-items-center" data-aos="zoom-in-left" data-aos-delay="200">
-                    <div class="col-md-3 text-md-end">
-                        <span class="badge bg-dark fs-6 px-3 py-2 rounded-pill">Dec 2023 - Feb 2024</span>
-                    </div>
-                    <div class="col-md-9 border-start border-dark border-3 ps-4 py-2">
-                        <h4 class="h5 fw-bold mb-1">Data Analyst</h4>
-                        <p class="text-secondary fw-semibold mb-2">Semen Indonesia Group</p>
-                        <ul class="text-muted mb-0">
-                            <li>Analyzed data using Power BI, Excel, and Python for the Pricing and Margin Management Department.</li>
-                            <li>Generated deep insights regarding margin trends and regional profitability.</li>
-                            <li>Created interactive dashboards to visualize analytical results for executive stakeholders.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" style="background-color: transparent;">
-        <div class="container">
-            <h3 class="text-center section-title" data-aos="zoom-in-up">Featured Projects</h3>
-
-            <div class="mb-5 mt-5">
-                <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI" style="height: 24px;" class="me-2"> 
-                    Data Analytics & Dashboards
-                </h4>
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="card project-card p-3">
-                            <h5 class="fw-bold">Financial Overview</h5>
-                            <p class="small text-primary mb-3">Power BI</p>
-                            <video autoplay loop muted playsinline class="w-100 rounded mb-3 shadow-sm" poster="dashboard/Financial Overview.png">
-                                <source src="dashboard/Financial Overview.mov">
-                            </video>
-                            <p class="small text-muted mb-0">Comprehensive summary of key financial metrics, including revenue, assets, liabilities, and equity.</p>
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-10">
+                    <div class="row mb-5 align-items-center" data-aos="zoom-in-right" data-aos-delay="100">
+                        <div class="col-md-3 text-md-end">
+                            <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill">Nov 2025 - Present</span>
+                        </div>
+                        <div class="col-md-9 border-start border-primary border-3 ps-4 py-2">
+                            <h4 class="h5 fw-bold mb-1">Data Scientist</h4>
+                            <p class="text-secondary fw-semibold mb-2">Telkom Indonesia (HCSP Division)</p>
+                            <ul class="text-muted mb-0">
+                                <li>Processed, cleaned, and preprocessed large datasets using Python to ensure data
+                                    quality.</li>
+                                <li>Built and optimized automated data scraping and parsing pipelines from multiple web
+                                    sources.</li>
+                                <li>Conducted Exploratory Data Analysis (EDA) and generated actionable insights to
+                                    support decision making.</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="card project-card p-3">
-                            <h5 class="fw-bold">Sourcing Monitoring</h5>
-                            <p class="small text-primary mb-3">Power BI</p>
-                            <video autoplay loop muted playsinline class="w-100 rounded mb-3 shadow-sm" poster="dashboard/Sourcing_Monitoring.png">
-                                <source src="dashboard/Sourcing_Monitoring.mov">
-                            </video>
-                            <p class="small text-muted mb-0">Interactive dashboard supporting the Pricing & Margin Dept of PT Semen Indonesia to analyze regional policies.</p>
+
+                    <div class="row mb-4 align-items-center" data-aos="zoom-in-left" data-aos-delay="200">
+                        <div class="col-md-3 text-md-end">
+                            <span class="badge bg-dark fs-6 px-3 py-2 rounded-pill">Dec 2023 - Feb 2024</span>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="card project-card p-3">
-                            <h5 class="fw-bold">Weekly Price Monitoring</h5>
-                            <p class="small text-primary mb-3">Power BI, Python</p>
-                            <video autoplay loop muted playsinline class="w-100 rounded mb-3 shadow-sm" poster="dashboard/Weekly_Price_Monitoring.png">
-                                <source src="dashboard/Weekly_Price_Monitoring.mov">
-                            </video>
-                            <p class="small text-muted mb-0">Evaluates pricing and promotional performance with dynamic filters and geographic distribution mapping.</p>
+                        <div class="col-md-9 border-start border-dark border-3 ps-4 py-2">
+                            <h4 class="h5 fw-bold mb-1">Data Analyst</h4>
+                            <p class="text-secondary fw-semibold mb-2">Semen Indonesia Group</p>
+                            <ul class="text-muted mb-0">
+                                <li>Analyzed data using Power BI, Excel, and Python for the Pricing and Margin
+                                    Management Department.</li>
+                                <li>Generated deep insights regarding margin trends and regional profitability.</li>
+                                <li>Created interactive dashboards to visualize analytical results for executive
+                                    stakeholders.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="mb-5">
-                <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up"><i class="devicon-tensorflow-original colored me-2"></i> Machine Learning</h4>
-                <div class="row g-4">
-                    <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="card project-card p-4 d-flex flex-column">
-                            <h5 class="fw-bold">Male Pattern Baldness Classification</h5>
-                            <p class="small text-primary mb-3">Transfer Learning (EfficientNetB3), Python</p>
-                            <p class="text-muted flex-grow-1">Developed a deep learning image classification model predicting male pattern baldness. Implemented pre-trained EfficientNetB3 architecture achieving 88% test accuracy.</p>
-                            <button type="button" class="btn btn-outline-primary mt-3 w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#hfDemoModal">Try Interactive Demo</button>
+        <section id="projects" style="background-color: transparent;">
+            <div class="container">
+                <h3 class="text-center section-title" data-aos="zoom-in-up">Featured Projects</h3>
+
+                <div class="mb-5 mt-5">
+                    <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg"
+                            alt="Power BI" style="height: 24px;" class="me-2">
+                        Data Analytics & Dashboards
+                    </h4>
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="card project-card p-3">
+                                <h5 class="fw-bold">Financial Overview</h5>
+                                <p class="small text-primary mb-3">Power BI</p>
+                                <video autoplay loop muted playsinline class="w-100 rounded mb-3 shadow-sm"
+                                    poster="assets/dashboard/Financial Overview.png">
+                                    <source src="assets/dashboard/Financial Overview.mov">
+                                </video>
+                                <p class="small text-muted mb-0">Comprehensive summary of key financial metrics,
+                                    including revenue, assets, liabilities, and equity.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="card project-card p-4 d-flex flex-column">
-                            <h5 class="fw-bold">Employee Profile Match-Up Optimization</h5>
-                            <p class="small text-primary mb-3">Logistic Regression, Scikit-learn</p>
-                            <p class="text-muted flex-grow-1">Simplified and re-engineered an existing employee-role matching model for Telkom Indonesia to improve interpretability and stakeholder usability using Logistic Regression.</p>
-                            <button type="button" class="btn btn-primary mt-3 w-100 rounded-pill" data-bs-toggle="modal" data-bs-target="#pmuDemoModal">Try Interactive Demo</button>
+                        <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="card project-card p-3">
+                                <h5 class="fw-bold">Sourcing Monitoring</h5>
+                                <p class="small text-primary mb-3">Power BI</p>
+                                <video autoplay loop muted playsinline class="w-100 rounded mb-3 shadow-sm"
+                                    poster="assets/dashboard/Sourcing_Monitoring.png">
+                                    <source src="assets/dashboard/Sourcing_Monitoring.mov">
+                                </video>
+                                <p class="small text-muted mb-0">Interactive dashboard supporting the Pricing & Margin
+                                    Dept of PT Semen Indonesia to analyze regional policies.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="card project-card p-3">
+                                <h5 class="fw-bold">Weekly Price Monitoring</h5>
+                                <p class="small text-primary mb-3">Power BI, Python</p>
+                                <video autoplay loop muted playsinline class="w-100 rounded mb-3 shadow-sm"
+                                    poster="assets/dashboard/Weekly_Price_Monitoring.png">
+                                    <source src="assets/dashboard/Weekly_Price_Monitoring.mov">
+                                </video>
+                                <p class="small text-muted mb-0">Evaluates pricing and promotional performance with
+                                    dynamic filters and geographic distribution mapping.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div>
-                <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up"><i class="devicon-django-plain colored me-2"></i> Information Systems</h4>
-                <div class="card project-card p-4" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 mb-4 mb-lg-0">
-                            <h5 class="fw-bold">Logistics Information System</h5>
-                            <p class="text-primary small mb-3">CV Qirana Furniture | Python (Django), SQLite</p>
-                            <p class="text-muted">A full-stack web-based logistics management system developed to address manual recording challenges. It streamlines material requests, stock tracking, and reporting processes with 100% functionality validation via Black-Box Testing.</p>
+                <div class="mb-5">
+                    <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up"><i
+                            class="devicon-tensorflow-original colored me-2"></i> Machine Learning</h4>
+                    <div class="row g-4">
+                        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="card project-card p-4 d-flex flex-column">
+                                <h5 class="fw-bold">Male Pattern Baldness Classification</h5>
+                                <p class="small text-primary mb-3">Transfer Learning (EfficientNetB3), Python</p>
+                                <p class="text-muted flex-grow-1">Developed a deep learning image classification model
+                                    predicting male pattern baldness. Implemented pre-trained EfficientNetB3
+                                    architecture achieving 88% test accuracy.</p>
+                                <button type="button" class="btn btn-outline-primary mt-3 w-100 rounded-pill"
+                                    data-bs-toggle="modal" data-bs-target="#hfDemoModal">Try Interactive Demo</button>
+                            </div>
                         </div>
-                        <div class="col-lg-7">
-                            <div id="logisticsCarousel" class="carousel slide shadow-sm rounded" data-bs-ride="carousel">
-                                <div class="carousel-inner rounded">
-                                    <div class="carousel-item active">
-                                        <img src="sistem_informasi/Halaman Login.png" class="d-block w-100" alt="Login">
+                        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="card project-card p-4 d-flex flex-column">
+                                <h5 class="fw-bold">Employee Profile Match-Up Optimization</h5>
+                                <p class="small text-primary mb-3">Logistic Regression, Scikit-learn</p>
+                                <p class="text-muted flex-grow-1">Simplified and re-engineered an existing employee-role
+                                    matching model for Telkom Indonesia to improve interpretability and stakeholder
+                                    usability using Logistic Regression.</p>
+                                <button type="button" class="btn btn-primary mt-3 w-100 rounded-pill"
+                                    data-bs-toggle="modal" data-bs-target="#pmuDemoModal">Try Interactive Demo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up"><i
+                            class="devicon-django-plain colored me-2"></i> Information Systems</h4>
+                    <div class="card project-card p-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 mb-4 mb-lg-0">
+                                <h5 class="fw-bold">Logistics Information System</h5>
+                                <p class="text-primary small mb-3">CV Qirana Furniture | Python (Django), SQLite</p>
+                                <p class="text-muted">A full-stack web-based logistics management system developed to
+                                    address manual recording challenges. It streamlines material requests, stock
+                                    tracking, and reporting processes with 100% functionality validation via Black-Box
+                                    Testing.</p>
+                            </div>
+                            <div class="col-lg-7">
+                                <div id="logisticsCarousel" class="carousel slide shadow-sm rounded"
+                                    data-bs-ride="carousel">
+                                    <div class="carousel-inner rounded">
+                                        <div class="carousel-item active">
+                                            <img src="assets/sistem_informasi/Halaman Login.png" class="d-block w-100"
+                                                alt="Login">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="assets/sistem_informasi/Halaman Dashboard.png"
+                                                class="d-block w-100" alt="Dashboard">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="assets/sistem_informasi/Halaman Penerimaan Permintaan Material.png"
+                                                class="d-block w-100" alt="Penerimaan Permintaan Material">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="assets/sistem_informasi/Halaman Permintaan Material.png"
+                                                class="d-block w-100" alt="Permintaan Material">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="assets/sistem_informasi/Halaman Purchase Order.png"
+                                                class="d-block w-100" alt="Purchase Order">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="assets/sistem_informasi/Halaman Catatan Material.png"
+                                                class="d-block w-100" alt="Catatan Material">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="assets/sistem_informasi/Halaman Pengelolaan Laporan.png"
+                                                class="d-block w-100" alt="Pengelolaan Laporan">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="assets/sistem_informasi/Halaman Pengelolaan Pengguna.png"
+                                                class="d-block w-100" alt="Pengelolaan Pengguna">
+                                        </div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="sistem_informasi/Halaman Dashboard.png" class="d-block w-100" alt="Dashboard">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="sistem_informasi/Halaman Penerimaan Permintaan Material.png" class="d-block w-100" alt="Penerimaan Permintaan Material">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="sistem_informasi/Halaman Permintaan Material.png" class="d-block w-100" alt="Permintaan Material">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="sistem_informasi/Halaman Purchase Order.png" class="d-block w-100" alt="Purchase Order">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="sistem_informasi/Halaman Catatan Material.png" class="d-block w-100" alt="Catatan Material">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="sistem_informasi/Halaman Pengelolaan Laporan.png" class="d-block w-100" alt="Pengelolaan Laporan">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="sistem_informasi/Halaman Pengelolaan Pengguna.png" class="d-block w-100" alt="Pengelolaan Pengguna">
-                                    </div>
+                                    <button class="carousel-control-prev" type="button"
+                                        data-bs-target="#logisticsCarousel" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"
+                                            aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button"
+                                        data-bs-target="#logisticsCarousel" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon bg-dark rounded-circle p-2"
+                                            aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#logisticsCarousel" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#logisticsCarousel" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="skills" class="text-center mt-5 mb-5 overflow-hidden">
-        <div class="container">
-            <h3 class="section-title" data-aos="zoom-in-up">Technical Stack</h3>
-            <p class="text-muted mb-4" data-aos="zoom-in-up" data-aos-delay="100">Tools, technologies, and concepts I use to solve business problems.</p>
-        </div>
-        
-        <div class="slider-container" data-aos="zoom-in" data-aos-delay="200">
-            <div class="slider-track" id="sliderTrack">
-                
-                <div class="slide-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/960px-Python-logo-notext.svg.png" class="slide-icon-img" alt="Python">
-                    <p class="fw-bold mb-0">Python</p>
-                </div>
-                <div class="slide-item">
-                    <i class="devicon-mysql-plain colored slide-icon"></i>
-                    <p class="fw-bold mb-0">SQL</p>
-                </div>
-                <div class="slide-item">
-                    <i class="devicon-javascript-plain colored slide-icon"></i>
-                    <p class="fw-bold mb-0">JavaScript</p>
-                </div>
-
-                <div class="slide-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" class="slide-icon-img" alt="Scikit-learn">
-                    <p class="fw-bold mb-0">Scikit-learn</p>
-                </div>
-                <div class="slide-item">
-                    <i class="devicon-tensorflow-original colored slide-icon"></i>
-                    <p class="fw-bold mb-0">TensorFlow</p>
-                </div>
-                <div class="slide-item">
-                    <img src="https://keras.io/img/logo.png" class="slide-icon-img dark-invert" alt="Keras">
-                    <p class="fw-bold mb-0">Keras</p>
-                </div>
-                <div class="slide-item">
-                    <span class="slide-icon-emoji">🧠</span>
-                    <p class="fw-bold mb-0 small">Transfer Learning</p>
-                </div>
-                <div class="slide-item">
-                    <span class="slide-icon-emoji">📈</span>
-                    <p class="fw-bold mb-0 small">Logistic Regression</p>
-                </div>
-                <div class="slide-item">
-                    <span class="slide-icon-emoji">📊</span>
-                    <p class="fw-bold mb-0 small">Classification</p>
-                </div>
-
-                <div class="slide-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" class="slide-icon-img" alt="Power BI">
-                    <p class="fw-bold mb-0">Power BI</p>
-                </div>
-                <div class="slide-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png" class="slide-icon-img" alt="Tableau">
-                    <p class="fw-bold mb-0">Tableau</p>
-                </div>
-                <div class="slide-item">
-                    <img src="https://images.seeklogo.com/logo-png/39/1/google-looker-logo-png_seeklogo-394597.png" class="slide-icon-img" alt="Looker Studio">
-                    <p class="fw-bold mb-0 small">Looker Studio</p>
-                </div>
-                <div class="slide-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Microsoft_Office_Excel_%282019%E2%80%932025%29.svg/960px-Microsoft_Office_Excel_%282019%E2%80%932025%29.svg.png" class="slide-icon-img" alt="Excel">
-                    <p class="fw-bold mb-0">Excel</p>
-                </div>
-                <div class="slide-item">
-                    <i class="devicon-pandas-plain colored slide-icon"></i>
-                    <p class="fw-bold mb-0">Pandas</p>
-                </div>
-                <div class="slide-item">
-                    <i class="devicon-numpy-original colored slide-icon"></i>
-                    <p class="fw-bold mb-0">NumPy</p>
-                </div>
-                <div class="slide-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Matplotlib_logo.svg" class="slide-icon-img dark-invert" alt="Matplotlib">
-                    <p class="fw-bold mb-0">Matplotlib</p>
-                </div>
-
-                <div class="slide-item">
-                    <i class="devicon-django-plain colored slide-icon"></i>
-                    <p class="fw-bold mb-0">Django</p>
-                </div>
-                <div class="slide-item">
-                    <i class="devicon-sqlite-plain colored slide-icon"></i>
-                    <p class="fw-bold mb-0">SQLite</p>
-                </div>
-                <div class="slide-item">
-                    <i class="devicon-mysql-plain colored slide-icon"></i>
-                    <p class="fw-bold mb-0">MySQL</p>
-                </div>
-                <div class="slide-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" class="slide-icon-img dark-invert" alt="Figma">
-                    <p class="fw-bold mb-0">Figma</p>
-                </div>
-
-                <div class="slide-item">
-                    <span class="slide-icon-emoji">🍲</span>
-                    <p class="fw-bold mb-0 small">BeautifulSoup</p>
-                </div>
-                <div class="slide-item">
-                    <img src="https://playwright.dev/img/playwright-logo.svg" class="slide-icon-img" alt="Playwright">
-                    <p class="fw-bold mb-0">Playwright</p>
-                </div>
-                <div class="slide-item">
-                    <i class="devicon-github-original slide-icon dark-invert"></i>
-                    <p class="fw-bold mb-0">Git/GitHub</p>
-                </div>
-                <div class="slide-item">
-                    <img src="https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png" class="slide-icon-img" alt="n8n">
-                    <p class="fw-bold mb-0">n8n</p>
-                </div>
-
+        <section id="skills" class="text-center mt-5 mb-5 overflow-hidden">
+            <div class="container">
+                <h3 class="section-title" data-aos="zoom-in-up">Technical Stack</h3>
+                <p class="text-muted mb-4" data-aos="zoom-in-up" data-aos-delay="100">Tools, technologies, and concepts
+                    I use to solve business problems.</p>
             </div>
-        </div>
-    </section>
+
+            <div class="slider-container" data-aos="zoom-in" data-aos-delay="200">
+                <div class="slider-track" id="sliderTrack">
+
+                    <div class="slide-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/960px-Python-logo-notext.svg.png"
+                            class="slide-icon-img" alt="Python">
+                        <p class="fw-bold mb-0">Python</p>
+                    </div>
+                    <div class="slide-item">
+                        <i class="devicon-mysql-plain colored slide-icon"></i>
+                        <p class="fw-bold mb-0">SQL</p>
+                    </div>
+                    <div class="slide-item">
+                        <i class="devicon-javascript-plain colored slide-icon"></i>
+                        <p class="fw-bold mb-0">JavaScript</p>
+                    </div>
+
+                    <div class="slide-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg"
+                            class="slide-icon-img" alt="Scikit-learn">
+                        <p class="fw-bold mb-0">Scikit-learn</p>
+                    </div>
+                    <div class="slide-item">
+                        <i class="devicon-tensorflow-original colored slide-icon"></i>
+                        <p class="fw-bold mb-0">TensorFlow</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://keras.io/img/logo.png" class="slide-icon-img dark-invert" alt="Keras">
+                        <p class="fw-bold mb-0">Keras</p>
+                    </div>
+                    <div class="slide-item">
+                        <span class="slide-icon-emoji">🧠</span>
+                        <p class="fw-bold mb-0 small">Transfer Learning</p>
+                    </div>
+                    <div class="slide-item">
+                        <span class="slide-icon-emoji">📈</span>
+                        <p class="fw-bold mb-0 small">Logistic Regression</p>
+                    </div>
+                    <div class="slide-item">
+                        <span class="slide-icon-emoji">📊</span>
+                        <p class="fw-bold mb-0 small">Classification</p>
+                    </div>
+
+                    <div class="slide-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg"
+                            class="slide-icon-img" alt="Power BI">
+                        <p class="fw-bold mb-0">Power BI</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png"
+                            class="slide-icon-img" alt="Tableau">
+                        <p class="fw-bold mb-0">Tableau</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://images.seeklogo.com/logo-png/39/1/google-looker-logo-png_seeklogo-394597.png"
+                            class="slide-icon-img" alt="Looker Studio">
+                        <p class="fw-bold mb-0 small">Looker Studio</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Microsoft_Office_Excel_%282019%E2%80%932025%29.svg/960px-Microsoft_Office_Excel_%282019%E2%80%932025%29.svg.png"
+                            class="slide-icon-img" alt="Excel">
+                        <p class="fw-bold mb-0">Excel</p>
+                    </div>
+                    <div class="slide-item">
+                        <i class="devicon-pandas-plain colored slide-icon"></i>
+                        <p class="fw-bold mb-0">Pandas</p>
+                    </div>
+                    <div class="slide-item">
+                        <i class="devicon-numpy-original colored slide-icon"></i>
+                        <p class="fw-bold mb-0">NumPy</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Matplotlib_logo.svg"
+                            class="slide-icon-img dark-invert" alt="Matplotlib">
+                        <p class="fw-bold mb-0">Matplotlib</p>
+                    </div>
+
+                    <div class="slide-item">
+                        <i class="devicon-django-plain colored slide-icon"></i>
+                        <p class="fw-bold mb-0">Django</p>
+                    </div>
+                    <div class="slide-item">
+                        <i class="devicon-sqlite-plain colored slide-icon"></i>
+                        <p class="fw-bold mb-0">SQLite</p>
+                    </div>
+                    <div class="slide-item">
+                        <i class="devicon-mysql-plain colored slide-icon"></i>
+                        <p class="fw-bold mb-0">MySQL</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
+                            class="slide-icon-img dark-invert" alt="Figma">
+                        <p class="fw-bold mb-0">Figma</p>
+                    </div>
+
+                    <div class="slide-item">
+                        <span class="slide-icon-emoji">🍲</span>
+                        <p class="fw-bold mb-0 small">BeautifulSoup</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://playwright.dev/img/playwright-logo.svg" class="slide-icon-img"
+                            alt="Playwright">
+                        <p class="fw-bold mb-0">Playwright</p>
+                    </div>
+                    <div class="slide-item">
+                        <i class="devicon-github-original slide-icon dark-invert"></i>
+                        <p class="fw-bold mb-0">Git/GitHub</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png"
+                            class="slide-icon-img" alt="n8n">
+                        <p class="fw-bold mb-0">n8n</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
 
     <footer class="bg-dark text-white text-center py-5">
         <div class="container">
             <h4 class="mb-3 fw-bold">Farhan Faiq Renardi</h4>
             <div class="mb-4">
-                <a href="https://www.linkedin.com/in/farhanfaiq" class="text-white text-decoration-none mx-2 fs-5" target="_blank"><i class="devicon-linkedin-plain"></i></a>
-                <a href="https://github.com/farhanrenardi" class="text-white text-decoration-none mx-2 fs-5" target="_blank"><i class="devicon-github-original"></i></a>
+                <a href="https://www.linkedin.com/in/farhanfaiq" class="text-white text-decoration-none mx-2 fs-5"
+                    target="_blank"><i class="devicon-linkedin-plain"></i></a>
+                <a href="https://github.com/farhanrenardi" class="text-white text-decoration-none mx-2 fs-5"
+                    target="_blank"><i class="devicon-github-original"></i></a>
             </div>
             <p class="mb-0 text-muted small">&copy; 2026 Designed and Developed by Farhan Faiq Renardi.</p>
         </div>
@@ -584,10 +926,14 @@
                 <div class="modal-body p-4 text-center">
                     <p class="text-muted mb-4">Choose how you'd like to connect with me.</p>
                     <div class="d-grid gap-3">
-                        <a href="https://wa.me/6282266520790" target="_blank" class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm" style="background-color: #25D366; border-radius: 12px; transition: transform 0.2s;">
+                        <a href="https://wa.me/6282266520790" target="_blank"
+                            class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm"
+                            style="background-color: #25D366; border-radius: 12px; transition: transform 0.2s;">
                             <i class="fa-brands fa-whatsapp fs-4 me-2"></i> WhatsApp / Phone
                         </a>
-                        <a href="mailto:farhanfaiqrenardi@gmail.com" class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm" style="background-color: #EA4335; border-radius: 12px; transition: transform 0.2s;">
+                        <a href="mailto:farhanfaiqrenardi@gmail.com"
+                            class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm"
+                            style="background-color: #EA4335; border-radius: 12px; transition: transform 0.2s;">
                             <i class="fa-solid fa-envelope fs-4 me-2"></i> Email (Gmail)
                         </a>
                     </div>
@@ -604,13 +950,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-3" style="height: 75vh;">
-                    <iframe id="cvIframe" data-src="CV_Farhan Faiq_Engineer.pdf" width="100%" height="100%" style="border: 1px solid #dee2e6; border-radius: 12px;">
+                    <iframe id="cvIframe" data-src="assets/CV_Farhan Faiq_Engineer.pdf" width="100%" height="100%"
+                        style="border: 1px solid #dee2e6; border-radius: 12px;">
                         Your browser does not support iframes. Please click the Download CV button below.
                     </iframe>
                 </div>
                 <div class="modal-footer border-top-0 pt-0">
                     <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
-                    <a href="CV_Farhan Faiq_Engineer.pdf" download="CV_Farhan Faiq_Engineer.pdf" class="btn btn-primary px-4 rounded-pill">Download PDF</a>
+                    <a href="assets/CV_Farhan Faiq_Engineer.pdf" download="CV_Farhan Faiq_Engineer.pdf"
+                        class="btn btn-primary px-4 rounded-pill">Download PDF</a>
                 </div>
             </div>
         </div>
@@ -623,12 +971,29 @@
                     <h5 class="modal-title fw-bold" id="hfDemoModalLabel">Male Pattern Baldness Predictor Demo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-3" style="height: 75vh;">
-                    <iframe id="hfDemoIframe" data-src="https://hunsolooo-male-pattern-baldness.hf.space" width="100%" height="100%" frameborder="0" style="border: 1px solid #dee2e6; border-radius: 12px;"></iframe>
+                <div class="modal-body p-3 position-relative" style="height: 75vh;">
+
+                    <!-- Motion Loading Overlay -->
+                    <div id="hfLoadingOverlay"
+                        class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center"
+                        style="background-color: var(--card-bg); z-index: 10; border-radius: 12px; transition: opacity 0.5s ease;">
+                        <div class="blob-loader mb-4"></div>
+                        <h4 class="fw-bold mb-2">Connecting to AI Server...</h4>
+                        <p class="text-secondary text-center px-4" style="max-width: 500px;">
+                            The model is loading or the server is sleeping.<br>Please wait a moment
+                            until the AI is ready to interact.
+                        </p>
+                    </div>
+
+                    <iframe id="hfDemoIframe"
+                        onload="document.getElementById('hfLoadingOverlay').style.opacity='0'; setTimeout(()=>{document.getElementById('hfLoadingOverlay').style.display='none'}, 500)"
+                        data-src="https://hunsolooo-male-pattern-baldness.hf.space" width="100%" height="100%"
+                        frameborder="0" style="border: 1px solid var(--border-color); border-radius: 12px;"></iframe>
                 </div>
                 <div class="modal-footer border-top-0 pt-0">
                     <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
-                    <a href="https://hunsolooo-male-pattern-baldness.hf.space" target="_blank" class="btn btn-primary px-4 rounded-pill">Open in New Tab</a>
+                    <a href="https://hunsolooo-male-pattern-baldness.hf.space" target="_blank"
+                        class="btn btn-primary px-4 rounded-pill">Open in New Tab</a>
                 </div>
             </div>
         </div>
@@ -643,25 +1008,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-3" style="height: 85vh; overflow-y: auto;">
-                    
+
                     <!-- Wrapper berwarna dark khusus untuk frame demo AI -->
-                    <div class="position-relative w-100 h-100 rounded" style="background-color: #0b0f19; border: 1px solid #dee2e6; overflow: hidden; min-height: 600px;">
+                    <div class="position-relative w-100 h-100 rounded"
+                        style="background-color: #1c1c1e; border: 1px solid var(--border-color); overflow: hidden; min-height: 600px;">
                         <!-- Motion Loading Overlay -->
-                        <div id="pmuLoadingOverlay" class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center" style="background-color: #0b0f19; z-index: 10;">
+                        <div id="pmuLoadingOverlay"
+                            class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center"
+                            style="background-color: #1c1c1e; color: #F5F5F7; z-index: 10;">
                             <div class="blob-loader mb-4"></div>
-                            <h4 class="fw-bold text-white mb-2">Connecting to AI Server...</h4>
+                            <h4 class="fw-bold mb-2">Connecting to AI Server...</h4>
                             <p class="text-secondary text-center px-4" style="max-width: 500px;">
-                                Model sedang dimuat atau server sedang tertidur (sleeping).<br>Mohon tunggu beberapa saat hingga AI siap berinteraksi.
+                                The model is loading or the server is sleeping.<br>Please wait a moment
+                                until the AI is ready to interact.
                             </p>
                         </div>
 
-                        <gradio-app id="pmuGradioApp" theme_mode="dark" src="https://hunsolooo-profile-matchup-demo.hf.space" style="width: 100%; height: 100%; display: block;"></gradio-app>
+                        <gradio-app id="pmuGradioApp" theme_mode="dark"
+                            src="https://hunsolooo-profile-matchup-demo.hf.space"
+                            style="width: 100%; height: 100%; display: block;"></gradio-app>
                     </div>
 
                 </div>
                 <div class="modal-footer border-top-0 pt-0 mt-3">
                     <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
-                    <a href="https://hunsolooo-profile-matchup-demo.hf.space" target="_blank" class="btn btn-primary px-4 rounded-pill">Open in New Tab</a>
+                    <a href="https://hunsolooo-profile-matchup-demo.hf.space" target="_blank"
+                        class="btn btn-primary px-4 rounded-pill">Open in New Tab</a>
                 </div>
             </div>
         </div>
@@ -669,13 +1041,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+
     <script>
         // 1. Initialize AOS Animation
         AOS.init({
             once: false,
             offset: 80,
-            duration: 900, 
+            duration: 900,
             easing: 'ease-out-cubic',
         });
 
@@ -683,24 +1055,30 @@
         const toggleContainer = document.getElementById('floatingThemeToggle');
         const toggleInnerIcon = document.getElementById('toggleInnerIcon');
         const body = document.body;
-        
+
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-mode');
-            toggleContainer.classList.add('dark');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Apply theme based on save or system preference
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
             toggleInnerIcon.textContent = '🌙';
+        } else {
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+            toggleInnerIcon.textContent = '☀️';
         }
 
         toggleContainer.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            toggleContainer.classList.toggle('dark');
-            
-            if (body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                toggleInnerIcon.textContent = '🌙';
-            } else {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-bs-theme', 'light');
                 localStorage.setItem('theme', 'light');
                 toggleInnerIcon.textContent = '☀️';
+            } else {
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                toggleInnerIcon.textContent = '🌙';
             }
         });
 
@@ -728,6 +1106,9 @@
 
         hfDemoModal.addEventListener('show.bs.modal', () => {
             if (!hfDemoIframe.getAttribute('src')) {
+                // Tampilkan loading overlay setiap kali modal dibuka sebelum ganti src
+                document.getElementById('hfLoadingOverlay').style.display = 'flex';
+                document.getElementById('hfLoadingOverlay').style.opacity = '1';
                 hfDemoIframe.setAttribute('src', hfDemoIframe.getAttribute('data-src'));
             }
         });
@@ -736,31 +1117,134 @@
             hfDemoIframe.removeAttribute('src');
         });
 
-        // 6. Gradio Loading State Handler
-        const pmuGradioApp = document.getElementById('pmuGradioApp');
-        const pmuLoadingOverlay = document.getElementById('pmuLoadingOverlay');
+        // 6. Gradio Lazy Loader — only loads gradio.js when modal opens
+        // This prevents Gradio from injecting global CSS that breaks fonts/icons
+        const pmuDemoModal = document.getElementById('pmuDemoModal');
+        let gradioLoaded = false;
 
-        if(pmuGradioApp) {
-            pmuGradioApp.addEventListener('render', () => {
-                if(pmuLoadingOverlay) {
-                    pmuLoadingOverlay.style.pointerEvents = 'none'; // Kunci interaksi overlay agar tak memblokir klik
-                    pmuLoadingOverlay.style.transition = 'opacity 0.6s ease';
-                    pmuLoadingOverlay.style.opacity = '0';
-                    setTimeout(() => pmuLoadingOverlay.style.display = 'none', 600);
+        function loadGradio() {
+            if (gradioLoaded) return;
+            gradioLoaded = true;
+
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = 'https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js';
+            document.body.appendChild(script);
+
+            // Fight Gradio's CSS pollution: observe for injected stylesheets
+            const fontShield = document.createElement('style');
+            fontShield.id = 'gradio-font-shield';
+            fontShield.textContent = `
+                /* Override any * { font-family } rules injected by Gradio */
+                html body, html body * {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+                }
+                .fa-solid, .fa-regular, .fa-brands, .fas, .fab, .far, .fa,
+                .fa-solid::before, .fa-regular::before, .fa-brands::before,
+                .fas::before, .fab::before, .far::before, .fa::before {
+                    font-family: 'Font Awesome 6 Free' !important;
+                }
+                .fa-brands, .fa-brands::before, .fab, .fab::before {
+                    font-family: 'Font Awesome 6 Brands' !important;
+                }
+                [class*="devicon-"], [class*="devicon-"]::before {
+                    font-family: 'devicon' !important;
+                }
+                /* Keep Gradio's own fonts inside its container */
+                gradio-app, gradio-app * {
+                    font-family: 'Source Sans Pro', ui-sans-serif, system-ui, sans-serif !important;
+                }
+            `;
+            document.head.appendChild(fontShield);
+
+            // Also observe: if Gradio adds <style> or <link> tags, re-append our shield
+            const observer = new MutationObserver(() => {
+                const shield = document.getElementById('gradio-font-shield');
+                if (shield && shield !== document.head.lastElementChild) {
+                    document.head.appendChild(shield);
                 }
             });
-            
-            // Backup fallback just in case render event is missed or takes too long
-            setTimeout(() => {
-                if(pmuLoadingOverlay && pmuLoadingOverlay.style.display !== 'none') {
-                    pmuLoadingOverlay.style.pointerEvents = 'none';
-                    pmuLoadingOverlay.style.transition = 'opacity 0.6s ease';
-                    pmuLoadingOverlay.style.opacity = '0';
-                    setTimeout(() => pmuLoadingOverlay.style.display = 'none', 600);
-                }
-            }, 30000); // 30 seconds max loading time before revealing
+            observer.observe(document.head, { childList: true });
+
+            // Gradio render handler
+            const pmuGradioApp = document.getElementById('pmuGradioApp');
+            const pmuLoadingOverlay = document.getElementById('pmuLoadingOverlay');
+
+            if (pmuGradioApp) {
+                pmuGradioApp.addEventListener('render', () => {
+                    if (pmuLoadingOverlay) {
+                        pmuLoadingOverlay.style.pointerEvents = 'none';
+                        pmuLoadingOverlay.style.transition = 'opacity 0.6s ease';
+                        pmuLoadingOverlay.style.opacity = '0';
+                        setTimeout(() => pmuLoadingOverlay.style.display = 'none', 600);
+                    }
+                });
+
+                // Fallback: hide overlay after 30s
+                setTimeout(() => {
+                    if (pmuLoadingOverlay && pmuLoadingOverlay.style.display !== 'none') {
+                        pmuLoadingOverlay.style.pointerEvents = 'none';
+                        pmuLoadingOverlay.style.transition = 'opacity 0.6s ease';
+                        pmuLoadingOverlay.style.opacity = '0';
+                        setTimeout(() => pmuLoadingOverlay.style.display = 'none', 600);
+                    }
+                }, 30000);
+            }
         }
+
+        if (pmuDemoModal) {
+            pmuDemoModal.addEventListener('show.bs.modal', loadGradio);
+        }
+
+        // 7. Scroll Events (Side Nav Active State & Back to Top)
+        const sections = document.querySelectorAll('section[id], header');
+        const navLinks = document.querySelectorAll('.side-nav-link');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.pageYOffset;
+
+            // Back to Top functionality
+            if (scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+
+            // Active Nav link highlighting
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 100;
+                let sectionId = current.getAttribute('id');
+                if (!sectionId && current.tagName === 'HEADER') sectionId = ''; // Home case
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        const href = link.getAttribute('href');
+                        if ((href === '#' && sectionId === '') || href === '#' + sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // 6. Preloader Handler
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                // Wait briefly to ensure rendering completes and users see the grok animation
+                setTimeout(() => {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 800);
+                }, 200);
+            }
+        });
     </script>
-    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/4.44.1/gradio.js"></script>
+    <!-- Gradio.js is now lazy-loaded only when the PMU demo modal opens -->
 </body>
+
 </html>
