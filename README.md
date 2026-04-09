@@ -1,8 +1,8 @@
 # 🚀 Farhan Faiq Renardi | Data Scientist
 
-**Data Scientist** dengan fondasi kuat di **Machine Learning** & **Deep Learning**.  
-Berpengalaman membangun model interpretabel, transfer learning, dan data pipeline skalabel menggunakan Python, TensorFlow, serta scikit-learn.  
-Passionate menyelesaikan masalah bisnis di domain **HR**, **Pricing**, dan **Logistics**.
+**Data Scientist** with a strong foundation in **Machine Learning** and **Deep Learning**.  
+Experienced in transfer learning, model interpretability, and building scalable data pipelines using Python, TensorFlow, and scikit-learn.  
+Passionate about solving real business problems in **HR**, **Pricing**, and **Logistics**.
 
 [![Live Portfolio](https://img.shields.io/badge/Portfolio-Live-brightgreen?style=for-the-badge)](https://farhanrenardi.github.io/Portfolio/)  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge)](https://www.linkedin.com/in/farhanfaiq)  
@@ -13,45 +13,45 @@ Passionate menyelesaikan masalah bisnis di domain **HR**, **Pricing**, dan **Log
 ## ✨ Featured Projects
 
 ### 🧠 Employee Profile Match-Up Model Optimization – Telkom Indonesia (HCSP Division)
-Re-engineered employee-role matching model untuk meningkatkan interpretability dan usability bagi stakeholder HR.
+Re-engineered an existing employee-role matching model to significantly improve interpretability and usability for HR stakeholders.
 
-- Rebuilt classification pipeline menggunakan **Logistic Regression (scikit-learn)**
-- Reduced feature dimensionality tanpa mengorbankan akurasi
-- Significantly improved model interpretability untuk pengambilan keputusan HR
-- Delivered clean technical documentation untuk maintainability
+- Rebuilt the classification pipeline using **Logistic Regression (scikit-learn)**
+- Reduced feature dimensionality while maintaining predictive performance
+- Enhanced model interpretability to better support HR decision-making processes
+- Delivered comprehensive technical documentation for long-term system continuity
 
-### 🧬 Male Pattern Baldness Classification (Transfer Learning)
-Deep learning image classification model dengan **transfer learning** menggunakan **EfficientNetB3**.
+### 🧬 Male Pattern Baldness Classification – Transfer Learning Project
+Developed a deep learning image classification model using transfer learning to predict male pattern baldness.
 
-- Mencapai **88% test accuracy**
-- Image preprocessing, augmentation, & dataset balancing
-- Fine-tuning model layers + evaluasi lengkap (precision-recall, confusion matrix)
-- Reproducible training pipeline siap untuk ekspansi fitur
+- Implemented transfer learning with **EfficientNetB3** architecture, achieving **88% test accuracy**
+- Performed image preprocessing, augmentation, and dataset balancing
+- Fine-tuned model layers and evaluated performance using accuracy, precision-recall, and confusion matrix
+- Built a reproducible training pipeline for scalability and future expansion
 
 ### 📦 Logistics Information System – CV Qirana Furniture
-Full-stack web-based logistics management system untuk material request, stock tracking, dan reporting.
+Designed and developed a full-stack web-based logistics management system to streamline material requests, stock tracking, and reporting.
 
-- Dibangun dengan **Python (Django) + SQLite** + UI dari Figma
-- Menggunakan metodologi **SDLC Waterfall**
-- **100% functionality** lolos Black-Box Testing
-- Real-time stock visibility & reporting efficiency yang jauh lebih baik
+- Built using **Python (Django)** + SQLite with Figma-designed UI
+- Applied **SDLC Waterfall** methodology from requirements to deployment
+- Achieved **100% functionality validation** through Black-Box Testing
+- Improved reporting efficiency and enabled real-time stock visibility
 
 ### 📊 Monitoring Dashboard – Semen Indonesia Group
-Dua interactive **Power BI** dashboard untuk Pricing & Margin Management Department.
+Created two interactive **Power BI** dashboards for the Pricing and Margin Management Department.
 
-- Sourcing Monitoring + Weekly Price Monitoring
-- Dynamic filters, margin tracking, dan regional policy insights
-- Meningkatkan visibility dan mendukung keputusan bisnis yang lebih cepat
+- Developed Sourcing Monitoring and Weekly Price Monitoring dashboards with dynamic filters
+- Provided insights into margin trends, promotional performance, and regional profitability
+- Enhanced data-driven decision making through improved visibility and analytics
 
 ---
 
 ## 💼 Professional Experience
 
-- **[Intern] Data Scientist – Telkom Indonesia** *(Nov 2025 – Present)*  
-  Membangun automated data scraping pipelines, preprocessing large dataset, dan exploratory data analysis.
+- **[Intern] Data Scientist – Telkom Indonesia** *(November 2025 – Present)*  
+  Built automated data scraping pipelines, processed large datasets, and conducted exploratory data analysis to support data-driven decisions.
 
-- **[Intern] Data Analyst – Semen Indonesia Group** *(Dec 2023 – Feb 2024)*  
-  Membuat dashboard analitik menggunakan Power BI, Excel, dan Python untuk Pricing & Margin Management.
+- **[Intern] Data Analyst – Semen Indonesia Group** *(December 2023 – February 2024)*  
+  Analyzed data and created insightful dashboards using Power BI, Excel, and Python for the Pricing & Margin Management team.
 
 ---
 
@@ -81,16 +81,16 @@ Figma • BeautifulSoup • Playwright • Git/GitHub • n8n automation
 ---
 
 ## 🏆 Certification
-**Professional Development Program “Project Risk Management”**  
+**Professional Development Program – “Project Risk Management”**  
 *Indonesia Risk Management Professional Association (IRMAPA)*
 
 ---
 
 ## 🌟 Engineering Highlights of This Portfolio
-- Intelligent AI Demo (Employee Match-Up) dengan **Hugging Face + Gradio** (lazy loading)
-- Zero-font-jump & intelligent dark mode (no white flash)
-- High-performance frontend dengan CSS isolation & micro-animations
-- Fully responsive + modern glassmorphism design
+- Intelligent AI Demo (Employee Match-Up) hosted on **Hugging Face Spaces** with lazy-loaded Gradio integration
+- Zero-font-jump implementation and intelligent dark mode (no white flash)
+- High-performance frontend with CSS isolation and subtle micro-animations
+- Fully responsive modern design with glassmorphism effects
 
 ---
 
