@@ -1,61 +1,100 @@
-# 🚀 Data Scientist Portfolio | Farhan Faiq Renardi
+# 🚀 Farhan Faiq Renardi | Data Scientist
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen?style=for-the-badge)](https://s.id/Portfolio_FarhanFaiq)
-[![Tech Stack](https://img.shields.io/badge/tech--stack-Python%20%7C%20ML%20%7C%20Deep%20Learning-blue?style=for-the-badge)](#technical-stack)
+**Data Scientist** dengan fondasi kuat di **Machine Learning** & **Deep Learning**.  
+Berpengalaman membangun model interpretabel, transfer learning, dan data pipeline skalabel menggunakan Python, TensorFlow, serta scikit-learn.  
+Passionate menyelesaikan masalah bisnis di domain **HR**, **Pricing**, dan **Logistics**.
 
-A high-performance, modern data science portfolio showcasing expertise in **Machine Learning**, **Data Pipelines**, and **Scalable AI Solutions**. Built with a focus on seamless user experience, visual excellence, and engineering optimization.
-
----
-
-## 🏗️ Featured Engineering: The AI Demo
-One of the core highlights of this portfolio is the **Employee Profile Match-Up** integration.
-
-- **Intelligent Embedding**: Utilizes advanced embedding models to match candidates to job requirements.
-- **Seamless Integration**: Hosted on Hugging Face Spaces and integrated via a custom-insulated Gradio bridge.
-- **Lazy-Loading Architecture**: To ensure optimal performance, the heavy AI runtime is only initialized when requested, keeping the initial page load lightning-fast.
+[![Live Portfolio](https://img.shields.io/badge/Portfolio-Live-brightgreen?style=for-the-badge)](https://farhanrenardi.github.io/Portfolio/)  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge)](https://www.linkedin.com/in/farhanfaiq)  
+[![Email](https://img.shields.io/badge/Email-farhanfaiqrenardi@gmail.com-red?style=for-the-badge)](mailto:farhanfaiqrenardi@gmail.com)
 
 ---
 
-## ⚡ Engineering Excellence & Performance
-This isn't just a static page; it's a showcase of **frontend engineering best practices** applied to a data science context:
+## ✨ Featured Projects
 
-- **🚅 Lightning Performance**: 
-  - **Zero Font Jump (FOUT-free)**: Custom system-font stack implementation to eliminate the common "font jumping" issue for an instant, premium feel.
-  - **CSS Isolation**: High-specificity isolation for embedded AI demos to prevent third-party CSS pollution.
-- **🌗 Intelligent Dark Mode**: 
-  - **Zero-Flash Theme Detection**: Implemented early-head script execution to detect user preferences *before* the first paint, preventing the "white flash" common in many dark-mode sites.
-- **📂 Systematic Asset Management**: Consolidated asset structure for reliable media rendering and fast delivery.
-- **✨ Grok-Style Micro-animations**: Custom-built loading experiences and subtle transitions that make the interaction feel "alive."
+### 🧠 Employee Profile Match-Up Model Optimization – Telkom Indonesia (HCSP Division)
+Re-engineered employee-role matching model untuk meningkatkan interpretability dan usability bagi stakeholder HR.
 
----
+- Rebuilt classification pipeline menggunakan **Logistic Regression (scikit-learn)**
+- Reduced feature dimensionality tanpa mengorbankan akurasi
+- Significantly improved model interpretability untuk pengambilan keputusan HR
+- Delivered clean technical documentation untuk maintainability
 
-## 🛠️ Technical Stack
-**Data Science & Machine Learning:**
-- Python, TensorFlow, PyTorch
-- Scikit-learn, Pandas, NumPy
-- Hugging Face Transformers
-- Playwright for Automated Testing
+### 🧬 Male Pattern Baldness Classification (Transfer Learning)
+Deep learning image classification model dengan **transfer learning** menggunakan **EfficientNetB3**.
 
-**Frontend & UI/UX:**
-- Modern CSS3 (Glassmorphism & Radial Gradients)
-- Bootstrap 5 (Responsive Framework)
-- AOS (Animate on Scroll)
-- FontAwesome 6 / Devicons
+- Mencapai **88% test accuracy**
+- Image preprocessing, augmentation, & dataset balancing
+- Fine-tuning model layers + evaluasi lengkap (precision-recall, confusion matrix)
+- Reproducible training pipeline siap untuk ekspansi fitur
 
----
+### 📦 Logistics Information System – CV Qirana Furniture
+Full-stack web-based logistics management system untuk material request, stock tracking, dan reporting.
 
-## 📊 Quick Links
-- **Resume**: [View CV](https://s.id/Portfolio_FarhanFaiq) (inside the web portal)
-- **LinkedIn**: [linkedin.com/in/farhanfaiq](https://www.linkedin.com/in/farhanfaiq)
+- Dibangun dengan **Python (Django) + SQLite** + UI dari Figma
+- Menggunakan metodologi **SDLC Waterfall**
+- **100% functionality** lolos Black-Box Testing
+- Real-time stock visibility & reporting efficiency yang jauh lebih baik
 
----
+### 📊 Monitoring Dashboard – Semen Indonesia Group
+Dua interactive **Power BI** dashboard untuk Pricing & Margin Management Department.
 
-## 🚀 Local Development
-To run this project locally for audit or development:
-1. Clone the repository.
-2. Run a local server (e.g., `python3 -m http.server 8000`).
-3. Open `http://localhost:8000` in your browser.
+- Sourcing Monitoring + Weekly Price Monitoring
+- Dynamic filters, margin tracking, dan regional policy insights
+- Meningkatkan visibility dan mendukung keputusan bisnis yang lebih cepat
 
 ---
 
-*“Turning complex data into strategic, actionable insights.”*
+## 💼 Professional Experience
+
+- **[Intern] Data Scientist – Telkom Indonesia** *(Nov 2025 – Present)*  
+  Membangun automated data scraping pipelines, preprocessing large dataset, dan exploratory data analysis.
+
+- **[Intern] Data Analyst – Semen Indonesia Group** *(Dec 2023 – Feb 2024)*  
+  Membuat dashboard analitik menggunakan Power BI, Excel, dan Python untuk Pricing & Margin Management.
+
+---
+
+## 🎓 Education
+**Diponegoro University** – Industrial Engineering  
+*September 2021 – September 2025*
+
+---
+
+## 🛠️ Technical Skills
+
+**Machine Learning & AI**  
+Scikit-learn • TensorFlow • Keras • Transfer Learning • Model Interpretability
+
+**Programming & Data**  
+Python (Pandas, NumPy) • SQL • JavaScript
+
+**Analytics & Visualization**  
+Power BI • Tableau • Looker Studio • Excel • Matplotlib
+
+**Web & Database**  
+Django • SQLite • MySQL
+
+**Others**  
+Figma • BeautifulSoup • Playwright • Git/GitHub • n8n automation
+
+---
+
+## 🏆 Certification
+**Professional Development Program “Project Risk Management”**  
+*Indonesia Risk Management Professional Association (IRMAPA)*
+
+---
+
+## 🌟 Engineering Highlights of This Portfolio
+- Intelligent AI Demo (Employee Match-Up) dengan **Hugging Face + Gradio** (lazy loading)
+- Zero-font-jump & intelligent dark mode (no white flash)
+- High-performance frontend dengan CSS isolation & micro-animations
+- Fully responsive + modern glassmorphism design
+
+---
+
+> “Turning complex data into strategic, actionable insights.”
+
+**Ready to connect?**  
+📍 Jakarta, Indonesia | +62 822-6652-0790
