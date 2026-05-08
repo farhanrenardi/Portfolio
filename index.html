@@ -494,6 +494,24 @@
                 opacity: 1;
             }
         }
+
+        /* ================= TYPEWRITER EFFECT ================= */
+        .typewriter-cursor {
+            font-weight: 300;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+
+            from,
+            to {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
     </style>
 
     <script>
@@ -558,32 +576,50 @@
         <div class="container">
             <div class="row align-items-center">
                 <!-- PHOTO COLUMN -->
-                <div class="col-lg-5 order-1 order-lg-1 mb-5 mb-lg-0 text-center text-lg-end pe-lg-5" data-aos="fade-right" data-aos-duration="1200">
+                <div class="col-lg-5 order-1 order-lg-1 mb-5 mb-lg-0 text-center text-lg-end pe-lg-5"
+                    data-aos="fade-right" data-aos-duration="1200">
                     <div class="d-inline-block position-relative">
                         <!-- Added subtle glow behind image to mimic Gia Jung's aesthetic -->
-                        <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 rounded-4" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(59, 130, 246, 0.05) 70%); filter: blur(25px); z-index: -1;"></div>
-                        <img src="assets/self_photo.jpg" alt="Farhan Faiq Renardi" class="img-fluid rounded-4 shadow-lg" 
-                             style="max-height: 420px; width: auto; object-fit: cover; border: 1px solid rgba(128,128,128,0.2); filter: grayscale(30%) contrast(110%) brightness(0.95); transition: all 0.4s ease; cursor: pointer;"
-                             onmouseover="this.style.filter='grayscale(0%) contrast(100%) brightness(1)'; this.style.transform='translateY(-5px)';" 
-                             onmouseout="this.style.filter='grayscale(30%) contrast(110%) brightness(0.95)'; this.style.transform='translateY(0)';">
+                        <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 rounded-4"
+                            style="background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(59, 130, 246, 0.05) 70%); filter: blur(25px); z-index: -1;">
+                        </div>
+                        <img src="assets/self_photo.jpg" alt="Farhan Faiq Renardi" class="img-fluid rounded-4 shadow-lg"
+                            style="max-height: 420px; width: auto; object-fit: cover; border: 1px solid rgba(128,128,128,0.2); filter: grayscale(30%) contrast(110%) brightness(0.95); transition: all 0.4s ease; cursor: pointer;"
+                            onmouseover="this.style.filter='grayscale(0%) contrast(100%) brightness(1)'; this.style.transform='translateY(-5px)';"
+                            onmouseout="this.style.filter='grayscale(30%) contrast(110%) brightness(0.95)'; this.style.transform='translateY(0)';">
                     </div>
                 </div>
-                
-                <!-- TEXT COLUMN -->
-                <div class="col-lg-7 order-2 order-lg-2 text-center text-lg-start mt-4 mt-lg-0" data-aos="fade-left" data-aos-duration="1200">
-                    <h1 class="fw-bolder text-dark mb-3" style="font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: -1.5px; line-height: 1.1;">Farhan Faiq Renardi</h1>
-                    <h2 class="fs-5 fs-md-4 mb-4 fw-bold text-gradient-apple" style="letter-spacing: -0.5px;">Data Analyst | Industrial Engineering Graduate</h2>
 
-                    <p class="text-secondary mb-5 apple-summary-text mx-auto mx-lg-0" style="max-width: 100%; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.7;">
-                        Analytical problem-solver dedicated to transforming <span class="text-dark fw-bold">complex data into actionable business insights</span>. Expert in leveraging <span class="text-dark fw-bold">Python, SQL, and Power BI</span> to streamline operations across tech and manufacturing sectors. Backed by a strong foundation in <span class="text-dark fw-bold">Machine Learning</span> to drive predictive analytics and strategic decision-making.
+                <!-- TEXT COLUMN -->
+                <div class="col-lg-7 order-2 order-lg-2 text-center text-lg-start mt-4 mt-lg-0" data-aos="fade-left"
+                    data-aos-duration="1200">
+                    <h1 class="fw-bolder text-dark mb-3"
+                        style="font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: -1.5px; line-height: 1.1;">Farhan
+                        Faiq Renardi</h1>
+                    <h2 class="fs-5 fs-md-4 mb-4 fw-bold text-gradient-apple"
+                        style="letter-spacing: -0.5px; min-height: 28px;"><span id="typewriter-text"></span><span
+                            class="typewriter-cursor">|</span></h2>
+
+                    <p class="text-secondary mb-5 apple-summary-text mx-auto mx-lg-0"
+                        style="max-width: 100%; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.7;">
+                        Analytical problem-solver dedicated to transforming <span class="text-dark fw-bold">complex data
+                            into actionable business insights</span>. Expert in leveraging <span
+                            class="text-dark fw-bold">Python, SQL, and Power BI</span> to streamline operations across
+                        tech and manufacturing sectors. Backed by a strong foundation in <span
+                            class="text-dark fw-bold">Machine Learning</span> to drive predictive analytics and
+                        strategic decision-making.
                     </p>
 
                     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
-                        <a href="https://www.linkedin.com/in/farhanfaiq" class="btn btn-primary btn-lg px-4 shadow-sm rounded-pill d-flex align-items-center" target="_blank">
+                        <a href="https://www.linkedin.com/in/farhanfaiq"
+                            class="btn btn-primary btn-lg px-4 shadow-sm rounded-pill d-flex align-items-center"
+                            target="_blank">
                             LinkedIn Profile <i class="fa-solid fa-arrow-right ms-2" style="font-size: 0.9em;"></i>
                         </a>
-                        <button type="button" class="btn btn-outline-primary btn-lg px-4 shadow-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#cvModal">View CV</button>
-                        <button type="button" class="btn btn-lg px-4 shadow-sm custom-btn-contact rounded-pill" data-bs-toggle="modal" data-bs-target="#contactModal">Contact Me</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg px-4 shadow-sm rounded-pill"
+                            data-bs-toggle="modal" data-bs-target="#cvModal">View CV</button>
+                        <button type="button" class="btn btn-lg px-4 shadow-sm custom-btn-contact rounded-pill"
+                            data-bs-toggle="modal" data-bs-target="#contactModal">Contact Me</button>
                     </div>
                 </div>
             </div>
@@ -1253,6 +1289,50 @@
                     }, 800);
                 }, 200);
             }
+        });
+        // 7. Typewriter Effect
+        const twWords = [
+            "Data Analyst | Industrial Engineering Graduate",
+            "Data Analyst | Machine Learning and Analytics",
+            "Data Scientist | Industrial Engineering Graduate",
+            "Data Scientist | Machine Learning and Analytics"
+        ];
+        let twIndex = 0;
+        let twTimer;
+
+        function typingEffect() {
+            let word = twWords[twIndex].split("");
+            let loopTyping = function () {
+                if (word.length > 0) {
+                    document.getElementById('typewriter-text').innerHTML += word.shift();
+                    let typingSpeed = Math.floor(Math.random() * (120 - 40 + 1)) + 40; // Random between 40ms and 120ms
+                    twTimer = setTimeout(loopTyping, typingSpeed);
+                } else {
+                    twTimer = setTimeout(deletingEffect, 2500);
+                }
+            };
+            loopTyping();
+        }
+
+        function deletingEffect() {
+            let currentText = document.getElementById('typewriter-text').innerHTML;
+            let word = currentText.split("");
+            let loopDeleting = function () {
+                if (word.length > 0) {
+                    word.pop();
+                    document.getElementById('typewriter-text').innerHTML = word.join("");
+                    let deleteSpeed = Math.floor(Math.random() * (40 - 20 + 1)) + 20; // Random between 20ms and 40ms
+                    twTimer = setTimeout(loopDeleting, deleteSpeed);
+                } else {
+                    twIndex = (twIndex + 1) % twWords.length;
+                    twTimer = setTimeout(typingEffect, 500);
+                }
+            };
+            loopDeleting();
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(typingEffect, 1000);
         });
     </script>
     <!-- Gradio.js is now lazy-loaded only when the PMU demo modal opens -->
