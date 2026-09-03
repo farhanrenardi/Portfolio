@@ -1,0 +1,1988 @@
+{
+  "id": "agentic-dataops-guardian-v1",
+  "name": "Agentic DataOps Guardian",
+  "description": "Autonomous Self-Healing ETL Pipeline & Data Quality Guardian for Messy Tabular Data (Langflow 1.0.19)",
+  "last_tested_version": "1.0.19",
+  "endpoint_name": "agentic_dataops_guardian",
+  "is_component": false,
+  "data": {
+    "nodes": [
+      {
+        "id": "note-ingest",
+        "type": "noteNode",
+        "position": {
+          "x": -5000,
+          "y": -250
+        },
+        "data": {
+          "id": "note-ingest",
+          "node": {
+            "description": "## 1. Data Ingestion & Profiling\nUpload dirty CSV -> Parse to text -> AI Profiler detects anomalies & generates cleaning script.",
+            "display_name": "",
+            "documentation": "",
+            "template": {
+              "backgroundColor": "transparent"
+            }
+          },
+          "type": "note"
+        },
+        "selected": false,
+        "width": 450,
+        "height": 150,
+        "dragging": false,
+        "positionAbsolute": {
+          "x": -5000,
+          "y": -250
+        },
+        "style": {
+          "width": 388,
+          "height": 325
+        },
+        "resizing": false
+      },
+      {
+        "id": "File-CSV",
+        "type": "genericNode",
+        "position": {
+          "x": -5000,
+          "y": 0
+        },
+        "data": {
+          "type": "File",
+          "node": {
+            "template": {
+              "_type": "Component",
+              "path": {
+                "trace_as_metadata": true,
+                "file_path": "ee712d29-9dc7-4999-a1e0-6d5c723f78b3/2026-08-24_16-03-59_CV_Farhan Faiq.pdf",
+                "fileTypes": [
+                  "txt",
+                  "md",
+                  "mdx",
+                  "csv",
+                  "json",
+                  "yaml",
+                  "yml",
+                  "xml",
+                  "html",
+                  "htm",
+                  "pdf",
+                  "docx",
+                  "py",
+                  "sh",
+                  "sql",
+                  "js",
+                  "ts",
+                  "tsx"
+                ],
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "path",
+                "value": "",
+                "display_name": "Path",
+                "advanced": false,
+                "dynamic": false,
+                "info": "Supported file types: txt, md, mdx, csv, json, yaml, yml, xml, html, htm, pdf, docx, py, sh, sql, js, ts, tsx",
+                "title_case": false,
+                "type": "file",
+                "_input_type": "FileInput"
+              },
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "from pathlib import Path\n\nfrom langflow.base.data.utils import TEXT_FILE_TYPES, parse_text_file_to_data\nfrom langflow.custom import Component\nfrom langflow.io import BoolInput, FileInput, Output\nfrom langflow.schema import Data\n\n\nclass FileComponent(Component):\n    display_name = \"File\"\n    description = \"A generic file loader.\"\n    icon = \"file-text\"\n    name = \"File\"\n\n    inputs = [\n        FileInput(\n            name=\"path\",\n            display_name=\"Path\",\n            file_types=TEXT_FILE_TYPES,\n            info=f\"Supported file types: {', '.join(TEXT_FILE_TYPES)}\",\n        ),\n        BoolInput(\n            name=\"silent_errors\",\n            display_name=\"Silent Errors\",\n            advanced=True,\n            info=\"If true, errors will not raise an exception.\",\n        ),\n    ]\n\n    outputs = [\n        Output(display_name=\"Data\", name=\"data\", method=\"load_file\"),\n    ]\n\n    def load_file(self) -> Data:\n        if not self.path:\n            msg = \"Please, upload a file to use this component.\"\n            raise ValueError(msg)\n        resolved_path = self.resolve_path(self.path)\n        silent_errors = self.silent_errors\n\n        extension = Path(resolved_path).suffix[1:].lower()\n\n        if extension == \"doc\":\n            msg = \"doc files are not supported. Please save as .docx\"\n            raise ValueError(msg)\n        if extension not in TEXT_FILE_TYPES:\n            msg = f\"Unsupported file type: {extension}\"\n            raise ValueError(msg)\n\n        data = parse_text_file_to_data(resolved_path, silent_errors)\n        self.status = data or \"No data\"\n        return data or Data()\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "silent_errors": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "silent_errors",
+                "value": false,
+                "display_name": "Silent Errors",
+                "advanced": false,
+                "dynamic": false,
+                "info": "If true, errors will not raise an exception.",
+                "title_case": false,
+                "type": "bool",
+                "_input_type": "BoolInput"
+              }
+            },
+            "description": "A generic file loader.",
+            "icon": "file-text",
+            "base_classes": [
+              "Data"
+            ],
+            "display_name": "Dirty CSV File Input",
+            "documentation": "",
+            "custom_fields": {},
+            "output_types": [],
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Data"
+                ],
+                "selected": "Data",
+                "name": "data",
+                "display_name": "Data",
+                "method": "load_file",
+                "value": "__UNDEFINED__",
+                "cache": true
+              }
+            ],
+            "field_order": [
+              "path",
+              "silent_errors"
+            ],
+            "beta": false,
+            "edited": false,
+            "metadata": {},
+            "lf_version": "1.0.19"
+          },
+          "id": "File-CSV"
+        },
+        "selected": false,
+        "width": 384,
+        "height": 361,
+        "positionAbsolute": {
+          "x": -5000,
+          "y": 0
+        },
+        "dragging": false
+      },
+      {
+        "id": "ParseData-Raw",
+        "type": "genericNode",
+        "position": {
+          "x": -4550,
+          "y": 0
+        },
+        "data": {
+          "type": "ParseData",
+          "node": {
+            "template": {
+              "_type": "Component",
+              "data": {
+                "trace_as_metadata": true,
+                "list": false,
+                "trace_as_input": true,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "data",
+                "value": "",
+                "display_name": "Data",
+                "advanced": false,
+                "input_types": [
+                  "Data"
+                ],
+                "dynamic": false,
+                "info": "The data to convert to text.",
+                "title_case": false,
+                "type": "other",
+                "_input_type": "DataInput"
+              },
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "from langflow.custom import Component\nfrom langflow.helpers.data import data_to_text\nfrom langflow.io import DataInput, MultilineInput, Output, StrInput\nfrom langflow.schema.message import Message\n\n\nclass ParseDataComponent(Component):\n    display_name = \"Parse Data\"\n    description = \"Convert Data into plain text following a specified template.\"\n    icon = \"braces\"\n    name = \"ParseData\"\n\n    inputs = [\n        DataInput(name=\"data\", display_name=\"Data\", info=\"The data to convert to text.\"),\n        MultilineInput(\n            name=\"template\",\n            display_name=\"Template\",\n            info=\"The template to use for formatting the data. \"\n            \"It can contain the keys {text}, {data} or any other key in the Data.\",\n            value=\"{text}\",\n        ),\n        StrInput(name=\"sep\", display_name=\"Separator\", advanced=True, value=\"\\n\"),\n    ]\n\n    outputs = [\n        Output(display_name=\"Text\", name=\"text\", method=\"parse_data\"),\n    ]\n\n    def parse_data(self) -> Message:\n        data = self.data if isinstance(self.data, list) else [self.data]\n        template = self.template\n\n        result_string = data_to_text(template, data, sep=self.sep)\n        self.status = result_string\n        return Message(text=result_string)\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "sep": {
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "sep",
+                "value": "\n",
+                "display_name": "Separator",
+                "advanced": true,
+                "dynamic": false,
+                "info": "",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "StrInput"
+              },
+              "template": {
+                "trace_as_input": true,
+                "multiline": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "template",
+                "value": "{text}",
+                "display_name": "Template",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "The template to use for formatting the data. It can contain the keys {text}, {data} or any other key in the Data.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MultilineInput"
+              }
+            },
+            "description": "Convert Data into plain text following a specified template.",
+            "icon": "braces",
+            "base_classes": [
+              "Message"
+            ],
+            "display_name": "Parse CSV to Text",
+            "documentation": "",
+            "custom_fields": {},
+            "output_types": [],
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Message"
+                ],
+                "selected": "Message",
+                "name": "text",
+                "display_name": "Text",
+                "method": "parse_data",
+                "value": "__UNDEFINED__",
+                "cache": true
+              }
+            ],
+            "field_order": [
+              "data",
+              "template",
+              "sep"
+            ],
+            "beta": false,
+            "edited": false,
+            "metadata": {},
+            "lf_version": "1.0.19"
+          },
+          "id": "ParseData-Raw"
+        },
+        "selected": false,
+        "width": 384,
+        "height": 353,
+        "positionAbsolute": {
+          "x": -4550,
+          "y": 0
+        },
+        "dragging": false
+      },
+      {
+        "id": "Prompt-Profiler",
+        "type": "genericNode",
+        "position": {
+          "x": -4100,
+          "y": 0
+        },
+        "data": {
+          "type": "Prompt",
+          "node": {
+            "template": {
+              "_type": "Component",
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "from langflow.base.prompts.api_utils import process_prompt_template\nfrom langflow.custom import Component\nfrom langflow.inputs.inputs import DefaultPromptField\nfrom langflow.io import Output, PromptInput\nfrom langflow.schema.message import Message\nfrom langflow.template.utils import update_template_values\n\n\nclass PromptComponent(Component):\n    display_name: str = \"Prompt\"\n    description: str = \"Create a prompt template with dynamic variables.\"\n    icon = \"prompts\"\n    trace_type = \"prompt\"\n    name = \"Prompt\"\n\n    inputs = [\n        PromptInput(name=\"template\", display_name=\"Template\"),\n    ]\n\n    outputs = [\n        Output(display_name=\"Prompt Message\", name=\"prompt\", method=\"build_prompt\"),\n    ]\n\n    async def build_prompt(\n        self,\n    ) -> Message:\n        prompt = await Message.from_template_and_variables(**self._attributes)\n        self.status = prompt.text\n        return prompt\n\n    def _update_template(self, frontend_node: dict):\n        prompt_template = frontend_node[\"template\"][\"template\"][\"value\"]\n        custom_fields = frontend_node[\"custom_fields\"]\n        frontend_node_template = frontend_node[\"template\"]\n        _ = process_prompt_template(\n            template=prompt_template,\n            name=\"template\",\n            custom_fields=custom_fields,\n            frontend_node_template=frontend_node_template,\n        )\n        return frontend_node\n\n    def post_code_processing(self, new_frontend_node: dict, current_frontend_node: dict):\n        \"\"\"\n        This function is called after the code validation is done.\n        \"\"\"\n        frontend_node = super().post_code_processing(new_frontend_node, current_frontend_node)\n        template = frontend_node[\"template\"][\"template\"][\"value\"]\n        # Kept it duplicated for backwards compatibility\n        _ = process_prompt_template(\n            template=template,\n            name=\"template\",\n            custom_fields=frontend_node[\"custom_fields\"],\n            frontend_node_template=frontend_node[\"template\"],\n        )\n        # Now that template is updated, we need to grab any values that were set in the current_frontend_node\n        # and update the frontend_node with those values\n        update_template_values(new_template=frontend_node, previous_template=current_frontend_node[\"template\"])\n        return frontend_node\n\n    def _get_fallback_input(self, **kwargs):\n        return DefaultPromptField(**kwargs)\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "template": {
+                "trace_as_input": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "template",
+                "value": "You are an Autonomous DataOps & Quality Guardian.\nAnalyze this raw tabular dataset sample containing anomalies (schema drift, null values, corrupted dates, negative numbers):\n\n{raw_data}\n\nPerform data profiling and output a STRICT JSON format with these exact keys:\n1. \"anomalies_detected\": [ {{\"column\": \"column_name\", \"issue\": \"description\", \"count\": 10, \"action\": \"fix/drop\"}} ]\n2. \"cleaning_rules\": [ \"Rule 1\", \"Rule 2\" ]\n3. \"pandas_cleaning_code\": \"raw python pandas code to clean df in memory without markdown fences\"\n4. \"target_sql_schema\": \"CREATE TABLE cleaned_data (...)\"\n5. \"dataset_quality_score\": 75\n\nReturn ONLY valid JSON. No conversational filler.",
+                "display_name": "Template",
+                "advanced": false,
+                "dynamic": false,
+                "info": "",
+                "title_case": false,
+                "type": "prompt",
+                "_input_type": "PromptInput"
+              },
+              "raw_data": {
+                "field_type": "str",
+                "required": false,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "",
+                "fileTypes": [],
+                "file_path": "",
+                "name": "raw_data",
+                "display_name": "raw_data",
+                "advanced": false,
+                "input_types": [
+                  "Message",
+                  "Text"
+                ],
+                "dynamic": false,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false,
+                "type": "str"
+              }
+            },
+            "description": "Create a prompt template with dynamic variables.",
+            "icon": "prompts",
+            "is_input": null,
+            "is_output": null,
+            "is_composition": null,
+            "base_classes": [
+              "Message"
+            ],
+            "name": "",
+            "display_name": "DataOps Profiler Prompt",
+            "documentation": "",
+            "custom_fields": {
+              "template": [
+                "cv_text"
+              ]
+            },
+            "output_types": [],
+            "full_path": null,
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Message"
+                ],
+                "selected": "Message",
+                "name": "prompt",
+                "hidden": null,
+                "display_name": "Prompt Message",
+                "method": "build_prompt",
+                "value": "__UNDEFINED__",
+                "cache": true,
+                "required_inputs": null
+              }
+            ],
+            "field_order": [
+              "template"
+            ],
+            "beta": false,
+            "error": null,
+            "edited": false,
+            "metadata": {},
+            "lf_version": "1.0.19"
+          },
+          "id": "Prompt-Profiler"
+        },
+        "selected": false,
+        "width": 384,
+        "height": 391,
+        "positionAbsolute": {
+          "x": -4100,
+          "y": 0
+        },
+        "dragging": false
+      },
+      {
+        "id": "GoogleGenerativeAIModel-Profiler",
+        "type": "genericNode",
+        "position": {
+          "x": -3650,
+          "y": 0
+        },
+        "data": {
+          "type": "GoogleGenerativeAIModel",
+          "node": {
+            "template": {
+              "_type": "Component",
+              "output_parser": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "output_parser",
+                "value": "",
+                "display_name": "Output Parser",
+                "advanced": true,
+                "input_types": [
+                  "OutputParser"
+                ],
+                "dynamic": false,
+                "info": "The parser to use to parse the output of the model",
+                "title_case": false,
+                "type": "other",
+                "_input_type": "HandleInput"
+              },
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "from pydantic.v1 import SecretStr\n\nfrom langflow.base.models.model import LCModelComponent\nfrom langflow.field_typing import LanguageModel\nfrom langflow.inputs import DropdownInput, FloatInput, IntInput, SecretStrInput\nfrom langflow.inputs.inputs import HandleInput\n\n\nclass GoogleGenerativeAIComponent(LCModelComponent):\n    display_name = \"Google Generative AI\"\n    description = \"Generate text using Google Generative AI.\"\n    icon = \"GoogleGenerativeAI\"\n    name = \"GoogleGenerativeAIModel\"\n\n    inputs = [\n        *LCModelComponent._base_inputs,\n        IntInput(\n            name=\"max_output_tokens\", display_name=\"Max Output Tokens\", info=\"The maximum number of tokens to generate.\"\n        ),\n        DropdownInput(\n            name=\"model\",\n            display_name=\"Model\",\n            info=\"The name of the model to use.\",\n            options=[\"gemini-3.6-flash\", \"gemini-2.5-pro\", \"gemini-2.5-flash-lite\", \"gemini-2.5-pro-preview-tts\"],\n            value=\"gemini-3.6-flash\",\n        ),\n        SecretStrInput(\n            name=\"google_api_key\",\n            display_name=\"Google API Key\",\n            info=\"The Google API Key to use for the Google Generative AI.\",\n        ),\n        FloatInput(\n            name=\"top_p\",\n            display_name=\"Top P\",\n            info=\"The maximum cumulative probability of tokens to consider when sampling.\",\n            advanced=True,\n        ),\n        FloatInput(name=\"temperature\", display_name=\"Temperature\", value=0.1),\n        IntInput(\n            name=\"n\",\n            display_name=\"N\",\n            info=\"Number of chat completions to generate for each prompt. \"\n            \"Note that the API may not return the full n completions if duplicates are generated.\",\n            advanced=True,\n        ),\n        IntInput(\n            name=\"top_k\",\n            display_name=\"Top K\",\n            info=\"Decode using top-k sampling: consider the set of top_k most probable tokens. Must be positive.\",\n            advanced=True,\n        ),\n        HandleInput(\n            name=\"output_parser\",\n            display_name=\"Output Parser\",\n            info=\"The parser to use to parse the output of the model\",\n            advanced=True,\n            input_types=[\"OutputParser\"],\n        ),\n    ]\n\n    def build_model(self) -> LanguageModel:\n        try:\n            from langchain_google_genai import ChatGoogleGenerativeAI\n        except ImportError as e:\n            msg = \"The 'langchain_google_genai' package is required to use the Google Generative AI model.\"\n            raise ImportError(msg) from e\n\n        return ChatGoogleGenerativeAI(\n            model=\"gemini-3.6-flash\",\n            max_output_tokens=self.max_output_tokens or None,\n            temperature=self.temperature,\n            top_k=self.top_k or None,\n            top_p=self.top_p or None,\n            n=self.n or 1,\n            google_api_key=SecretStr(self.google_api_key),\n            convert_system_message_to_human=True,\n            additional_headers={\"x-goog-disable-thinking\": \"true\"},\n        )\n\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "google_api_key": {
+                "load_from_db": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "google_api_key",
+                "value": "",
+                "display_name": "Google API Key",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "The Google API Key to use for the Google Generative AI.",
+                "title_case": false,
+                "password": true,
+                "type": "str",
+                "_input_type": "SecretStrInput"
+              },
+              "input_value": {
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "input_value",
+                "value": "",
+                "display_name": "Input",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageInput"
+              },
+              "max_output_tokens": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "max_output_tokens",
+                "value": "",
+                "display_name": "Max Output Tokens",
+                "advanced": false,
+                "dynamic": false,
+                "info": "The maximum number of tokens to generate.",
+                "title_case": false,
+                "type": "int",
+                "_input_type": "IntInput"
+              },
+              "model": {
+                "trace_as_metadata": true,
+                "options": [
+                  "gemini-3.6-flash",
+                  "gemini-2.5-pro",
+                  "gemini-2.5-flash-lite",
+                  "gemini-2.5-pro-preview-tts"
+                ],
+                "combobox": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "model",
+                "value": "gemini-1.5-flash",
+                "display_name": "Model",
+                "advanced": false,
+                "dynamic": false,
+                "info": "The name of the model to use.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "DropdownInput"
+              },
+              "n": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "n",
+                "value": "",
+                "display_name": "N",
+                "advanced": true,
+                "dynamic": false,
+                "info": "Number of chat completions to generate for each prompt. Note that the API may not return the full n completions if duplicates are generated.",
+                "title_case": false,
+                "type": "int",
+                "_input_type": "IntInput"
+              },
+              "stream": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "stream",
+                "value": false,
+                "display_name": "Stream",
+                "advanced": true,
+                "dynamic": false,
+                "info": "Stream the response from the model. Streaming works only in Chat.",
+                "title_case": false,
+                "type": "bool",
+                "_input_type": "BoolInput"
+              },
+              "system_message": {
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "system_message",
+                "value": "",
+                "display_name": "System Message",
+                "advanced": true,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "System message to pass to the model.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageTextInput"
+              },
+              "temperature": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "temperature",
+                "value": 0.1,
+                "display_name": "Temperature",
+                "advanced": false,
+                "dynamic": false,
+                "info": "",
+                "title_case": false,
+                "type": "float",
+                "_input_type": "FloatInput",
+                "load_from_db": false
+              },
+              "top_k": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "top_k",
+                "value": "",
+                "display_name": "Top K",
+                "advanced": true,
+                "dynamic": false,
+                "info": "Decode using top-k sampling: consider the set of top_k most probable tokens. Must be positive.",
+                "title_case": false,
+                "type": "int",
+                "_input_type": "IntInput"
+              },
+              "top_p": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "top_p",
+                "value": "",
+                "display_name": "Top P",
+                "advanced": true,
+                "dynamic": false,
+                "info": "The maximum cumulative probability of tokens to consider when sampling.",
+                "title_case": false,
+                "type": "float",
+                "_input_type": "FloatInput"
+              }
+            },
+            "description": "Generate text using Google Generative AI.",
+            "icon": "GoogleGenerativeAI",
+            "base_classes": [
+              "LanguageModel",
+              "Message"
+            ],
+            "display_name": "Gemini Profiler (Flash)",
+            "documentation": "",
+            "custom_fields": {},
+            "output_types": [],
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Message"
+                ],
+                "selected": "Message",
+                "name": "text_output",
+                "display_name": "Text",
+                "method": "text_response",
+                "value": "__UNDEFINED__",
+                "cache": true,
+                "required_inputs": [
+                  "input_value",
+                  "stream",
+                  "system_message"
+                ]
+              },
+              {
+                "types": [
+                  "LanguageModel"
+                ],
+                "selected": "LanguageModel",
+                "name": "model_output",
+                "display_name": "Language Model",
+                "method": "build_model",
+                "value": "__UNDEFINED__",
+                "cache": true,
+                "required_inputs": [
+                  "google_api_key",
+                  "max_output_tokens",
+                  "n",
+                  "temperature",
+                  "top_k",
+                  "top_p"
+                ]
+              }
+            ],
+            "field_order": [
+              "input_value",
+              "system_message",
+              "stream",
+              "max_output_tokens",
+              "model",
+              "google_api_key",
+              "top_p",
+              "temperature",
+              "n",
+              "top_k",
+              "output_parser"
+            ],
+            "beta": false,
+            "edited": true,
+            "metadata": {},
+            "lf_version": "1.0.19"
+          },
+          "id": "GoogleGenerativeAIModel-Profiler"
+        },
+        "selected": false,
+        "width": 384,
+        "height": 673,
+        "dragging": false,
+        "positionAbsolute": {
+          "x": -3650,
+          "y": 0
+        }
+      },
+      {
+        "id": "ParseJSONData-Code",
+        "type": "genericNode",
+        "position": {
+          "x": -3200,
+          "y": 0
+        },
+        "data": {
+          "type": "ParseJSONData",
+          "node": {
+            "template": {
+              "_type": "Component",
+              "input_value": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": true,
+                "placeholder": "",
+                "show": true,
+                "name": "input_value",
+                "value": "",
+                "display_name": "Input",
+                "advanced": false,
+                "input_types": [
+                  "Message",
+                  "Data"
+                ],
+                "dynamic": false,
+                "info": "Data object to filter.",
+                "title_case": false,
+                "type": "other",
+                "_input_type": "HandleInput"
+              },
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "import json\nfrom json import JSONDecodeError\n\nimport jq\nfrom json_repair import repair_json\nfrom loguru import logger\n\nfrom langflow.custom import Component\nfrom langflow.inputs import HandleInput, MessageTextInput\nfrom langflow.io import Output\nfrom langflow.schema import Data\nfrom langflow.schema.message import Message\n\n\nclass ParseJSONDataComponent(Component):\n    display_name = \"Parse JSON\"\n    description = \"Convert and extract JSON fields.\"\n    icon = \"braces\"\n    name = \"ParseJSONData\"\n\n    inputs = [\n        HandleInput(\n            name=\"input_value\",\n            display_name=\"Input\",\n            info=\"Data object to filter.\",\n            required=True,\n            input_types=[\"Message\", \"Data\"],\n        ),\n        MessageTextInput(\n            name=\"query\",\n            display_name=\"JQ Query\",\n            info=\"JQ Query to filter the data. The input is always a JSON list.\",\n            required=True,\n        ),\n    ]\n\n    outputs = [\n        Output(display_name=\"Filtered Data\", name=\"filtered_data\", method=\"filter_data\"),\n    ]\n\n    def _parse_data(self, input_value) -> str:\n        if isinstance(input_value, Message) and isinstance(input_value.text, str):\n            return input_value.text\n        if isinstance(input_value, Data):\n            return json.dumps(input_value.data)\n        return str(input_value)\n\n    def filter_data(self) -> list[Data]:\n        to_filter = self.input_value\n        if not to_filter:\n            return []\n        if isinstance(to_filter, list):\n            to_filter = [self._parse_data(f) for f in to_filter]\n        else:\n            to_filter = [self._parse_data(to_filter)]\n\n        to_filter = [repair_json(f) for f in to_filter]\n        to_filter_as_dict = []\n        for f in to_filter:\n            try:\n                to_filter_as_dict.append(json.loads(f))\n            except JSONDecodeError:\n                try:\n                    to_filter_as_dict.append(json.loads(repair_json(f)))\n                except JSONDecodeError as e:\n                    msg = f\"Invalid JSON: {e}\"\n                    raise ValueError(msg) from e\n\n        full_filter_str = json.dumps(to_filter_as_dict)\n\n        logger.info(\"to_filter: \", to_filter)\n\n        results = jq.compile(self.query).input_text(full_filter_str).all()\n        logger.info(\"results: \", results)\n        return [Data(data=value) if isinstance(value, dict) else Data(text=str(value)) for value in results]\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "query": {
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": true,
+                "placeholder": "",
+                "show": true,
+                "name": "query",
+                "value": "{text: .[0].pandas_cleaning_code}",
+                "display_name": "JQ Query",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "JQ Query to filter the data. The input is always a JSON list.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageTextInput"
+              }
+            },
+            "description": "Convert and extract JSON fields.",
+            "icon": "braces",
+            "base_classes": [
+              "Data"
+            ],
+            "display_name": "Extract Cleaning Code",
+            "documentation": "",
+            "custom_fields": {},
+            "output_types": [],
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Data"
+                ],
+                "selected": "Data",
+                "name": "filtered_data",
+                "display_name": "Filtered Data",
+                "method": "filter_data",
+                "value": "__UNDEFINED__",
+                "cache": true
+              }
+            ],
+            "field_order": [
+              "input_value",
+              "query"
+            ],
+            "beta": false,
+            "edited": false,
+            "metadata": {},
+            "lf_version": "1.0.19"
+          },
+          "id": "ParseJSONData-Code"
+        },
+        "selected": false,
+        "width": 384,
+        "height": 337,
+        "positionAbsolute": {
+          "x": -3200,
+          "y": 0
+        },
+        "dragging": false
+      },
+      {
+        "id": "ParseData-Code",
+        "type": "genericNode",
+        "position": {
+          "x": -2750,
+          "y": 0
+        },
+        "data": {
+          "type": "ParseData",
+          "node": {
+            "template": {
+              "_type": "Component",
+              "data": {
+                "trace_as_metadata": true,
+                "list": false,
+                "trace_as_input": true,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "data",
+                "value": "",
+                "display_name": "Data",
+                "advanced": false,
+                "input_types": [
+                  "Data"
+                ],
+                "dynamic": false,
+                "info": "The data to convert to text.",
+                "title_case": false,
+                "type": "other",
+                "_input_type": "DataInput"
+              },
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "from langflow.custom import Component\nfrom langflow.helpers.data import data_to_text\nfrom langflow.io import DataInput, MultilineInput, Output, StrInput\nfrom langflow.schema.message import Message\n\n\nclass ParseDataComponent(Component):\n    display_name = \"Parse Data\"\n    description = \"Convert Data into plain text following a specified template.\"\n    icon = \"braces\"\n    name = \"ParseData\"\n\n    inputs = [\n        DataInput(name=\"data\", display_name=\"Data\", info=\"The data to convert to text.\"),\n        MultilineInput(\n            name=\"template\",\n            display_name=\"Template\",\n            info=\"The template to use for formatting the data. \"\n            \"It can contain the keys {text}, {data} or any other key in the Data.\",\n            value=\"{text}\",\n        ),\n        StrInput(name=\"sep\", display_name=\"Separator\", advanced=True, value=\"\\n\"),\n    ]\n\n    outputs = [\n        Output(display_name=\"Text\", name=\"text\", method=\"parse_data\"),\n    ]\n\n    def parse_data(self) -> Message:\n        data = self.data if isinstance(self.data, list) else [self.data]\n        template = self.template\n\n        result_string = data_to_text(template, data, sep=self.sep)\n        self.status = result_string\n        return Message(text=result_string)\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "sep": {
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "sep",
+                "value": "\n",
+                "display_name": "Separator",
+                "advanced": true,
+                "dynamic": false,
+                "info": "",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "StrInput"
+              },
+              "template": {
+                "trace_as_input": true,
+                "multiline": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "template",
+                "value": "{text}",
+                "display_name": "Template",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "The template to use for formatting the data. It can contain the keys {text}, {data} or any other key in the Data.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MultilineInput"
+              }
+            },
+            "description": "Convert Data into plain text following a specified template.",
+            "icon": "braces",
+            "base_classes": [
+              "Message"
+            ],
+            "display_name": "Format Code Text",
+            "documentation": "",
+            "custom_fields": {},
+            "output_types": [],
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Message"
+                ],
+                "selected": "Message",
+                "name": "text",
+                "display_name": "Text",
+                "method": "parse_data",
+                "value": "__UNDEFINED__",
+                "cache": true
+              }
+            ],
+            "field_order": [
+              "data",
+              "template",
+              "sep"
+            ],
+            "beta": false,
+            "edited": false,
+            "metadata": {},
+            "lf_version": "1.0.19"
+          },
+          "id": "ParseData-Code"
+        },
+        "selected": false,
+        "width": 384,
+        "height": 353,
+        "positionAbsolute": {
+          "x": -2750,
+          "y": 0
+        },
+        "dragging": false
+      },
+      {
+        "id": "note-report",
+        "type": "noteNode",
+        "position": {
+          "x": -2300,
+          "y": -250
+        },
+        "data": {
+          "id": "note-report",
+          "node": {
+            "description": "## 2. Audit Report & SQL Generation\nSynthesize Raw Sample, Profiling Results, and Code into Final Executive DataOps Audit Report.",
+            "display_name": "",
+            "documentation": "",
+            "template": {
+              "backgroundColor": "transparent"
+            }
+          },
+          "type": "note"
+        },
+        "selected": false,
+        "width": 500,
+        "height": 150,
+        "dragging": false,
+        "positionAbsolute": {
+          "x": -2300,
+          "y": -250
+        },
+        "style": {
+          "width": 388,
+          "height": 325
+        },
+        "resizing": false
+      },
+      {
+        "id": "Prompt-AuditReport",
+        "type": "genericNode",
+        "position": {
+          "x": -2300,
+          "y": 0
+        },
+        "data": {
+          "type": "Prompt",
+          "node": {
+            "template": {
+              "_type": "Component",
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "from langflow.base.prompts.api_utils import process_prompt_template\nfrom langflow.custom import Component\nfrom langflow.inputs.inputs import DefaultPromptField\nfrom langflow.io import Output, PromptInput\nfrom langflow.schema.message import Message\nfrom langflow.template.utils import update_template_values\n\n\nclass PromptComponent(Component):\n    display_name: str = \"Prompt\"\n    description: str = \"Create a prompt template with dynamic variables.\"\n    icon = \"prompts\"\n    trace_type = \"prompt\"\n    name = \"Prompt\"\n\n    inputs = [\n        PromptInput(name=\"template\", display_name=\"Template\"),\n    ]\n\n    outputs = [\n        Output(display_name=\"Prompt Message\", name=\"prompt\", method=\"build_prompt\"),\n    ]\n\n    async def build_prompt(\n        self,\n    ) -> Message:\n        prompt = await Message.from_template_and_variables(**self._attributes)\n        self.status = prompt.text\n        return prompt\n\n    def _update_template(self, frontend_node: dict):\n        prompt_template = frontend_node[\"template\"][\"template\"][\"value\"]\n        custom_fields = frontend_node[\"custom_fields\"]\n        frontend_node_template = frontend_node[\"template\"]\n        _ = process_prompt_template(\n            template=prompt_template,\n            name=\"template\",\n            custom_fields=custom_fields,\n            frontend_node_template=frontend_node_template,\n        )\n        return frontend_node\n\n    def post_code_processing(self, new_frontend_node: dict, current_frontend_node: dict):\n        \"\"\"\n        This function is called after the code validation is done.\n        \"\"\"\n        frontend_node = super().post_code_processing(new_frontend_node, current_frontend_node)\n        template = frontend_node[\"template\"][\"template\"][\"value\"]\n        # Kept it duplicated for backwards compatibility\n        _ = process_prompt_template(\n            template=template,\n            name=\"template\",\n            custom_fields=frontend_node[\"custom_fields\"],\n            frontend_node_template=frontend_node[\"template\"],\n        )\n        # Now that template is updated, we need to grab any values that were set in the current_frontend_node\n        # and update the frontend_node with those values\n        update_template_values(new_template=frontend_node, previous_template=current_frontend_node[\"template\"])\n        return frontend_node\n\n    def _get_fallback_input(self, **kwargs):\n        return DefaultPromptField(**kwargs)\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "template": {
+                "trace_as_input": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "template",
+                "value": "You are the DataOps Guardian Lead.\nReview the raw input data, profiling findings, and generated self-healing pandas script:\n\n=== RAW DATA SAMPLE ===\n{raw_sample}\n\n=== PROFILING JSON ===\n{profiling_json}\n\n=== GENERATED PANDAS CODE ===\n{cleaning_code}\n\nGenerate a structured DataOps Audit & Execution Report:\n1. **Executive Summary**: Quality score and overview of data health.\n2. **Schema Drift & Anomalies**: Table of identified edge cases (Nulls, Date Formats, Out-of-bound numbers).\n3. **Self-Healing Actions**: Exact transformations applied by the script.\n4. **Quarantine / Dropped Records**: Criteria for unfixable rows.\n5. **PostgreSQL Target Table Schema**: DDl and insertion verification.\n6. **Scalability Assessment**: How this design scales to 500,000 records via local memory compute.",
+                "display_name": "Template",
+                "advanced": false,
+                "dynamic": false,
+                "info": "",
+                "title_case": false,
+                "type": "prompt",
+                "_input_type": "PromptInput"
+              },
+              "raw_sample": {
+                "type": "str",
+                "required": false,
+                "show": true,
+                "multiline": true,
+                "name": "raw_sample",
+                "display_name": "raw_sample",
+                "input_types": [
+                  "Message",
+                  "Text"
+                ],
+                "advanced": false,
+                "dynamic": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "title_case": false,
+                "load_from_db": false,
+                "list": false,
+                "value": "",
+                "_input_type": "MessageTextInput"
+              },
+              "profiling_json": {
+                "type": "str",
+                "required": false,
+                "show": true,
+                "multiline": true,
+                "name": "profiling_json",
+                "display_name": "profiling_json",
+                "input_types": [
+                  "Message",
+                  "Text"
+                ],
+                "advanced": false,
+                "dynamic": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "title_case": false,
+                "load_from_db": false,
+                "list": false,
+                "value": "",
+                "_input_type": "MessageTextInput"
+              },
+              "cleaning_code": {
+                "type": "str",
+                "required": false,
+                "show": true,
+                "multiline": true,
+                "name": "cleaning_code",
+                "display_name": "cleaning_code",
+                "input_types": [
+                  "Message",
+                  "Text"
+                ],
+                "advanced": false,
+                "dynamic": false,
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "title_case": false,
+                "load_from_db": false,
+                "list": false,
+                "value": "",
+                "_input_type": "MessageTextInput"
+              }
+            },
+            "description": "Create a prompt template with dynamic variables.",
+            "icon": "prompts",
+            "is_input": null,
+            "is_output": null,
+            "is_composition": null,
+            "base_classes": [
+              "Message"
+            ],
+            "name": "",
+            "display_name": "DataOps Audit Report Prompt",
+            "documentation": "",
+            "custom_fields": {
+              "template": [
+                "cv_text"
+              ]
+            },
+            "output_types": [],
+            "full_path": null,
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Message"
+                ],
+                "selected": "Message",
+                "name": "prompt",
+                "hidden": null,
+                "display_name": "Prompt Message",
+                "method": "build_prompt",
+                "value": "__UNDEFINED__",
+                "cache": true,
+                "required_inputs": null
+              }
+            ],
+            "field_order": [
+              "template"
+            ],
+            "beta": false,
+            "error": null,
+            "edited": false,
+            "metadata": {},
+            "lf_version": "1.0.19"
+          },
+          "id": "Prompt-AuditReport"
+        },
+        "selected": false,
+        "width": 384,
+        "height": 391,
+        "positionAbsolute": {
+          "x": -2300,
+          "y": 0
+        },
+        "dragging": false
+      },
+      {
+        "id": "GoogleGenerativeAIModel-Report",
+        "type": "genericNode",
+        "position": {
+          "x": -1800,
+          "y": 0
+        },
+        "data": {
+          "type": "GoogleGenerativeAIModel",
+          "node": {
+            "template": {
+              "_type": "Component",
+              "output_parser": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "output_parser",
+                "value": "",
+                "display_name": "Output Parser",
+                "advanced": true,
+                "input_types": [
+                  "OutputParser"
+                ],
+                "dynamic": false,
+                "info": "The parser to use to parse the output of the model",
+                "title_case": false,
+                "type": "other",
+                "_input_type": "HandleInput"
+              },
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "from pydantic.v1 import SecretStr\n\nfrom langflow.base.models.model import LCModelComponent\nfrom langflow.field_typing import LanguageModel\nfrom langflow.inputs import DropdownInput, FloatInput, IntInput, SecretStrInput\nfrom langflow.inputs.inputs import HandleInput\n\n\nclass GoogleGenerativeAIComponent(LCModelComponent):\n    display_name = \"Google Generative AI\"\n    description = \"Generate text using Google Generative AI.\"\n    icon = \"GoogleGenerativeAI\"\n    name = \"GoogleGenerativeAIModel\"\n\n    inputs = [\n        *LCModelComponent._base_inputs,\n        IntInput(\n            name=\"max_output_tokens\", display_name=\"Max Output Tokens\", info=\"The maximum number of tokens to generate.\"\n        ),\n        DropdownInput(\n            name=\"model\",\n            display_name=\"Model\",\n            info=\"The name of the model to use.\",\n            options=[\"gemini-3.6-flash\", \"gemini-2.5-pro\", \"gemini-2.5-flash-lite\", \"gemini-2.5-pro-preview-tts\"],\n            value=\"gemini-3.6-flash\",\n        ),\n        SecretStrInput(\n            name=\"google_api_key\",\n            display_name=\"Google API Key\",\n            info=\"The Google API Key to use for the Google Generative AI.\",\n        ),\n        FloatInput(\n            name=\"top_p\",\n            display_name=\"Top P\",\n            info=\"The maximum cumulative probability of tokens to consider when sampling.\",\n            advanced=True,\n        ),\n        FloatInput(name=\"temperature\", display_name=\"Temperature\", value=0.1),\n        IntInput(\n            name=\"n\",\n            display_name=\"N\",\n            info=\"Number of chat completions to generate for each prompt. \"\n            \"Note that the API may not return the full n completions if duplicates are generated.\",\n            advanced=True,\n        ),\n        IntInput(\n            name=\"top_k\",\n            display_name=\"Top K\",\n            info=\"Decode using top-k sampling: consider the set of top_k most probable tokens. Must be positive.\",\n            advanced=True,\n        ),\n        HandleInput(\n            name=\"output_parser\",\n            display_name=\"Output Parser\",\n            info=\"The parser to use to parse the output of the model\",\n            advanced=True,\n            input_types=[\"OutputParser\"],\n        ),\n    ]\n\n    def build_model(self) -> LanguageModel:\n        try:\n            from langchain_google_genai import ChatGoogleGenerativeAI\n        except ImportError as e:\n            msg = \"The 'langchain_google_genai' package is required to use the Google Generative AI model.\"\n            raise ImportError(msg) from e\n\n        return ChatGoogleGenerativeAI(\n            model=\"gemini-3.6-flash\",\n            max_output_tokens=self.max_output_tokens or None,\n            temperature=self.temperature,\n            top_k=self.top_k or None,\n            top_p=self.top_p or None,\n            n=self.n or 1,\n            google_api_key=SecretStr(self.google_api_key),\n            convert_system_message_to_human=True,\n            additional_headers={\"x-goog-disable-thinking\": \"true\"},\n        )\n\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "google_api_key": {
+                "load_from_db": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "google_api_key",
+                "value": "",
+                "display_name": "Google API Key",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "The Google API Key to use for the Google Generative AI.",
+                "title_case": false,
+                "password": true,
+                "type": "str",
+                "_input_type": "SecretStrInput"
+              },
+              "input_value": {
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "input_value",
+                "value": "",
+                "display_name": "Input",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageInput"
+              },
+              "max_output_tokens": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "max_output_tokens",
+                "value": "",
+                "display_name": "Max Output Tokens",
+                "advanced": false,
+                "dynamic": false,
+                "info": "The maximum number of tokens to generate.",
+                "title_case": false,
+                "type": "int",
+                "_input_type": "IntInput"
+              },
+              "model": {
+                "trace_as_metadata": true,
+                "options": [
+                  "gemini-3.6-flash",
+                  "gemini-2.5-pro",
+                  "gemini-2.5-flash-lite",
+                  "gemini-2.5-pro-preview-tts"
+                ],
+                "combobox": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "model",
+                "value": "gemini-1.5-flash",
+                "display_name": "Model",
+                "advanced": false,
+                "dynamic": false,
+                "info": "The name of the model to use.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "DropdownInput"
+              },
+              "n": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "n",
+                "value": "",
+                "display_name": "N",
+                "advanced": true,
+                "dynamic": false,
+                "info": "Number of chat completions to generate for each prompt. Note that the API may not return the full n completions if duplicates are generated.",
+                "title_case": false,
+                "type": "int",
+                "_input_type": "IntInput"
+              },
+              "stream": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "stream",
+                "value": false,
+                "display_name": "Stream",
+                "advanced": true,
+                "dynamic": false,
+                "info": "Stream the response from the model. Streaming works only in Chat.",
+                "title_case": false,
+                "type": "bool",
+                "_input_type": "BoolInput"
+              },
+              "system_message": {
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "system_message",
+                "value": "",
+                "display_name": "System Message",
+                "advanced": true,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "System message to pass to the model.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageTextInput"
+              },
+              "temperature": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "temperature",
+                "value": 0.2,
+                "display_name": "Temperature",
+                "advanced": false,
+                "dynamic": false,
+                "info": "",
+                "title_case": false,
+                "type": "float",
+                "_input_type": "FloatInput",
+                "load_from_db": false
+              },
+              "top_k": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "top_k",
+                "value": "",
+                "display_name": "Top K",
+                "advanced": true,
+                "dynamic": false,
+                "info": "Decode using top-k sampling: consider the set of top_k most probable tokens. Must be positive.",
+                "title_case": false,
+                "type": "int",
+                "_input_type": "IntInput"
+              },
+              "top_p": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "top_p",
+                "value": "",
+                "display_name": "Top P",
+                "advanced": true,
+                "dynamic": false,
+                "info": "The maximum cumulative probability of tokens to consider when sampling.",
+                "title_case": false,
+                "type": "float",
+                "_input_type": "FloatInput"
+              }
+            },
+            "description": "Generate text using Google Generative AI.",
+            "icon": "GoogleGenerativeAI",
+            "base_classes": [
+              "LanguageModel",
+              "Message"
+            ],
+            "display_name": "Gemini Report Generator",
+            "documentation": "",
+            "custom_fields": {},
+            "output_types": [],
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Message"
+                ],
+                "selected": "Message",
+                "name": "text_output",
+                "display_name": "Text",
+                "method": "text_response",
+                "value": "__UNDEFINED__",
+                "cache": true,
+                "required_inputs": [
+                  "input_value",
+                  "stream",
+                  "system_message"
+                ]
+              },
+              {
+                "types": [
+                  "LanguageModel"
+                ],
+                "selected": "LanguageModel",
+                "name": "model_output",
+                "display_name": "Language Model",
+                "method": "build_model",
+                "value": "__UNDEFINED__",
+                "cache": true,
+                "required_inputs": [
+                  "google_api_key",
+                  "max_output_tokens",
+                  "n",
+                  "temperature",
+                  "top_k",
+                  "top_p"
+                ]
+              }
+            ],
+            "field_order": [
+              "input_value",
+              "system_message",
+              "stream",
+              "max_output_tokens",
+              "model",
+              "google_api_key",
+              "top_p",
+              "temperature",
+              "n",
+              "top_k",
+              "output_parser"
+            ],
+            "beta": false,
+            "edited": true,
+            "metadata": {},
+            "lf_version": "1.0.19"
+          },
+          "id": "GoogleGenerativeAIModel-Report"
+        },
+        "selected": false,
+        "width": 384,
+        "height": 673,
+        "dragging": false,
+        "positionAbsolute": {
+          "x": -1800,
+          "y": 0
+        }
+      },
+      {
+        "id": "ChatOutput-AuditReport",
+        "type": "genericNode",
+        "position": {
+          "x": -1300,
+          "y": 0
+        },
+        "data": {
+          "type": "ChatOutput",
+          "node": {
+            "template": {
+              "_type": "Component",
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "from langflow.base.io.chat import ChatComponent\nfrom langflow.inputs import BoolInput\nfrom langflow.io import DropdownInput, MessageTextInput, Output\nfrom langflow.memory import store_message\nfrom langflow.schema.message import Message\nfrom langflow.utils.constants import MESSAGE_SENDER_AI, MESSAGE_SENDER_NAME_AI, MESSAGE_SENDER_USER\n\n\nclass ChatOutput(ChatComponent):\n    display_name = \"Chat Output\"\n    description = \"Display a chat message in the Playground.\"\n    icon = \"ChatOutput\"\n    name = \"ChatOutput\"\n\n    inputs = [\n        MessageTextInput(\n            name=\"input_value\",\n            display_name=\"Text\",\n            info=\"Message to be passed as output.\",\n        ),\n        BoolInput(\n            name=\"should_store_message\",\n            display_name=\"Store Messages\",\n            info=\"Store the message in the history.\",\n            value=True,\n            advanced=True,\n        ),\n        DropdownInput(\n            name=\"sender\",\n            display_name=\"Sender Type\",\n            options=[MESSAGE_SENDER_AI, MESSAGE_SENDER_USER],\n            value=MESSAGE_SENDER_AI,\n            advanced=True,\n            info=\"Type of sender.\",\n        ),\n        MessageTextInput(\n            name=\"sender_name\",\n            display_name=\"Sender Name\",\n            info=\"Name of the sender.\",\n            value=MESSAGE_SENDER_NAME_AI,\n            advanced=True,\n        ),\n        MessageTextInput(\n            name=\"session_id\",\n            display_name=\"Session ID\",\n            info=\"The session ID of the chat. If empty, the current session ID parameter will be used.\",\n            advanced=True,\n        ),\n        MessageTextInput(\n            name=\"data_template\",\n            display_name=\"Data Template\",\n            value=\"{text}\",\n            advanced=True,\n            info=\"Template to convert Data to Text. If left empty, it will be dynamically set to the Data's text key.\",\n        ),\n    ]\n    outputs = [\n        Output(display_name=\"Message\", name=\"message\", method=\"message_response\"),\n    ]\n\n    def message_response(self) -> Message:\n        message = Message(\n            text=self.input_value,\n            sender=self.sender,\n            sender_name=self.sender_name,\n            session_id=self.session_id,\n        )\n        if (\n            self.session_id\n            and isinstance(message, Message)\n            and isinstance(message.text, str)\n            and self.should_store_message\n        ):\n            store_message(\n                message,\n                flow_id=self.graph.flow_id,\n            )\n            self.message.value = message\n\n        self.status = message\n        return message\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "data_template": {
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "data_template",
+                "value": "{text}",
+                "display_name": "Data Template",
+                "advanced": true,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "Template to convert Data to Text. If left empty, it will be dynamically set to the Data's text key.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageTextInput"
+              },
+              "input_value": {
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "input_value",
+                "value": "",
+                "display_name": "Text",
+                "advanced": false,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "Message to be passed as output.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageTextInput"
+              },
+              "sender": {
+                "trace_as_metadata": true,
+                "options": [
+                  "Machine",
+                  "User"
+                ],
+                "combobox": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "sender",
+                "value": "Machine",
+                "display_name": "Sender Type",
+                "advanced": true,
+                "dynamic": false,
+                "info": "Type of sender.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "DropdownInput"
+              },
+              "sender_name": {
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "sender_name",
+                "value": "AI",
+                "display_name": "Sender Name",
+                "advanced": true,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "Name of the sender.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageTextInput"
+              },
+              "session_id": {
+                "trace_as_input": true,
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "session_id",
+                "value": "",
+                "display_name": "Session ID",
+                "advanced": true,
+                "input_types": [
+                  "Message"
+                ],
+                "dynamic": false,
+                "info": "The session ID of the chat. If empty, the current session ID parameter will be used.",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "MessageTextInput"
+              },
+              "should_store_message": {
+                "trace_as_metadata": true,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "should_store_message",
+                "value": true,
+                "display_name": "Store Messages",
+                "advanced": true,
+                "dynamic": false,
+                "info": "Store the message in the history.",
+                "title_case": false,
+                "type": "bool",
+                "_input_type": "BoolInput"
+              }
+            },
+            "description": "Display a chat message in the Playground.",
+            "icon": "ChatOutput",
+            "base_classes": [
+              "Message"
+            ],
+            "display_name": "DataOps Report Output",
+            "documentation": "",
+            "custom_fields": {},
+            "output_types": [],
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Message"
+                ],
+                "selected": "Message",
+                "name": "message",
+                "display_name": "Message",
+                "method": "message_response",
+                "value": "__UNDEFINED__",
+                "cache": true
+              }
+            ],
+            "field_order": [
+              "input_value",
+              "should_store_message",
+              "sender",
+              "sender_name",
+              "session_id",
+              "data_template"
+            ],
+            "beta": false,
+            "edited": false,
+            "metadata": {},
+            "lf_version": "1.0.19"
+          },
+          "id": "ChatOutput-AuditReport"
+        },
+        "selected": false,
+        "width": 384,
+        "height": 289,
+        "positionAbsolute": {
+          "x": -1300,
+          "y": 0
+        },
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "source": "File-CSV",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153File\u0153, \u0153id\u0153: \u0153File-CSV\u0153, \u0153name\u0153: \u0153data\u0153, \u0153output_types\u0153: [\u0153Data\u0153]}",
+        "target": "ParseData-Raw",
+        "targetHandle": "{\u0153fieldName\u0153: \u0153data\u0153, \u0153id\u0153: \u0153ParseData-Raw\u0153, \u0153inputTypes\u0153: [\u0153Data\u0153], \u0153type\u0153: \u0153other\u0153}",
+        "data": {
+          "sourceHandle": {
+            "dataType": "File",
+            "id": "File-CSV",
+            "name": "data",
+            "output_types": [
+              "Data"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "data",
+            "id": "ParseData-Raw",
+            "inputTypes": [
+              "Data"
+            ],
+            "type": "other"
+          }
+        },
+        "id": "reactflow__edge-File-CSV{\u0153dataType\u0153: \u0153File\u0153, \u0153id\u0153: \u0153File-CSV\u0153, \u0153name\u0153: \u0153data\u0153, \u0153output_types\u0153: [\u0153Data\u0153]}-ParseData-Raw{\u0153fieldName\u0153: \u0153data\u0153, \u0153id\u0153: \u0153ParseData-Raw\u0153, \u0153inputTypes\u0153: [\u0153Data\u0153], \u0153type\u0153: \u0153other\u0153}",
+        "animated": false,
+        "className": ""
+      },
+      {
+        "source": "ParseData-Raw",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153ParseData\u0153, \u0153id\u0153: \u0153ParseData-Raw\u0153, \u0153name\u0153: \u0153text\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}",
+        "target": "Prompt-Profiler",
+        "targetHandle": "{\u0153fieldName\u0153: \u0153raw_data\u0153, \u0153id\u0153: \u0153Prompt-Profiler\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153, \u0153Text\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ParseData",
+            "id": "ParseData-Raw",
+            "name": "text",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "raw_data",
+            "id": "Prompt-Profiler",
+            "inputTypes": [
+              "Message",
+              "Text"
+            ],
+            "type": "str"
+          }
+        },
+        "id": "reactflow__edge-ParseData-Raw{\u0153dataType\u0153: \u0153ParseData\u0153, \u0153id\u0153: \u0153ParseData-Raw\u0153, \u0153name\u0153: \u0153text\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}-Prompt-Profiler{\u0153fieldName\u0153: \u0153raw_data\u0153, \u0153id\u0153: \u0153Prompt-Profiler\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153, \u0153Text\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "animated": false,
+        "className": ""
+      },
+      {
+        "source": "Prompt-Profiler",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153Prompt\u0153, \u0153id\u0153: \u0153Prompt-Profiler\u0153, \u0153name\u0153: \u0153prompt\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}",
+        "target": "GoogleGenerativeAIModel-Profiler",
+        "targetHandle": "{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153GoogleGenerativeAIModel-Profiler\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "data": {
+          "sourceHandle": {
+            "dataType": "Prompt",
+            "id": "Prompt-Profiler",
+            "name": "prompt",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "input_value",
+            "id": "GoogleGenerativeAIModel-Profiler",
+            "inputTypes": [
+              "Message"
+            ],
+            "type": "str"
+          }
+        },
+        "id": "reactflow__edge-Prompt-Profiler{\u0153dataType\u0153: \u0153Prompt\u0153, \u0153id\u0153: \u0153Prompt-Profiler\u0153, \u0153name\u0153: \u0153prompt\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}-GoogleGenerativeAIModel-Profiler{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153GoogleGenerativeAIModel-Profiler\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "animated": false,
+        "className": ""
+      },
+      {
+        "source": "GoogleGenerativeAIModel-Profiler",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153GoogleGenerativeAIModel\u0153, \u0153id\u0153: \u0153GoogleGenerativeAIModel-Profiler\u0153, \u0153name\u0153: \u0153text_output\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}",
+        "target": "ParseJSONData-Code",
+        "targetHandle": "{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153ParseJSONData-Code\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153, \u0153Data\u0153], \u0153type\u0153: \u0153other\u0153}",
+        "data": {
+          "sourceHandle": {
+            "dataType": "GoogleGenerativeAIModel",
+            "id": "GoogleGenerativeAIModel-Profiler",
+            "name": "text_output",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "input_value",
+            "id": "ParseJSONData-Code",
+            "inputTypes": [
+              "Message",
+              "Data"
+            ],
+            "type": "other"
+          }
+        },
+        "id": "reactflow__edge-GoogleGenerativeAIModel-Profiler{\u0153dataType\u0153: \u0153GoogleGenerativeAIModel\u0153, \u0153id\u0153: \u0153GoogleGenerativeAIModel-Profiler\u0153, \u0153name\u0153: \u0153text_output\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}-ParseJSONData-Code{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153ParseJSONData-Code\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153, \u0153Data\u0153], \u0153type\u0153: \u0153other\u0153}",
+        "animated": false,
+        "className": ""
+      },
+      {
+        "source": "ParseJSONData-Code",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153ParseJSONData\u0153, \u0153id\u0153: \u0153ParseJSONData-Code\u0153, \u0153name\u0153: \u0153filtered_data\u0153, \u0153output_types\u0153: [\u0153Data\u0153]}",
+        "target": "ParseData-Code",
+        "targetHandle": "{\u0153fieldName\u0153: \u0153data\u0153, \u0153id\u0153: \u0153ParseData-Code\u0153, \u0153inputTypes\u0153: [\u0153Data\u0153], \u0153type\u0153: \u0153other\u0153}",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ParseJSONData",
+            "id": "ParseJSONData-Code",
+            "name": "filtered_data",
+            "output_types": [
+              "Data"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "data",
+            "id": "ParseData-Code",
+            "inputTypes": [
+              "Data"
+            ],
+            "type": "other"
+          }
+        },
+        "id": "reactflow__edge-ParseJSONData-Code{\u0153dataType\u0153: \u0153ParseJSONData\u0153, \u0153id\u0153: \u0153ParseJSONData-Code\u0153, \u0153name\u0153: \u0153filtered_data\u0153, \u0153output_types\u0153: [\u0153Data\u0153]}-ParseData-Code{\u0153fieldName\u0153: \u0153data\u0153, \u0153id\u0153: \u0153ParseData-Code\u0153, \u0153inputTypes\u0153: [\u0153Data\u0153], \u0153type\u0153: \u0153other\u0153}",
+        "animated": false,
+        "className": ""
+      },
+      {
+        "source": "ParseData-Raw",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153ParseData\u0153, \u0153id\u0153: \u0153ParseData-Raw\u0153, \u0153name\u0153: \u0153text\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}",
+        "target": "Prompt-AuditReport",
+        "targetHandle": "{\u0153fieldName\u0153: \u0153raw_sample\u0153, \u0153id\u0153: \u0153Prompt-AuditReport\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153, \u0153Text\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ParseData",
+            "id": "ParseData-Raw",
+            "name": "text",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "raw_sample",
+            "id": "Prompt-AuditReport",
+            "inputTypes": [
+              "Message",
+              "Text"
+            ],
+            "type": "str"
+          }
+        },
+        "id": "reactflow__edge-ParseData-Raw{\u0153dataType\u0153: \u0153ParseData\u0153, \u0153id\u0153: \u0153ParseData-Raw\u0153, \u0153name\u0153: \u0153text\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}-Prompt-AuditReport{\u0153fieldName\u0153: \u0153raw_sample\u0153, \u0153id\u0153: \u0153Prompt-AuditReport\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153, \u0153Text\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "animated": false,
+        "className": ""
+      },
+      {
+        "source": "GoogleGenerativeAIModel-Profiler",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153GoogleGenerativeAIModel\u0153, \u0153id\u0153: \u0153GoogleGenerativeAIModel-Profiler\u0153, \u0153name\u0153: \u0153text_output\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}",
+        "target": "Prompt-AuditReport",
+        "targetHandle": "{\u0153fieldName\u0153: \u0153profiling_json\u0153, \u0153id\u0153: \u0153Prompt-AuditReport\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153, \u0153Text\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "data": {
+          "sourceHandle": {
+            "dataType": "GoogleGenerativeAIModel",
+            "id": "GoogleGenerativeAIModel-Profiler",
+            "name": "text_output",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "profiling_json",
+            "id": "Prompt-AuditReport",
+            "inputTypes": [
+              "Message",
+              "Text"
+            ],
+            "type": "str"
+          }
+        },
+        "id": "reactflow__edge-GoogleGenerativeAIModel-Profiler{\u0153dataType\u0153: \u0153GoogleGenerativeAIModel\u0153, \u0153id\u0153: \u0153GoogleGenerativeAIModel-Profiler\u0153, \u0153name\u0153: \u0153text_output\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}-Prompt-AuditReport{\u0153fieldName\u0153: \u0153profiling_json\u0153, \u0153id\u0153: \u0153Prompt-AuditReport\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153, \u0153Text\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "animated": false,
+        "className": ""
+      },
+      {
+        "source": "ParseData-Code",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153ParseData\u0153, \u0153id\u0153: \u0153ParseData-Code\u0153, \u0153name\u0153: \u0153text\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}",
+        "target": "Prompt-AuditReport",
+        "targetHandle": "{\u0153fieldName\u0153: \u0153cleaning_code\u0153, \u0153id\u0153: \u0153Prompt-AuditReport\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153, \u0153Text\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "data": {
+          "sourceHandle": {
+            "dataType": "ParseData",
+            "id": "ParseData-Code",
+            "name": "text",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "cleaning_code",
+            "id": "Prompt-AuditReport",
+            "inputTypes": [
+              "Message",
+              "Text"
+            ],
+            "type": "str"
+          }
+        },
+        "id": "reactflow__edge-ParseData-Code{\u0153dataType\u0153: \u0153ParseData\u0153, \u0153id\u0153: \u0153ParseData-Code\u0153, \u0153name\u0153: \u0153text\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}-Prompt-AuditReport{\u0153fieldName\u0153: \u0153cleaning_code\u0153, \u0153id\u0153: \u0153Prompt-AuditReport\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153, \u0153Text\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "animated": false,
+        "className": ""
+      },
+      {
+        "source": "Prompt-AuditReport",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153Prompt\u0153, \u0153id\u0153: \u0153Prompt-AuditReport\u0153, \u0153name\u0153: \u0153prompt\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}",
+        "target": "GoogleGenerativeAIModel-Report",
+        "targetHandle": "{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153GoogleGenerativeAIModel-Report\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "data": {
+          "sourceHandle": {
+            "dataType": "Prompt",
+            "id": "Prompt-AuditReport",
+            "name": "prompt",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "input_value",
+            "id": "GoogleGenerativeAIModel-Report",
+            "inputTypes": [
+              "Message"
+            ],
+            "type": "str"
+          }
+        },
+        "id": "reactflow__edge-Prompt-AuditReport{\u0153dataType\u0153: \u0153Prompt\u0153, \u0153id\u0153: \u0153Prompt-AuditReport\u0153, \u0153name\u0153: \u0153prompt\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}-GoogleGenerativeAIModel-Report{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153GoogleGenerativeAIModel-Report\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "animated": false,
+        "className": ""
+      },
+      {
+        "source": "GoogleGenerativeAIModel-Report",
+        "sourceHandle": "{\u0153dataType\u0153: \u0153GoogleGenerativeAIModel\u0153, \u0153id\u0153: \u0153GoogleGenerativeAIModel-Report\u0153, \u0153name\u0153: \u0153text_output\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}",
+        "target": "ChatOutput-AuditReport",
+        "targetHandle": "{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153ChatOutput-AuditReport\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "data": {
+          "sourceHandle": {
+            "dataType": "GoogleGenerativeAIModel",
+            "id": "GoogleGenerativeAIModel-Report",
+            "name": "text_output",
+            "output_types": [
+              "Message"
+            ]
+          },
+          "targetHandle": {
+            "fieldName": "input_value",
+            "id": "ChatOutput-AuditReport",
+            "inputTypes": [
+              "Message"
+            ],
+            "type": "str"
+          }
+        },
+        "id": "reactflow__edge-GoogleGenerativeAIModel-Report{\u0153dataType\u0153: \u0153GoogleGenerativeAIModel\u0153, \u0153id\u0153: \u0153GoogleGenerativeAIModel-Report\u0153, \u0153name\u0153: \u0153text_output\u0153, \u0153output_types\u0153: [\u0153Message\u0153]}-ChatOutput-AuditReport{\u0153fieldName\u0153: \u0153input_value\u0153, \u0153id\u0153: \u0153ChatOutput-AuditReport\u0153, \u0153inputTypes\u0153: [\u0153Message\u0153], \u0153type\u0153: \u0153str\u0153}",
+        "animated": false,
+        "className": ""
+      }
+    ],
+    "viewport": {
+      "x": 5200,
+      "y": 200,
+      "zoom": 0.75
+    }
+  }
+}

@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Portfolio of Farhan Faiq Renardi, Data Scientist and Industrial Engineering Graduate specializing in data pipelines, analytics, machine learning, and actionable insights.">
+        content="Portfolio of Farhan Faiq Renardi, AI & Data Engineer specializing in containerized ELT pipelines, production GenAI workflows, and full-stack web applications.">
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Farhan Faiq Renardi | Data Scientist Portfolio">
+    <meta property="og:title" content="Farhan Faiq Renardi | AI & Data Engineer Portfolio">
     <meta property="og:description"
-        content="Data Scientist specializing in transforming complex datasets into strategic, actionable insights that propel business growth and innovation.">
+        content="AI & Data Engineer building production GenAI workflows, dbt Core ELT pipelines, and resilient full-stack systems.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://farhanrenardi.github.io/">
     <!-- Favicon -->
 
 
-    <title>Farhan Faiq</title>
+    <title>Farhan Faiq Renardi | AI & Data Engineer</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -198,6 +198,120 @@
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ================= SNAPSHOT VIDEO CARDS ================= */
+        .snapshot-video-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .snapshot-video-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.15);
+        }
+
+        .snapshot-video-wrapper {
+            position: relative;
+            width: 100%;
+            background: #000;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .snapshot-video-wrapper video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 200px;
+        }
+
+        .snapshot-expand-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            pointer-events: none;
+            opacity: 0;
+            transform: scale(0.85);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .snapshot-video-card:hover .snapshot-expand-badge {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ================= DATAOPS WORKFLOW CANVAS ================= */
+        .dataops-canvas-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            box-shadow: var(--card-shadow);
+        }
+
+        .dataops-canvas-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.15);
+        }
+
+        .dataops-canvas-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #0f172a;
+            max-height: 260px;
+        }
+
+        .dataops-canvas-img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dataops-canvas-card:hover .dataops-canvas-img {
+            transform: scale(1.04);
+        }
+
+        .dataops-canvas-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dataops-canvas-card:hover .dataops-canvas-overlay {
+            opacity: 1;
         }
 
         .carousel-item img {
@@ -439,11 +553,6 @@
             object-fit: contain;
         }
 
-        .slide-icon-emoji {
-            font-size: 2.8rem;
-            line-height: 1;
-            margin-bottom: 12px;
-        }
 
         @keyframes scroll {
             0% {
@@ -474,6 +583,11 @@
 
         :root[data-bs-theme="dark"] .dark-invert {
             filter: invert(1) brightness(2);
+        }
+
+        :root[data-bs-theme="dark"] .bg-light {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            border-color: var(--border-color) !important;
         }
 
         :root[data-bs-theme="dark"] .modal-content {
@@ -574,7 +688,7 @@
     <script>
         (function () {
             const phrases = [
-                "Preparing your workspace...",
+                "Preparing the workspace...",
                 "Fetching the best results...",
                 "Loading your experience..."
             ];
@@ -667,32 +781,20 @@
                 <div class="col-lg-7 order-2 order-lg-2 text-center text-lg-start mt-4 mt-lg-0" data-aos="fade-left"
                     data-aos-duration="1200">
                     <h1 class="fw-bolder text-dark mb-3"
-                        style="font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: -1.5px; line-height: 1.1;">Farhan
-                        Faiq Renardi</h1>
+                        style="font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: -1.5px; line-height: 1.1;">Farhan Faiq Renardi</h1>
                     <h2 class="fs-5 fs-md-4 mb-4 fw-bold text-gradient-apple"
                         style="letter-spacing: -0.5px; min-height: 28px;"><span id="typewriter-text"></span><span
                             class="typewriter-cursor">|</span></h2>
 
                     <p class="text-secondary mb-5 apple-summary-text mx-auto mx-lg-0"
                         style="max-width: 100%; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.7;">
-                        Analytical problem-solver dedicated to transforming <span class="text-dark fw-bold">complex data
-                            into actionable business insights</span>. Expert in leveraging <span
-                            class="text-dark fw-bold">Python, SQL, and Power BI</span> to streamline operations across
-                        tech and manufacturing sectors. Backed by a strong foundation in <span
-                            class="text-dark fw-bold">Machine Learning</span> to drive predictive analytics and
-                        strategic decision-making.
+                        I build systems that move data, run models, and solve real bottlenecks. Experienced in shipping containerized ELT pipelines with dbt and Postgres, autonomous GenAI workflows with pgvector RAG and AST-secured Text-to-SQL, and responsive web applications. Passionate about clean architecture, developer tooling, and systems that just work.
                     </p>
 
                     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
-                        <a href="https://www.linkedin.com/in/farhanfaiq"
-                            class="btn btn-primary btn-lg px-4 shadow-sm rounded-pill d-flex align-items-center"
-                            target="_blank">
-                            LinkedIn Profile <i class="fa-solid fa-arrow-right ms-2" style="font-size: 0.9em;"></i>
-                        </a>
-                        <button type="button" class="btn btn-outline-primary btn-lg px-4 shadow-sm rounded-pill"
-                            data-bs-toggle="modal" data-bs-target="#cvModal">View CV</button>
-                        <button type="button" class="btn btn-lg px-4 shadow-sm custom-btn-contact rounded-pill"
-                            data-bs-toggle="modal" data-bs-target="#contactModal">Contact Me</button>
+                        <a href="#projects" class="btn btn-primary btn-lg px-4 shadow-sm rounded-pill d-flex align-items-center">View Projects <i class="fa-solid fa-arrow-down ms-2" style="font-size: 0.9em;"></i></a>
+                        <button type="button" class="btn btn-outline-primary btn-lg px-4 shadow-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#cvModal">Read CV</button>
+                        <button type="button" class="btn btn-lg px-4 shadow-sm custom-btn-contact rounded-pill" data-bs-toggle="modal" data-bs-target="#contactModal">Get in Touch</button>
                     </div>
                 </div>
             </div>
@@ -707,18 +809,15 @@
                 <div class="col-lg-10">
                     <div class="row mb-5 align-items-center" data-aos="zoom-in-right" data-aos-delay="100">
                         <div class="col-md-3 text-md-end">
-                            <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill">Nov 2025 - Present</span>
+                            <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill">Nov 2025 - May 2026</span>
                         </div>
                         <div class="col-md-9 border-start border-primary border-3 ps-4 py-2">
-                            <h4 class="h5 fw-bold mb-1">Data Scientist</h4>
+                            <h4 class="h5 fw-bold mb-1">Data Scientist Intern</h4>
                             <p class="text-secondary fw-semibold mb-2">Telkom Indonesia (HCSP Division)</p>
                             <ul class="text-muted mb-0">
-                                <li>Processed, cleaned, and preprocessed large datasets using Python to ensure data
-                                    quality.</li>
-                                <li>Built and optimized automated data scraping and parsing pipelines from multiple web
-                                    sources.</li>
-                                <li>Conducted Exploratory Data Analysis (EDA) and generated actionable insights to
-                                    support decision making.</li>
+                                <li>Engineered automated scraping pipelines across 770 web sources using Playwright and BeautifulSoup, saving 100+ manual hours.</li>
+                                <li>Elevated legacy HR dataset integrity to >90% by processing and cleaning 1,600+ records using Python (Pandas).</li>
+                                <li>Improved recruitment matching by optimizing an employee-role classification model (Logistic Regression) with hyperparameter tuning.</li>
                             </ul>
                         </div>
                     </div>
@@ -728,14 +827,12 @@
                             <span class="badge bg-dark fs-6 px-3 py-2 rounded-pill">Dec 2023 - Feb 2024</span>
                         </div>
                         <div class="col-md-9 border-start border-dark border-3 ps-4 py-2">
-                            <h4 class="h5 fw-bold mb-1">Data Analyst</h4>
-                            <p class="text-secondary fw-semibold mb-2">Semen Indonesia Group</p>
+                            <h4 class="h5 fw-bold mb-1">Data Analyst Intern</h4>
+                            <p class="text-secondary fw-semibold mb-2">Semen Indonesia Group (Pricing & Margin Management)</p>
                             <ul class="text-muted mb-0">
-                                <li>Analyzed data using Power BI, Excel, and Python for the Pricing and Margin
-                                    Management Department.</li>
-                                <li>Generated deep insights regarding margin trends and regional profitability.</li>
-                                <li>Created interactive dashboards to visualize analytical results for executive
-                                    stakeholders.</li>
+                                <li>Cut weekly reporting preparation time by 60% by automating data aggregation and executive reporting workflows through Power BI.</li>
+                                <li>Tracked regional market margins across 45 territories by deploying 2 interactive dashboards directly utilized by Pricing Management.</li>
+                                <li>Guided pricing strategy by delivering weekly profitability analysis on operational and financial datasets using Python and Excel.</li>
                             </ul>
                         </div>
                     </div>
@@ -746,149 +843,322 @@
         <section id="projects" style="background-color: transparent;">
             <div class="container">
                 <h3 class="text-center section-title" data-aos="zoom-in-up">Featured Projects</h3>
+                <p class="text-center text-muted mb-5" data-aos="zoom-in-up" data-aos-delay="100">
+                    Production systems, automated data pipelines, and agentic workflows.
+                </p>
 
-                <div class="mb-5 mt-5">
-                    <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg"
-                            alt="Power BI" style="height: 24px;" class="me-2">
-                        Data Analytics & Dashboards
-                    </h4>
-                    <div class="row g-4">
-                        <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="card project-card p-3">
-                                <h5 class="fw-bold">Financial Overview</h5>
-                                <p class="small text-primary mb-3">Power BI</p>
-                                <video autoplay loop muted playsinline class="w-100 rounded mb-3 shadow-sm"
-                                    poster="assets/dashboard/Financial Overview.png">
-                                    <source src="assets/dashboard/Financial Overview.mov">
-                                </video>
-                                <p class="small text-muted mb-0">Comprehensive summary of key financial metrics,
-                                    including revenue, assets, liabilities, and equity.</p>
+                <!-- Project 1: LogistiQ -->
+                <div class="card project-card p-4 p-lg-5 mb-5" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="row align-items-center mb-4">
+                        <div class="col-lg-8">
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                <span class="badge bg-primary px-3 py-2 rounded-pill">Flagship Production ERP</span>
+                                <span class="badge bg-dark px-3 py-2 rounded-pill">Undergraduate Capstone</span>
+                            </div>
+                            <h4 class="h3 fw-bold mb-2">LogistiQ - Enterprise Logistics ERP &amp; AI Copilot</h4>
+                            <p class="text-primary fw-semibold mb-3">CV Qirana Furniture | Django REST, React, PostgreSQL 16 + pgvector, Gemini AI, Docker</p>
+                            <p class="text-muted mb-3" style="line-height: 1.7;">
+                                Enterprise-grade logistics and warehouse management ERP engineered for international furniture exporter CV Qirana Furniture (Jepara, Indonesia). Replaced fragmented paper slips and Excel workbooks with a centralized relational database and AI-driven workflows. Features 97.8% root code reduction (refactored monolith App.js from 3,935 lines to 87 lines), centralized management of 312 materials and 657 item-supplier pricing maps across 10 factory subdivisions, sub-150ms pgvector RAG over SOPs, AST-secured Text-to-SQL (<code class="text-dark">sqlparse</code> guardrails enforcing 100% mutation block rate), and Gemini Vision OCR converting delivery orders to structured records in under 5 seconds.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 pt-2">
+                                <a href="https://farhanrenardi.github.io/LogistiQ/" target="_blank"
+                                    class="btn btn-primary rounded-pill px-4 py-2 shadow-sm d-inline-flex align-items-center">
+                                    View Live Documentation <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
+                                </a>
+                                <a href="https://github.com/farhanrenardi/LogistiQ" target="_blank"
+                                    class="btn btn-outline-dark rounded-pill px-4 py-2 shadow-sm d-inline-flex align-items-center">
+                                    GitHub Repository <i class="fa-brands fa-github ms-2"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="card project-card p-3">
-                                <h5 class="fw-bold">Sourcing Monitoring</h5>
-                                <p class="small text-primary mb-3">Power BI</p>
-                                <video autoplay loop muted playsinline class="w-100 rounded mb-3 shadow-sm"
-                                    poster="assets/dashboard/Sourcing_Monitoring.png">
-                                    <source src="assets/dashboard/Sourcing_Monitoring.mov">
-                                </video>
-                                <p class="small text-muted mb-0">Interactive dashboard supporting the Pricing & Margin
-                                    Dept of PT Semen Indonesia to analyze regional policies.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-                            <div class="card project-card p-3">
-                                <h5 class="fw-bold">Weekly Price Monitoring</h5>
-                                <p class="small text-primary mb-3">Power BI, Python</p>
-                                <video autoplay loop muted playsinline class="w-100 rounded mb-3 shadow-sm"
-                                    poster="assets/dashboard/Weekly_Price_Monitoring.png">
-                                    <source src="assets/dashboard/Weekly_Price_Monitoring.mov">
-                                </video>
-                                <p class="small text-muted mb-0">Evaluates pricing and promotional performance with
-                                    dynamic filters and geographic distribution mapping.</p>
+                        <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                            <div class="p-3 bg-light rounded-4 border text-start">
+                                <h6 class="fw-bold mb-2 text-dark">Core Architecture Metrics</h6>
+                                <ul class="list-unstyled small text-muted mb-0">
+                                    <li class="mb-1"><strong>Codebase:</strong> 97.8% root refactoring reduction</li>
+                                    <li class="mb-1"><strong>RAG Latency:</strong> &lt; 150ms semantic search</li>
+                                    <li class="mb-1"><strong>SQL Safety:</strong> 100% AST mutation prevention</li>
+                                    <li class="mb-1"><strong>OCR Extraction:</strong> 15 min &rarr; &lt; 5s (&ge; 90% accuracy)</li>
+                                    <li><strong>Database:</strong> PostgreSQL 16 + pgvector (Docker)</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="mb-5">
-                    <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up"><i
-                            class="devicon-tensorflow-original colored me-2"></i> Machine Learning</h4>
-                    <div class="row g-4">
-                        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="card project-card p-4 d-flex flex-column">
-                                <h5 class="fw-bold">Male Pattern Baldness Classification</h5>
-                                <p class="small text-primary mb-3">Transfer Learning (EfficientNetB3), Python</p>
-                                <p class="text-muted flex-grow-1">Developed a deep learning image classification model
-                                    predicting male pattern baldness. Implemented pre-trained EfficientNetB3
-                                    architecture achieving 88% test accuracy.</p>
-                                <button type="button" class="btn btn-outline-primary mt-3 w-100 rounded-pill"
-                                    data-bs-toggle="modal" data-bs-target="#hfDemoModal">Try Interactive Demo</button>
+                    <!-- 3-Card Interactive Video Snapshots -->
+                    <h5 class="h6 fw-bold text-uppercase text-secondary tracking-wider mb-3">System Interface Snapshots (Hover / Tap to Play)</h5>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="snapshot-video-card h-100"
+                                data-title="Supply Chain Analytics Dashboard"
+                                data-desc="Executive visibility into active requests, division allocations, inventory valuations, and audit logs."
+                                data-tags="Django REST, React, PostgreSQL 16, Chart.js, Docker"
+                                title="Click to amplify in HD">
+                                <div class="snapshot-video-wrapper">
+                                    <video preload="none" poster="assets/snapshots/snapshot1.png" playsinline muted loop class="w-100 rounded mb-0 shadow-sm">
+                                        <source src="assets/snapshots/snapshot1.mp4" type="video/mp4">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                    <div class="snapshot-expand-badge"><i class="fa-solid fa-expand"></i></div>
+                                </div>
+                                <div class="p-3">
+                                    <h6 class="fw-bold mb-1">Supply Chain Analytics Dashboard</h6>
+                                    <p class="small text-muted mb-0">Executive visibility into active requests, division allocations, inventory valuations, and audit logs.</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="card project-card p-4 d-flex flex-column">
-                                <h5 class="fw-bold">Employee Profile Match-Up Optimization</h5>
-                                <p class="small text-primary mb-3">Logistic Regression, Scikit-learn</p>
-                                <p class="text-muted flex-grow-1">Simplified and re-engineered an existing employee-role
-                                    matching model for Telkom Indonesia to improve interpretability and stakeholder
-                                    usability using Logistic Regression.</p>
-                                <button type="button" class="btn btn-primary mt-3 w-100 rounded-pill"
-                                    data-bs-toggle="modal" data-bs-target="#pmuDemoModal">Try Interactive Demo</button>
+                        <div class="col-md-4">
+                            <div class="snapshot-video-card h-100"
+                                data-title="Logistics AI Copilot Drawer"
+                                data-desc="Contextual slide-out assistant answering inventory queries and dispatch protocols with pgvector RAG."
+                                data-tags="Gemini AI, pgvector, RAG, Semantic Search, FastAPI"
+                                title="Click to amplify in HD">
+                                <div class="snapshot-video-wrapper">
+                                    <video preload="none" poster="assets/snapshots/snapshot2.png" playsinline muted loop class="w-100 rounded mb-0 shadow-sm">
+                                        <source src="assets/snapshots/snapshot2.mp4" type="video/mp4">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                    <div class="snapshot-expand-badge"><i class="fa-solid fa-expand"></i></div>
+                                </div>
+                                <div class="p-3">
+                                    <h6 class="fw-bold mb-1">Logistics AI Copilot Drawer</h6>
+                                    <p class="small text-muted mb-0">Contextual slide-out assistant answering inventory queries and dispatch protocols with pgvector RAG.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="h5 mb-4 text-primary fw-bold" data-aos="zoom-in-up"><i
-                            class="devicon-django-plain colored me-2"></i> Information Systems</h4>
-                    <div class="card project-card p-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="row align-items-center">
-                            <div class="col-lg-5 mb-4 mb-lg-0">
-                                <h5 class="fw-bold">Logistics Information System</h5>
-                                <p class="text-primary small mb-3">CV Qirana Furniture | Python (Django), SQLite</p>
-                                <p class="text-muted">A full-stack web-based logistics management system developed to
-                                    address manual recording challenges. It streamlines material requests, stock
-                                    tracking, and reporting processes with 100% functionality validation via Black-Box
-                                    Testing.</p>
-                            </div>
-                            <div class="col-lg-7">
-                                <div id="logisticsCarousel" class="carousel slide shadow-sm rounded"
-                                    data-bs-ride="carousel">
-                                    <div class="carousel-inner rounded">
-                                        <div class="carousel-item active">
-                                            <img src="assets/sistem_informasi/Halaman Login.png" class="d-block w-100"
-                                                alt="Login">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="assets/sistem_informasi/Halaman Dashboard.png"
-                                                class="d-block w-100" alt="Dashboard">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="assets/sistem_informasi/Halaman Penerimaan Permintaan Material.png"
-                                                class="d-block w-100" alt="Penerimaan Permintaan Material">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="assets/sistem_informasi/Halaman Permintaan Material.png"
-                                                class="d-block w-100" alt="Permintaan Material">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="assets/sistem_informasi/Halaman Purchase Order.png"
-                                                class="d-block w-100" alt="Purchase Order">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="assets/sistem_informasi/Halaman Catatan Material.png"
-                                                class="d-block w-100" alt="Catatan Material">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="assets/sistem_informasi/Halaman Pengelolaan Laporan.png"
-                                                class="d-block w-100" alt="Pengelolaan Laporan">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="assets/sistem_informasi/Halaman Pengelolaan Pengguna.png"
-                                                class="d-block w-100" alt="Pengelolaan Pengguna">
-                                        </div>
-                                    </div>
-                                    <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#logisticsCarousel" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"
-                                            aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button"
-                                        data-bs-target="#logisticsCarousel" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon bg-dark rounded-circle p-2"
-                                            aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
+                        <div class="col-md-4">
+                            <div class="snapshot-video-card h-100"
+                                data-title="AST-Verified Text-to-SQL Results"
+                                data-desc="Live natural-language Text-to-SQL results with syntax validation, schema introspection, and guardrails."
+                                data-tags="Text-to-SQL, sqlparse AST, PostgreSQL 16, Guardrails, Security"
+                                title="Click to amplify in HD">
+                                <div class="snapshot-video-wrapper">
+                                    <video preload="none" poster="assets/snapshots/snapshot6.png" playsinline muted loop class="w-100 rounded mb-0 shadow-sm">
+                                        <source src="assets/snapshots/snapshot6.mp4" type="video/mp4">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                    <div class="snapshot-expand-badge"><i class="fa-solid fa-expand"></i></div>
+                                </div>
+                                <div class="p-3">
+                                    <h6 class="fw-bold mb-1">AST-Verified Text-to-SQL Results</h6>
+                                    <p class="small text-muted mb-0">Live natural-language Text-to-SQL results with syntax validation, schema introspection, and guardrails.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Project 2: Worka 2.0 -->
+                <div class="card project-card p-4 p-lg-5 mb-5" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="row align-items-center mb-4">
+                        <div class="col-lg-8">
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                <span class="badge bg-primary px-3 py-2 rounded-pill">Data Engineering &amp; ELT</span>
+                                <span class="badge bg-dark px-3 py-2 rounded-pill">Automated Labor Market Intelligence</span>
+                            </div>
+                            <h4 class="h3 fw-bold mb-2">Worka - Automated Labor Market ELT Platform &amp; Self-Healing Ingestion</h4>
+                            <p class="text-primary fw-semibold mb-3">Python, FastAPI, dbt Core, PostgreSQL 15, pgvector, Playwright, Gemini Flash, Docker</p>
+                            <p class="text-muted mb-3" style="line-height: 1.7;">
+                                End-to-end containerized ELT data pipeline collecting, modeling, enriching, and serving regional tech labor market data. Features a two-tier self-healing scraper cascading to Gemini Flash on DOM drift, Kimball star schema modeling with dbt Core marts (<code class="text-dark">fact_job_postings</code>, <code class="text-dark">dim_companies</code>, <code class="text-dark">dim_skills</code>, <code class="text-dark">dim_locations</code>), pgvector semantic CV matching (60% cosine similarity + 40% skill taxonomy overlap), and high-throughput async FastAPI v2 REST endpoints.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 pt-2">
+                                <a href="https://farhanrenardi.github.io/-worka-jobmapper_and_scraper/" target="_blank"
+                                    class="btn btn-primary rounded-pill px-4 py-2 shadow-sm d-inline-flex align-items-center">
+                                    View Live Documentation <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
+                                </a>
+                                <a href="https://github.com/farhanrenardi/-worka-jobmapper_and_scraper" target="_blank"
+                                    class="btn btn-outline-dark rounded-pill px-4 py-2 shadow-sm d-inline-flex align-items-center">
+                                    GitHub Repository <i class="fa-brands fa-github ms-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                            <div class="p-3 bg-light rounded-4 border text-start">
+                                <h6 class="fw-bold mb-2 text-dark">Data Pipeline Highlights</h6>
+                                <ul class="list-unstyled small text-muted mb-0">
+                                    <li class="mb-1"><strong>Ingestion:</strong> Two-tier scraper with Gemini Flash fallback</li>
+                                    <li class="mb-1"><strong>Marts:</strong> Kimball Star Schema (<code class="text-dark">fact_job_postings</code>)</li>
+                                    <li class="mb-1"><strong>Semantic Match:</strong> pgvector 768-d embeddings (60/40 hybrid)</li>
+                                    <li class="mb-1"><strong>Endpoints:</strong> Async FastAPI v2 REST with pagination</li>
+                                    <li><strong>Deployment:</strong> Multi-container Docker compose environment</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Agentic DataOps -->
+                <div class="card project-card p-4 p-lg-5 mb-5" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="row align-items-center mb-4">
+                        <div class="col-lg-8">
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                <span class="badge bg-primary px-3 py-2 rounded-pill">AI Agents &amp; Data Quality</span>
+                                <span class="badge bg-dark px-3 py-2 rounded-pill">IBM SkillsBuild Capstone</span>
+                            </div>
+                            <h4 class="h3 fw-bold mb-2">Agentic DataOps - Autonomous Self-Healing ETL &amp; Data Quality Guardian</h4>
+                            <p class="text-primary fw-semibold mb-3">Langflow 1.0.19, Google Generative AI (Gemini Flash), Docker, PostgreSQL 16, PyArrow, Pandas</p>
+                            <p class="text-muted mb-3" style="line-height: 1.7;">
+                                Autonomous self-healing ETL and data quality guardian pipeline orchestrating untrusted tabular data remediation. Features automated data auditing for schema drift and encoding corruption via Langflow, dynamic Pandas transformation synthesis by Gemini Flash to resolve historical anomalies like Excel date serial offsets, high-throughput memory-safe 500k-row chunking (<code class="text-dark">chunksize=50,000</code>) via PyArrow, and auto-generated PostgreSQL DDL schemas for immediate relational ingestion.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 pt-2">
+                                <button type="button" class="btn btn-outline-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#dataopsFlowModal">View Workflow Canvas <i class="fa-solid fa-diagram-project ms-1"></i></button>
+                                <a href="assets/Agentic_DataOps_Capstone.json" download="Agentic_DataOps_Capstone.json" class="btn btn-outline-secondary rounded-pill px-4">Download Pipeline JSON <i class="fa-solid fa-download ms-1"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                            <div class="p-3 bg-light rounded-4 border text-start">
+                                <h6 class="fw-bold mb-2 text-dark">DataOps Highlights</h6>
+                                <ul class="list-unstyled small text-muted mb-0">
+                                    <li class="mb-1"><strong>Visual DAG:</strong> Langflow 1.0.19 visual workflow DAG</li>
+                                    <li class="mb-1"><strong>Self-Healing:</strong> Dynamic Pandas transformation synthesis</li>
+                                    <li class="mb-1"><strong>Sanitization:</strong> Excel date serial resolution &amp; anomaly quarantine</li>
+                                    <li class="mb-1"><strong>Vectorized Load:</strong> PyArrow 500k-row chunking (50k rows/batch)</li>
+                                    <li><strong>Target Store:</strong> Auto-synthesized PostgreSQL 16 DDL schemas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Langflow Workflow Visual Preview -->
+                    <div class="mt-4">
+                        <div class="dataops-canvas-card rounded-4 overflow-hidden border shadow-sm position-relative" role="button" data-bs-toggle="modal" data-bs-target="#dataopsFlowModal" style="cursor: pointer;">
+                            <div class="dataops-canvas-wrapper overflow-hidden bg-dark position-relative">
+                                <img src="assets/agentic_dataops_canvas.png" alt="Langflow Multi-Stage Visual Pipeline Canvas" class="w-100 dataops-canvas-img">
+                                <div class="dataops-canvas-overlay">
+                                    <span class="badge bg-primary px-3 py-2 rounded-pill shadow"><i class="fa-solid fa-diagram-project me-1"></i> Inspect Full Visual DAG</span>
+                                </div>
+                            </div>
+                            <div class="p-3 bg-light d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2 border-top">
+                                <div>
+                                    <h6 class="fw-bold mb-0 text-dark">Langflow Multi-Stage Visual Pipeline Canvas</h6>
+                                    <p class="small text-muted mb-0">End-to-end self-healing orchestration DAG with Gemini Flash remediation and automated DDL synthesis.</p>
+                                </div>
+                                <span class="badge bg-primary-subtle text-primary border rounded-pill px-3 py-2 align-self-start align-self-sm-center">
+                                    <i class="fa-solid fa-expand me-1"></i> Click to Zoom
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects 4 & 5 Grid: Machine Learning & Enterprise Impact -->
+                <div class="row g-4 mb-5">
+                    <!-- Project 4: Medical Image Classification -->
+                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="card project-card p-4 h-100 d-flex flex-column">
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                <span class="badge bg-primary px-3 py-2 rounded-pill">Computer Vision</span>
+                                <span class="badge bg-dark px-3 py-2 rounded-pill">Deep Learning</span>
+                            </div>
+                            <h4 class="h5 fw-bold mb-2">Medical Image Classification using Deep Learning</h4>
+                            <p class="small text-primary mb-3">Transfer Learning (EfficientNetB3), TensorFlow, Keras, Hugging Face Spaces</p>
+                            <p class="text-muted flex-grow-1" style="line-height: 1.7;">
+                                Convolutional neural network classification system classifying stages of Male Pattern Baldness. Fine-tuned EfficientNetB3 architecture on augmented clinical image data, achieving 88% test accuracy. Resolved dataset imbalance through geometric and photometric augmentations with hyperparameter optimization.
+                            </p>
+                            <div class="pt-3">
+                                <button type="button" class="btn btn-outline-primary w-100 rounded-pill py-2 shadow-sm"
+                                    data-bs-toggle="modal" data-bs-target="#hfDemoModal">
+                                    Launch Interactive Gradio Demo <i class="fa-solid fa-flask ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enterprise Business Impact Card A: Telkom Indonesia -->
+                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="350">
+                        <div class="card project-card p-4 h-100 d-flex flex-column">
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                <span class="badge bg-primary px-3 py-2 rounded-pill">Enterprise Analytics</span>
+                                <span class="badge bg-dark px-3 py-2 rounded-pill">Telkom Indonesia</span>
+                            </div>
+                            <h4 class="h5 fw-bold mb-2">Telkom Indonesia - Employee Profile Match-Up Optimization</h4>
+                            <p class="small text-primary mb-3">Logistic Regression, Scikit-learn</p>
+                            <p class="text-muted flex-grow-1" style="line-height: 1.7;">
+                                Re-engineered and optimized an employee-role matching model for Telkom Indonesia. Simplified model architecture using Logistic Regression and Scikit-learn, improving stakeholder interpretability and recruitment evaluation while maintaining high predictive fidelity across talent competency profiles.
+                            </p>
+                            <div class="pt-3">
+                                <button type="button" class="btn btn-primary w-100 rounded-pill py-2 shadow-sm"
+                                    data-bs-toggle="modal" data-bs-target="#pmuDemoModal">
+                                    Launch Profile Match-Up Demo <i class="fa-solid fa-users ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enterprise Business Impact Card B: Semen Indonesia Group -->
+                <div class="card project-card p-4 p-lg-5 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                        <span class="badge bg-primary px-3 py-2 rounded-pill">Business Intelligence</span>
+                        <span class="badge bg-dark px-3 py-2 rounded-pill">Semen Indonesia Group</span>
+                    </div>
+                    <h4 class="h4 fw-bold mb-2">Semen Indonesia Group - Sourcing &amp; Pricing Monitoring Dashboards</h4>
+                    <p class="text-primary fw-semibold mb-3">Power BI, Python</p>
+                    <p class="text-muted mb-4" style="line-height: 1.7;">
+                        Designed and deployed interactive Power BI dashboards tracking pricing trends, regional market margins, and raw material sourcing across 45 operating territories. Directly utilized by Pricing Management, cutting weekly executive reporting preparation time by 60%.
+                    </p>
+
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="snapshot-video-card h-100 p-3 bg-light border"
+                                data-title="Financial Overview"
+                                data-desc="Executive summary of key financial metrics, revenue, assets, liabilities, and operational margins."
+                                data-tags="Power BI, Financial Analytics, Margin Analysis"
+                                title="Click to amplify in HD">
+                                <h6 class="fw-bold mb-1">Financial Overview</h6>
+                                <p class="small text-primary mb-2">Power BI</p>
+                                <div class="snapshot-video-wrapper rounded mb-2">
+                                    <video preload="none" loop muted playsinline class="w-100 rounded mb-0 shadow-sm"
+                                        poster="assets/dashboard/Financial Overview.png">
+                                        <source src="assets/dashboard/Financial Overview.mov">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                    <div class="snapshot-expand-badge"><i class="fa-solid fa-expand"></i></div>
+                                </div>
+                                <p class="small text-muted mb-0">Executive summary of key financial metrics, revenue, assets, liabilities, and operational margins.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="snapshot-video-card h-100 p-3 bg-light border"
+                                data-title="Sourcing Monitoring"
+                                data-desc="Interactive sourcing visibility supporting Pricing &amp; Margin Dept in assessing regional supply chain policies."
+                                data-tags="Power BI, Supply Chain, Logistics Analytics"
+                                title="Click to amplify in HD">
+                                <h6 class="fw-bold mb-1">Sourcing Monitoring</h6>
+                                <p class="small text-primary mb-2">Power BI</p>
+                                <div class="snapshot-video-wrapper rounded mb-2">
+                                    <video preload="none" loop muted playsinline class="w-100 rounded mb-0 shadow-sm"
+                                        poster="assets/dashboard/Sourcing_Monitoring.png">
+                                        <source src="assets/dashboard/Sourcing_Monitoring.mov">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                    <div class="snapshot-expand-badge"><i class="fa-solid fa-expand"></i></div>
+                                </div>
+                                <p class="small text-muted mb-0">Interactive sourcing visibility supporting Pricing &amp; Margin Dept in assessing regional supply chain policies.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="snapshot-video-card h-100 p-3 bg-light border"
+                                data-title="Weekly Price Monitoring"
+                                data-desc="Evaluates pricing and promotional performance with dynamic filters and territory distribution mapping."
+                                data-tags="Power BI, Python, Price Optimization"
+                                title="Click to amplify in HD">
+                                <h6 class="fw-bold mb-1">Weekly Price Monitoring</h6>
+                                <p class="small text-primary mb-2">Power BI, Python</p>
+                                <div class="snapshot-video-wrapper rounded mb-2">
+                                    <video preload="none" loop muted playsinline class="w-100 rounded mb-0 shadow-sm"
+                                        poster="assets/dashboard/Weekly_Price_Monitoring.png">
+                                        <source src="assets/dashboard/Weekly_Price_Monitoring.mov">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                    <div class="snapshot-expand-badge"><i class="fa-solid fa-expand"></i></div>
+                                </div>
+                                <p class="small text-muted mb-0">Evaluates pricing and promotional performance with dynamic filters and territory distribution mapping.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -902,23 +1172,81 @@
             <div class="slider-container" data-aos="zoom-in" data-aos-delay="200">
                 <div class="slider-track" id="sliderTrack">
 
+                    <!-- Programming Languages -->
                     <div class="slide-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/960px-Python-logo-notext.svg.png"
-                            class="slide-icon-img" alt="Python">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="slide-icon-img" alt="Python">
                         <p class="fw-bold mb-0">Python</p>
                     </div>
                     <div class="slide-item">
-                        <i class="devicon-mysql-plain colored slide-icon"></i>
+                        <i class="devicon-postgresql-plain colored slide-icon"></i>
                         <p class="fw-bold mb-0">SQL</p>
                     </div>
                     <div class="slide-item">
                         <i class="devicon-javascript-plain colored slide-icon"></i>
                         <p class="fw-bold mb-0">JavaScript</p>
                     </div>
-
                     <div class="slide-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg"
-                            class="slide-icon-img" alt="Scikit-learn">
+                        <i class="devicon-bash-plain colored slide-icon"></i>
+                        <p class="fw-bold mb-0">Bash</p>
+                    </div>
+
+                    <!-- Data Engineering & Databases -->
+                    <div class="slide-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="slide-icon-img" alt="PostgreSQL">
+                        <p class="fw-bold mb-0">PostgreSQL</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://cdn.simpleicons.org/postgresql/4169E1" class="slide-icon-img" alt="pgvector">
+                        <p class="fw-bold mb-0">pgvector</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="assets/dbt.svg" class="slide-icon-img" alt="dbt Core">
+                        <p class="fw-bold mb-0">dbt Core</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://cdn.simpleicons.org/apachearrow/E05A47" class="slide-icon-img" alt="PyArrow">
+                        <p class="fw-bold mb-0">PyArrow</p>
+                    </div>
+                    <div class="slide-item">
+                        <i class="devicon-pandas-plain colored slide-icon"></i>
+                        <p class="fw-bold mb-0">Pandas</p>
+                    </div>
+
+                    <!-- LLM Orchestration & AI Agents -->
+                    <div class="slide-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" class="slide-icon-img" alt="Google GenAI">
+                        <p class="fw-bold mb-0">Gemini / GenAI</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://cdn.simpleicons.org/langchain/1C3C3C" class="slide-icon-img dark-invert" alt="Langflow">
+                        <p class="fw-bold mb-0">Langflow</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://cdn.simpleicons.org/n8n/EA4B71" class="slide-icon-img" alt="n8n">
+                        <p class="fw-bold mb-0">n8n</p>
+                    </div>
+
+                    <!-- Backend & Data Ingestion -->
+                    <div class="slide-item">
+                        <i class="devicon-fastapi-plain colored slide-icon"></i>
+                        <p class="fw-bold mb-0">FastAPI</p>
+                    </div>
+                    <div class="slide-item">
+                        <i class="devicon-django-plain colored slide-icon"></i>
+                        <p class="fw-bold mb-0">Django REST</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="https://playwright.dev/img/playwright-logo.svg" class="slide-icon-img" alt="Playwright">
+                        <p class="fw-bold mb-0">Playwright</p>
+                    </div>
+                    <div class="slide-item">
+                        <img src="assets/beautifulsoup.svg" class="slide-icon-img dark-invert" alt="BeautifulSoup">
+                        <p class="fw-bold mb-0">BeautifulSoup</p>
+                    </div>
+
+                    <!-- Machine Learning & Deep Learning -->
+                    <div class="slide-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" class="slide-icon-img" alt="Scikit-learn">
                         <p class="fw-bold mb-0">Scikit-learn</p>
                     </div>
                     <div class="slide-item">
@@ -926,91 +1254,32 @@
                         <p class="fw-bold mb-0">TensorFlow</p>
                     </div>
                     <div class="slide-item">
-                        <img src="https://keras.io/img/logo.png" class="slide-icon-img dark-invert" alt="Keras">
+                        <img src="https://cdn.simpleicons.org/keras/D00000" class="slide-icon-img" alt="Keras">
                         <p class="fw-bold mb-0">Keras</p>
                     </div>
-                    <div class="slide-item">
-                        <i class="fa-solid fa-brain slide-icon" style="color: #a855f7;"></i>
-                        <p class="fw-bold mb-0 small">Transfer Learning</p>
-                    </div>
-                    <div class="slide-item">
-                        <i class="fa-solid fa-chart-line slide-icon" style="color: #3b82f6;"></i>
-                        <p class="fw-bold mb-0 small">Logistic Regression</p>
-                    </div>
-                    <div class="slide-item">
-                        <i class="fa-solid fa-layer-group slide-icon" style="color: #10b981;"></i>
-                        <p class="fw-bold mb-0 small">Classification</p>
-                    </div>
 
+                    <!-- Business Intelligence & Analytics -->
                     <div class="slide-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg"
-                            class="slide-icon-img" alt="Power BI">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" class="slide-icon-img" alt="Power BI">
                         <p class="fw-bold mb-0">Power BI</p>
                     </div>
                     <div class="slide-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png"
-                            class="slide-icon-img" alt="Tableau">
-                        <p class="fw-bold mb-0">Tableau</p>
-                    </div>
-                    <div class="slide-item">
-                        <img src="https://images.seeklogo.com/logo-png/39/1/google-looker-logo-png_seeklogo-394597.png"
-                            class="slide-icon-img" alt="Looker Studio">
-                        <p class="fw-bold mb-0 small">Looker Studio</p>
-                    </div>
-                    <div class="slide-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Microsoft_Office_Excel_%282019%E2%80%932025%29.svg/960px-Microsoft_Office_Excel_%282019%E2%80%932025%29.svg.png"
-                            class="slide-icon-img" alt="Excel">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Microsoft_Office_Excel_%282019%E2%80%932025%29.svg/960px-Microsoft_Office_Excel_%282019%E2%80%932025%29.svg.png" class="slide-icon-img" alt="Excel">
                         <p class="fw-bold mb-0">Excel</p>
                     </div>
                     <div class="slide-item">
-                        <i class="devicon-pandas-plain colored slide-icon"></i>
-                        <p class="fw-bold mb-0">Pandas</p>
-                    </div>
-                    <div class="slide-item">
-                        <i class="devicon-numpy-original colored slide-icon"></i>
-                        <p class="fw-bold mb-0">NumPy</p>
-                    </div>
-                    <div class="slide-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg"
-                            class="slide-icon-img" alt="Matplotlib">
-                        <p class="fw-bold mb-0">Matplotlib</p>
+                        <img src="https://cdn.simpleicons.org/tableau/E97627" class="slide-icon-img" alt="Tableau">
+                        <p class="fw-bold mb-0">Tableau</p>
                     </div>
 
+                    <!-- DevOps & Tools -->
                     <div class="slide-item">
-                        <i class="devicon-django-plain colored slide-icon"></i>
-                        <p class="fw-bold mb-0">Django</p>
-                    </div>
-                    <div class="slide-item">
-                        <i class="devicon-sqlite-plain colored slide-icon"></i>
-                        <p class="fw-bold mb-0">SQLite</p>
-                    </div>
-                    <div class="slide-item">
-                        <i class="devicon-mysql-plain colored slide-icon"></i>
-                        <p class="fw-bold mb-0">MySQL</p>
-                    </div>
-                    <div class="slide-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
-                            class="slide-icon-img dark-invert" alt="Figma">
-                        <p class="fw-bold mb-0">Figma</p>
-                    </div>
-
-                    <div class="slide-item">
-                        <img src="assets/beautifulsoup.svg" class="slide-icon-img dark-invert" alt="BeautifulSoup">
-                        <p class="fw-bold mb-0 small">BeautifulSoup</p>
-                    </div>
-                    <div class="slide-item">
-                        <img src="https://playwright.dev/img/playwright-logo.svg" class="slide-icon-img"
-                            alt="Playwright">
-                        <p class="fw-bold mb-0">Playwright</p>
+                        <i class="devicon-docker-plain colored slide-icon"></i>
+                        <p class="fw-bold mb-0">Docker</p>
                     </div>
                     <div class="slide-item">
                         <i class="devicon-github-original slide-icon dark-invert"></i>
                         <p class="fw-bold mb-0">Git/GitHub</p>
-                    </div>
-                    <div class="slide-item">
-                        <img src="https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png"
-                            class="slide-icon-img" alt="n8n">
-                        <p class="fw-bold mb-0">n8n</p>
                     </div>
 
                 </div>
@@ -1037,24 +1306,35 @@
     </footer>
 
     <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 450px;">
             <div class="modal-content" style="border-radius: 20px;">
                 <div class="modal-header border-bottom-0 pb-0">
                     <h5 class="modal-title fw-bold" id="contactModalLabel">Get in Touch</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4 text-center">
-                    <p class="text-muted mb-4">Choose how you'd like to connect with me.</p>
+                    <p class="text-muted mb-2">Choose how you'd like to connect with me.</p>
+                    <p class="text-secondary small mb-4"><i class="fa-solid fa-location-dot me-1 text-danger"></i> Jakarta, Indonesia</p>
                     <div class="d-grid gap-3">
                         <a href="https://wa.me/6282266520790" target="_blank"
                             class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm"
-                            style="background-color: #25D366; border-radius: 12px; transition: transform 0.2s;">
-                            <i class="fa-brands fa-whatsapp fs-4 me-2"></i> WhatsApp / Phone
+                            style="background-color: #25D366; border-radius: 12px; transition: transform 0.2s; font-size: 0.95rem;">
+                            <i class="fa-brands fa-whatsapp fs-4 me-2"></i> WhatsApp / Phone (+62 822-6652-0790)
                         </a>
                         <a href="mailto:farhanfaiqrenardi@gmail.com"
                             class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm"
-                            style="background-color: #EA4335; border-radius: 12px; transition: transform 0.2s;">
-                            <i class="fa-solid fa-envelope fs-4 me-2"></i> Email (Gmail)
+                            style="background-color: #EA4335; border-radius: 12px; transition: transform 0.2s; font-size: 0.95rem;">
+                            <i class="fa-solid fa-envelope fs-4 me-2"></i> Email (farhanfaiqrenardi@gmail.com)
+                        </a>
+                        <a href="https://www.linkedin.com/in/farhanfaiq" target="_blank"
+                            class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm"
+                            style="background-color: #0A66C2; border-radius: 12px; transition: transform 0.2s; font-size: 0.95rem;">
+                            <i class="fa-brands fa-linkedin fs-4 me-2"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/farhanrenardi" target="_blank"
+                            class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm"
+                            style="background-color: #24292e; border-radius: 12px; transition: transform 0.2s; font-size: 0.95rem;">
+                            <i class="fa-brands fa-github fs-4 me-2"></i> GitHub
                         </a>
                     </div>
                 </div>
@@ -1183,6 +1463,132 @@
                     <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
                     <a href="https://hunsolooo-profile-matchup-demo.hf.space" target="_blank"
                         class="btn btn-primary px-4 rounded-pill">Open in New Tab</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Agentic DataOps Langflow Visual Workflow DAG -->
+    <div class="modal fade" id="dataopsFlowModal" tabindex="-1" aria-labelledby="dataopsFlowModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px; background: var(--card-bg);">
+                <div class="modal-header border-bottom-0 pb-2 px-4 pt-4">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-primary px-3 py-2 rounded-pill">
+                            <i class="fa-solid fa-diagram-project me-1"></i> Langflow DAG
+                        </span>
+                        <h5 class="modal-title fw-bold" id="dataopsFlowModalLabel">Agentic DataOps &mdash; Langflow Visual Workflow DAG</h5>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 pt-2">
+                    <p class="text-muted small mb-3">
+                        Visual inspection of the multi-stage Langflow orchestration pipeline. Switch tabs to inspect Stage 1 (profiling, automated schema inspection, and dynamic transformation synthesis via Gemini Flash) and Stage 2 (audit report generation, corruption quarantine, and PostgreSQL 16 DDL synthesis).
+                    </p>
+
+                    <!-- Tabs for Stage 1 & Stage 2 -->
+                    <ul class="nav nav-pills mb-3 gap-2 justify-content-start" id="dataopsCanvasTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active rounded-pill px-4" id="dataops-stage1-tab" data-bs-toggle="pill" data-bs-target="#dataops-stage1-pane" type="button" role="tab" aria-controls="dataops-stage1-pane" aria-selected="true">
+                                <i class="fa-solid fa-code me-1"></i> Stage 1: Profiling &amp; Code Extraction
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill px-4" id="dataops-stage2-tab" data-bs-toggle="pill" data-bs-target="#dataops-stage2-pane" type="button" role="tab" aria-controls="dataops-stage2-pane" aria-selected="false">
+                                <i class="fa-solid fa-database me-1"></i> Stage 2: Audit Report &amp; DDL Generation
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Tab Panes -->
+                    <div class="tab-content" id="dataopsCanvasTabContent">
+                        <!-- Stage 1 -->
+                        <div class="tab-pane fade show active" id="dataops-stage1-pane" role="tabpanel" aria-labelledby="dataops-stage1-tab" tabindex="0">
+                            <div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+                                <span class="small fw-semibold text-secondary me-1">Pipeline Nodes:</span>
+                                <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                                    <i class="fa-solid fa-file-arrow-up me-1 text-primary"></i> File Ingestion
+                                </span>
+                                <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                                    <i class="fa-solid fa-filter me-1 text-primary"></i> Prompt Profiler
+                                </span>
+                                <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                                    <i class="fa-solid fa-bolt me-1 text-primary"></i> Gemini Flash
+                                </span>
+                                <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                                    <i class="fa-solid fa-code me-1 text-primary"></i> JQ Code Parser
+                                </span>
+                            </div>
+                            <div class="text-center rounded-4 overflow-hidden border bg-dark p-2" style="max-height: 65vh; overflow-y: auto;">
+                                <img src="assets/agentic_dataops_canvas.png" alt="Stage 1: Profiling &amp; Code Extraction" class="img-fluid rounded-3" style="max-height: 60vh; width: auto; object-fit: contain;">
+                            </div>
+                        </div>
+
+                        <!-- Stage 2 -->
+                        <div class="tab-pane fade" id="dataops-stage2-pane" role="tabpanel" aria-labelledby="dataops-stage2-tab" tabindex="0">
+                            <div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+                                <span class="small fw-semibold text-secondary me-1">Pipeline Nodes:</span>
+                                <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                                    <i class="fa-solid fa-clipboard-check me-1 text-primary"></i> Audit Report Synthesis
+                                </span>
+                                <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                                    <i class="fa-solid fa-table me-1 text-primary"></i> SQL DDL Generator
+                                </span>
+                                <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
+                                    <i class="fa-solid fa-server me-1 text-primary"></i> PostgreSQL 16 Target
+                                </span>
+                            </div>
+                            <div class="text-center rounded-4 overflow-hidden border bg-dark p-2" style="max-height: 65vh; overflow-y: auto;">
+                                <img src="assets/agentic_dataops_canvas_p2.png" alt="Stage 2: Audit Report &amp; DDL Generation" class="img-fluid rounded-3" style="max-height: 60vh; width: auto; object-fit: contain;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0 pt-0 px-4 pb-4 d-flex justify-content-between flex-wrap gap-2">
+                    <div>
+                        <a href="assets/Agentic_DataOps_Capstone.json" download="Agentic_DataOps_Capstone.json" class="btn btn-outline-secondary rounded-pill px-4">
+                            <i class="fa-solid fa-download me-1"></i> Download Pipeline JSON
+                        </a>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a id="openHighResCanvasLink" href="assets/agentic_dataops_canvas.png" target="_blank" class="btn btn-primary rounded-pill px-4">
+                            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Open High-Res Canvas in New Tab
+                        </a>
+                        <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Video Amplify HD Theater -->
+    <div class="modal fade" id="videoAmplifyModal" tabindex="-1" aria-labelledby="videoAmplifyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; background: var(--card-bg); overflow: hidden;">
+                <div class="modal-header border-bottom-0 pb-2 px-4 pt-4">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-primary px-3 py-2 rounded-pill">
+                            <i class="fa-solid fa-film me-1"></i> HD Theater
+                        </span>
+                        <h5 class="modal-title fw-bold" id="videoAmplifyModalLabel">Video Walkthrough</h5>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 pt-2">
+                    <div class="rounded-4 overflow-hidden bg-black mb-3 shadow" style="position: relative; width: 100%; aspect-ratio: 16/9; max-height: 68vh;">
+                        <video id="amplifyVideoPlayer" controls autoplay playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center gap-3">
+                        <div>
+                            <p id="videoAmplifyDescription" class="text-muted mb-0" style="line-height: 1.6;"></p>
+                        </div>
+                        <div id="videoAmplifyTags" class="d-flex flex-wrap gap-2"></div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0 pt-0 px-4 pb-4">
+                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Close Theater</button>
                 </div>
             </div>
         </div>
@@ -1395,10 +1801,10 @@
         });
         // 7. Typewriter Effect
         const twWords = [
-            "Data Analyst | Industrial Engineering Graduate",
-            "Data Analyst | Machine Learning and Analytics",
-            "Data Scientist | Industrial Engineering Graduate",
-            "Data Scientist | Machine Learning and Analytics"
+            "AI & Data Engineer",
+            "Production GenAI & Vector Systems",
+            "ELT Pipelines & dbt Core",
+            "Full-Stack Software Engineer"
         ];
         let twIndex = 0;
         let twTimer;
@@ -1437,6 +1843,99 @@
         window.addEventListener('load', () => {
             setTimeout(typingEffect, 1000);
         });
+
+        // 8. Video Amplify Modal Controller & Snapshot Handlers
+        function openVideoAmplifyModal(videoSrc, title, desc, tags) {
+            const modalEl = document.getElementById('videoAmplifyModal');
+            if (!modalEl) return;
+
+            const videoPlayer = document.getElementById('amplifyVideoPlayer');
+            const titleEl = document.getElementById('videoAmplifyModalLabel');
+            const descEl = document.getElementById('videoAmplifyDescription');
+            const tagsEl = document.getElementById('videoAmplifyTags');
+
+            if (titleEl) titleEl.textContent = title || 'Video Walkthrough';
+            if (descEl) descEl.textContent = desc || '';
+            if (tagsEl) {
+                tagsEl.innerHTML = '';
+                if (tags) {
+                    const tagArray = Array.isArray(tags) ? tags : tags.split(',').map(t => t.trim());
+                    tagArray.forEach(tag => {
+                        if (!tag) return;
+                        const badge = document.createElement('span');
+                        badge.className = 'badge bg-primary-subtle text-primary border rounded-pill px-3 py-1';
+                        badge.textContent = tag;
+                        tagsEl.appendChild(badge);
+                    });
+                }
+            }
+
+            if (videoPlayer) {
+                videoPlayer.src = videoSrc;
+                videoPlayer.muted = false;
+                videoPlayer.currentTime = 0;
+                videoPlayer.play().catch(() => {
+                    // Fallback to muted if unmuted autoplay is restricted by browser
+                    videoPlayer.muted = true;
+                    videoPlayer.play().catch(() => {});
+                });
+            }
+
+            const modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
+            modalInstance.show();
+        }
+
+        window.openVideoAmplifyModal = openVideoAmplifyModal;
+
+        const videoAmplifyModalEl = document.getElementById('videoAmplifyModal');
+        if (videoAmplifyModalEl) {
+            videoAmplifyModalEl.addEventListener('hidden.bs.modal', () => {
+                const videoPlayer = document.getElementById('amplifyVideoPlayer');
+                if (videoPlayer) {
+                    videoPlayer.pause();
+                    videoPlayer.removeAttribute('src');
+                    videoPlayer.load();
+                }
+            });
+        }
+
+        // Snapshot Video Hover & Click-to-Amplify Controller
+        document.querySelectorAll('.snapshot-video-card').forEach(card => {
+            const video = card.querySelector('video');
+            if (!video) return;
+
+            card.addEventListener('mouseenter', () => {
+                video.play().catch(() => {});
+            });
+
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+
+            card.addEventListener('click', () => {
+                video.pause();
+                const source = video.querySelector('source');
+                const src = source ? source.getAttribute('src') : video.getAttribute('src');
+                const title = card.dataset.title || card.querySelector('h6')?.textContent || 'System Walkthrough';
+                const desc = card.dataset.desc || card.querySelector('p.text-muted')?.textContent || '';
+                const tags = card.dataset.tags || '';
+                openVideoAmplifyModal(src, title, desc, tags);
+            });
+        });
+
+        // DataOps Workflow Modal Tab Switch High-Res Link Handler
+        const dataopsStage1Tab = document.getElementById('dataops-stage1-tab');
+        const dataopsStage2Tab = document.getElementById('dataops-stage2-tab');
+        const dataopsHighResLink = document.getElementById('openHighResCanvasLink');
+        if (dataopsStage1Tab && dataopsStage2Tab && dataopsHighResLink) {
+            dataopsStage1Tab.addEventListener('shown.bs.tab', () => {
+                dataopsHighResLink.href = 'assets/agentic_dataops_canvas.png';
+            });
+            dataopsStage2Tab.addEventListener('shown.bs.tab', () => {
+                dataopsHighResLink.href = 'assets/agentic_dataops_canvas_p2.png';
+            });
+        }
     </script>
     <!-- Gradio.js is now lazy-loaded only when the PMU demo modal opens -->
 </body>
