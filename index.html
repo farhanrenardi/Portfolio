@@ -7,15 +7,20 @@
     <meta name="description"
         content="Portfolio of Farhan Faiq Renardi, AI & Data Engineer specializing in containerized ELT pipelines, production GenAI workflows, and full-stack web applications.">
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Farhan Faiq Renardi | AI & Data Engineer Portfolio">
+    <meta property="og:title" content="Get to know Farhan">
     <meta property="og:description"
-        content="AI & Data Engineer building production GenAI workflows, dbt Core ELT pipelines, and resilient full-stack systems.">
+        content="AI & Data Engineer building agentic AI workflows, data pipelines, and resilient full-stack systems.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://farhanrenardi.github.io/">
-    <!-- Favicon -->
+    <!-- Favicon: Letter F — Maroon on warm beige -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23F5EFE6'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia%2C serif' font-weight='700' font-size='20' fill='%237D1D3F'%3EF%3C/text%3E%3C/svg%3E">
 
+    <title>get to know me</title>
 
-    <title>Farhan Faiq Renardi | AI & Data Engineer</title>
+    <!-- Google Fonts: Editorial Serif + Geometric Sans + Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -26,25 +31,29 @@
 
     <style>
         :root {
-            --bg-color: #ffffff;
-            --text-color: #1d1d1f;
-            --secondary-text: #86868b;
-            --card-bg: #ffffff;
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            --border-color: rgba(0, 0, 0, 0.05);
-            --accent-color: #007AFF;
-            --glass-bg: rgba(255, 255, 255, 0.7);
-        }
-
-        :root[data-bs-theme="dark"] {
-            --bg-color: #000000;
-            --text-color: #F5F5F7;
-            --secondary-text: #a1a1a6;
-            --card-bg: #1c1c1e;
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --accent-color: #0A84FF;
-            --glass-bg: rgba(28, 28, 30, 0.7);
+            /* ===== WARM BEIGE + MAROON COLOR SYSTEM ===== */
+            --canvas: #F5EFE6;
+            --surface: #EDE3D5;
+            --surface-raised: #FAF6F0;
+            --text-primary: #1A0A00;
+            --text-secondary: #6B4E3D;
+            --text-muted: #9C7C6E;
+            --accent: #7D1D3F;
+            --accent-hover: #9B2449;
+            --accent-dim: rgba(125, 29, 63, 0.08);
+            --border: rgba(125, 29, 63, 0.12);
+            --border-strong: rgba(125, 29, 63, 0.25);
+            --shadow: 0 4px 24px rgba(90, 20, 30, 0.08);
+            --shadow-hover: 0 12px 36px rgba(90, 20, 30, 0.14);
+            /* Legacy aliases for Bootstrap/existing class compatibility */
+            --bg-color: var(--canvas);
+            --text-color: var(--text-primary);
+            --secondary-text: var(--text-secondary);
+            --card-bg: var(--surface);
+            --card-shadow: var(--shadow);
+            --border-color: var(--border);
+            --accent-color: var(--accent);
+            --glass-bg: rgba(245, 239, 230, 0.82);
         }
 
         html,
@@ -52,80 +61,70 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
-            min-height: 100vh;
-            background-color: var(--bg-color) !important;
-            color: var(--text-color) !important;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            background-color: var(--canvas) !important;
+            color: var(--text-primary) !important;
+            font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
             scroll-behavior: smooth;
         }
 
         section {
             padding: 80px 0;
-            scroll-margin-top: 30px;
+            scroll-margin-top: 90px;
             background-color: transparent !important;
         }
 
-        /* ================= SIDE NAVIGATION PILL ================= */
-        .side-nav-pill {
+        /* ================= FLOATING TOP NAVIGATION PILL ================= */
+        .floating-nav {
             position: fixed;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
             background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 15px 10px;
-            border-radius: 40px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 6px 8px;
+            border-radius: 9999px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(90, 20, 30, 0.08);
             transition: all 0.3s ease;
         }
 
-        .side-nav-link {
-            width: 32px;
-            height: 32px;
-            display: flex;
+        .floating-nav-link {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            color: var(--secondary-text);
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 9999px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--text-secondary);
             text-decoration: none;
-            border-radius: 50%;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
-        .side-nav-link:hover,
-        .side-nav-link.active {
-            color: var(--accent-color);
-            background: rgba(0, 122, 255, 0.1);
-        }
-
-        .side-nav-link .nav-label {
-            position: absolute;
-            right: 45px;
-            background: var(--text-color);
-            color: var(--bg-color);
-            padding: 4px 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
+            transition: color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
             white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.2s ease;
-            pointer-events: none;
         }
 
-        .side-nav-link:hover .nav-label {
-            opacity: 1;
-            visibility: visible;
-            right: 40px;
+        .floating-nav-link i {
+            font-size: 13px;
+        }
+
+        .floating-nav-link:hover {
+            color: var(--accent);
+            background: var(--accent-dim);
+        }
+
+        .floating-nav-link.active {
+            color: var(--accent);
+            background: var(--accent-dim);
+            font-weight: 600;
+        }
+
+        .floating-nav-link:active {
+            transform: scale(0.97);
         }
 
         /* ================= BACK TO TOP ================= */
@@ -135,7 +134,7 @@
             right: 25px;
             width: 45px;
             height: 45px;
-            background: var(--accent-color);
+            background: var(--accent);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -145,9 +144,9 @@
             text-decoration: none;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
             z-index: 999;
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(125, 29, 63, 0.3);
         }
 
         .back-to-top.show {
@@ -157,73 +156,73 @@
 
         .hero-section {
             background-color: transparent !important;
-            background-image: radial-gradient(ellipse 250% 120% at 50% -20%, rgba(0, 122, 255, 0.3) 0%, rgba(0, 122, 255, 0.1) 50%, transparent 100%);
-            transition: background 0.4s ease;
+            background-image: radial-gradient(ellipse 220% 100% at 50% -10%, rgba(125, 29, 63, 0.10) 0%, rgba(180, 100, 60, 0.04) 55%, transparent 100%);
+            padding-top: 85px !important;
         }
 
-        .text-gradient-apple {
-            background: linear-gradient(90deg, #007AFF 0%, #33C5FF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
+        /* .text-gradient-apple removed — gradient text is anti-slop */
+        /* Typewriter title now uses accent color directly */
+        .hero-typewriter-title {
+            color: var(--accent);
         }
 
         .apple-summary-text {
-            font-size: 1.35rem;
-            line-height: 1.5;
-            font-weight: 500;
-            letter-spacing: -0.3px;
+            font-size: 1.2rem;
+            line-height: 1.75;
+            font-weight: 400;
+            letter-spacing: -0.2px;
+            color: var(--text-secondary);
         }
 
         .custom-btn-contact {
-            background-color: var(--card-bg);
-            color: var(--text-color) !important;
-            border-color: var(--border-color);
+            background-color: var(--surface);
+            color: var(--text-primary) !important;
+            border: 1px solid var(--border);
         }
 
         .custom-btn-contact:hover {
-            background-color: var(--glass-bg);
+            background-color: var(--surface-raised);
+            border-color: var(--border-strong);
         }
 
         .project-card {
             height: 100%;
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            background: var(--card-bg);
-            box-shadow: var(--card-shadow);
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
 
         /* ================= SNAPSHOT VIDEO CARDS ================= */
         .snapshot-video-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
             overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
             cursor: pointer;
-            box-shadow: var(--card-shadow);
+            box-shadow: var(--shadow);
             position: relative;
         }
 
         .snapshot-video-card:hover {
             transform: translateY(-4px);
-            border-color: var(--accent-color);
-            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.15);
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-hover);
         }
 
         .snapshot-video-wrapper {
             position: relative;
             width: 100%;
-            background: #000;
+            background: #1a0a00;
             overflow: hidden;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border);
         }
 
         .snapshot-video-wrapper video {
@@ -240,7 +239,7 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(125, 29, 63, 0.75);
             backdrop-filter: blur(4px);
             color: #ffffff;
             display: flex;
@@ -252,7 +251,7 @@
             transform: scale(0.85);
             transition: opacity 0.25s ease, transform 0.25s ease;
             z-index: 2;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(90, 20, 30, 0.3);
         }
 
         .snapshot-video-card:hover .snapshot-expand-badge {
@@ -262,25 +261,25 @@
 
         /* ================= DATAOPS WORKFLOW CANVAS ================= */
         .dataops-canvas-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
             overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
             cursor: pointer;
-            box-shadow: var(--card-shadow);
+            box-shadow: var(--shadow);
         }
 
         .dataops-canvas-card:hover {
             transform: translateY(-4px);
-            border-color: var(--accent-color);
-            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.15);
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-hover);
         }
 
         .dataops-canvas-wrapper {
             position: relative;
             overflow: hidden;
-            background: #0f172a;
+            background: #1a0a00;
             max-height: 260px;
         }
 
@@ -302,7 +301,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.45);
+            background: rgba(26, 10, 0, 0.45);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -326,173 +325,49 @@
             padding-bottom: 15px;
             font-weight: 700;
             letter-spacing: -0.5px;
-            color: var(--text-color);
+            color: var(--text-primary);
         }
 
-        /* ================= THEME TOGGLE ================= */
-        .theme-toggle-container {
-            position: fixed;
-            top: 50%;
-            left: 16px;
-            transform: translateY(-50%);
-            z-index: 9999;
-            background: linear-gradient(135deg, #a855f7, #3b82f6);
-            border-radius: 24px;
-            padding: 4px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            width: 58px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .theme-toggle-container:hover {
-            transform: translateY(-50%) scale(1.06);
-            box-shadow: 0 6px 18px rgba(168, 85, 247, 0.4);
-        }
-
-        .theme-toggle-btn {
-            width: 24px;
-            height: 24px;
-            background-color: white;
-            border-radius: 50%;
-            position: absolute;
-            left: 4px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 2;
-            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-            color: #f59e0b;
-        }
-
-        [data-bs-theme="dark"] .theme-toggle-container .theme-toggle-btn {
-            transform: translateY(-50%) translateX(26px);
-            background-color: #1c1c1e;
-            color: #a855f7;
-        }
-
-        .theme-icon-bg {
-            font-size: 11px;
-            z-index: 1;
-            padding: 0 5px;
-            user-select: none;
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        /* ================= FLOATING CONTROLS (RESPONSIVE) ================= */
-        .floating-controls-wrapper {
-            display: contents;
-        }
-
-        .nav-separator {
-            display: none;
-        }
-
+        /* ================= FLOATING TOP NAVIGATION (RESPONSIVE) ================= */
         @media (max-width: 768px) {
-            .floating-controls-wrapper {
-                display: flex;
-                position: fixed;
-                bottom: env(safe-area-inset-bottom, 16px);
-                bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 10000;
-                align-items: center;
-                gap: 10px;
-                background: var(--glass-bg);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                padding: 6px 14px;
-                border-radius: 40px;
-                border: 1px solid var(--border-color);
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-                max-width: 90vw;
-                white-space: nowrap;
+            .floating-nav {
+                top: max(12px, env(safe-area-inset-top, 12px));
+                padding: 5px 6px;
+                gap: 2px;
+                max-width: calc(100vw - 20px);
+                box-shadow: 0 4px 20px rgba(90, 20, 30, 0.1);
             }
 
-            .side-nav-pill {
-                position: static;
-                transform: none;
-                flex-direction: row;
-                gap: 6px;
-                background: transparent;
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
-                padding: 0;
-                border-radius: 0;
-                border: none;
-                box-shadow: none;
+            .floating-nav-link {
+                padding: 6px 11px;
+                font-size: 12.5px;
+                gap: 5px;
             }
 
-            .side-nav-link {
-                width: 36px;
-                height: 36px;
-            }
-
-            .theme-toggle-container {
-                position: relative !important;
-                top: auto !important;
-                left: auto !important;
-                transform: none !important;
-                flex-shrink: 0;
-                width: 58px;
-                height: 32px;
-                border-radius: 20px;
-                padding: 0 5px;
-                box-shadow: none;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            .theme-toggle-container .theme-toggle-btn {
-                width: 24px;
-                height: 24px;
-                left: 4px;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
-            [data-bs-theme="dark"] .theme-toggle-container .theme-toggle-btn {
-                transform: translateY(-50%) translateX(26px);
-            }
-
-            .theme-toggle-container:hover {
-                transform: none !important;
-                box-shadow: none !important;
-            }
-
-            .nav-separator {
-                display: block;
-                width: 1px;
-                height: 22px;
-                background-color: var(--border-color);
-                flex-shrink: 0;
-            }
-
-            .side-nav-link .nav-label {
-                right: auto;
-                left: 50%;
-                bottom: 52px;
-                top: auto;
-                transform: translateX(-50%);
-            }
-
-            .side-nav-link:hover .nav-label {
-                right: auto;
-                bottom: 44px;
+            .floating-nav-link i {
+                font-size: 12px;
             }
 
             .back-to-top {
-                bottom: 80px;
-                right: 16px;
+                bottom: 25px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .floating-nav {
+                padding: 4px;
+                gap: 1px;
+            }
+
+            .floating-nav-link {
+                padding: 5px 8px;
+                font-size: 11.5px;
+                gap: 4px;
+            }
+
+            .floating-nav-link i {
+                font-size: 11px;
             }
         }
 
@@ -523,10 +398,10 @@
             width: 160px;
             height: 140px;
             margin: 0 15px;
-            background: var(--card-bg);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--card-shadow);
+            background: var(--surface);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             white-space: normal;
             text-align: center;
@@ -536,8 +411,8 @@
         }
 
         .slide-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
 
         .slide-icon {
@@ -564,45 +439,291 @@
             }
         }
 
-        /* ================= DARK MODE OVERRIDES ================= */
-        :root[data-bs-theme="dark"] .text-dark {
-            color: var(--text-color) !important;
+        /* ================= WARM EDITORIAL OVERRIDES ================= */
+        /* No dark mode — single warm identity */
+        .text-dark { color: var(--text-primary) !important; }
+        .text-secondary { color: var(--text-secondary) !important; }
+        .text-muted { color: var(--text-muted) !important; }
+        .text-primary { color: var(--accent) !important; }
+        .bg-primary { background-color: var(--accent) !important; }
+        .border-primary { border-color: var(--accent) !important; }
+
+        .badge.bg-dark {
+            background-color: var(--surface) !important;
+            color: var(--text-primary) !important;
+            border: 1px solid var(--border) !important;
         }
 
-        :root[data-bs-theme="dark"] .text-secondary {
-            color: var(--secondary-text) !important;
+        /* dark-invert: keep tech icons visible on warm surface */
+        .dark-invert {
+            filter: none;
         }
 
-        :root[data-bs-theme="dark"] .text-muted {
-            color: var(--secondary-text) !important;
+        .bg-light {
+            background-color: var(--surface-raised) !important;
+            border-color: var(--border) !important;
         }
 
-        :root[data-bs-theme="dark"] .badge.bg-dark {
-            background-color: #333336 !important;
+        .modal-content {
+            background-color: var(--surface-raised) !important;
+            color: var(--text-primary) !important;
+            border-color: var(--border) !important;
         }
 
-        :root[data-bs-theme="dark"] .dark-invert {
-            filter: invert(1) brightness(2);
+        .modal-header,
+        .modal-footer {
+            border-color: var(--border) !important;
         }
 
-        :root[data-bs-theme="dark"] .bg-light {
-            background-color: rgba(255, 255, 255, 0.05) !important;
-            border-color: var(--border-color) !important;
+        /* Bootstrap Primary Maroon Overrides */
+        .btn-primary {
+            background-color: var(--accent) !important;
+            border-color: var(--accent) !important;
+            color: #fff !important;
+            transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--accent-hover) !important;
+            border-color: var(--accent-hover) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(125, 29, 63, 0.3) !important;
+        }
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+        .btn-outline-primary {
+            color: var(--accent) !important;
+            border-color: var(--accent) !important;
+            background-color: transparent !important;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+        }
+        .btn-outline-primary:hover, .btn-outline-primary:focus {
+            background-color: var(--accent) !important;
+            color: #fff !important;
+            border-color: var(--accent) !important;
+            transform: translateY(-1px);
+        }
+        .btn-outline-primary:active {
+            transform: scale(0.97);
+        }
+        .btn-outline-secondary {
+            color: var(--text-secondary) !important;
+            border-color: var(--border-strong) !important;
+        }
+        .btn-outline-secondary:hover {
+            background-color: var(--surface) !important;
+            color: var(--text-primary) !important;
+        }
+        .badge.bg-primary {
+            background-color: var(--accent) !important;
+            color: #fff !important;
+        }
+        .bg-primary-subtle {
+            background-color: var(--accent-dim) !important;
+        }
+        .text-primary-subtle {
+            color: var(--accent) !important;
+        }
+        .nav-pills .nav-link.active {
+            background-color: var(--accent) !important;
+            color: #fff !important;
+        }
+        .nav-pills .nav-link {
+            color: var(--accent);
+        }
+        .nav-pills .nav-link:hover {
+            background-color: var(--accent-dim);
         }
 
-        :root[data-bs-theme="dark"] .modal-content {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border-color: var(--border-color);
+        /* Card surface override */
+        .card {
+            background-color: var(--surface) !important;
+            border-color: var(--border) !important;
         }
 
-        :root[data-bs-theme="dark"] .modal-header,
-        :root[data-bs-theme="dark"] .modal-footer {
-            border-color: var(--border-color);
+        /* Focus ring */
+        *:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
         }
 
-        :root[data-bs-theme="dark"] .btn-close {
-            filter: invert(1);
+        /* Touch target minimum */
+        .btn { min-height: 44px; }
+
+        /* Responsive fixes */
+        @media (max-width: 576px) {
+            .project-card { padding: 1.25rem !important; }
+            .modal-content { border-radius: min(20px, 4vw) !important; }
+            section { padding: 60px 0; }
+        }
+
+        /* ================= SITE FOOTER ================= */
+        .site-footer {
+            background-color: var(--accent);
+            color: #FAF6F0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-social-btn {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: #FAF6F0;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .footer-social-btn:hover {
+            background: #FAF6F0;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        .footer-social-btn:active {
+            transform: translateY(-1px) scale(0.96);
+        }
+
+        /* ================= CLASSY CONTACT MODAL CARDS ================= */
+        .contact-channel-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-radius: 14px;
+            background: var(--surface-raised);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            color: var(--text-primary);
+        }
+
+        .contact-channel-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+
+        .contact-channel-info {
+            text-align: left;
+            margin-left: 14px;
+            flex-grow: 1;
+        }
+
+        .contact-channel-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+            color: var(--text-primary);
+        }
+
+        .contact-channel-handle {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-family: 'DM Sans', sans-serif;
+            word-break: break-all;
+        }
+
+        .contact-channel-arrow {
+            font-size: 13px;
+            color: var(--text-muted);
+            transition: transform 0.25s ease, color 0.25s ease;
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+
+        /* Specific Brand Colors with Minimalist Editorial Treatment */
+        /* 1. WhatsApp */
+        .contact-card-whatsapp .contact-channel-icon {
+            background-color: rgba(37, 211, 102, 0.12);
+            color: #0d8745;
+        }
+        .contact-card-whatsapp:hover {
+            border-color: rgba(37, 211, 102, 0.5);
+            background-color: rgba(37, 211, 102, 0.04);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.12);
+            color: var(--text-primary);
+        }
+        .contact-card-whatsapp:hover .contact-channel-arrow {
+            color: #0d8745;
+            transform: translate(2px, -2px);
+        }
+        .contact-card-whatsapp:hover .contact-channel-icon {
+            transform: scale(1.08);
+        }
+
+        /* 2. Email */
+        .contact-card-email .contact-channel-icon {
+            background-color: rgba(234, 67, 53, 0.12);
+            color: #EA4335;
+        }
+        .contact-card-email:hover {
+            border-color: rgba(234, 67, 53, 0.5);
+            background-color: rgba(234, 67, 53, 0.04);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(234, 67, 53, 0.12);
+            color: var(--text-primary);
+        }
+        .contact-card-email:hover .contact-channel-arrow {
+            color: #EA4335;
+            transform: translate(2px, -2px);
+        }
+        .contact-card-email:hover .contact-channel-icon {
+            transform: scale(1.08);
+        }
+
+        /* 3. LinkedIn */
+        .contact-card-linkedin .contact-channel-icon {
+            background-color: rgba(10, 102, 194, 0.12);
+            color: #0A66C2;
+        }
+        .contact-card-linkedin:hover {
+            border-color: rgba(10, 102, 194, 0.5);
+            background-color: rgba(10, 102, 194, 0.04);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 102, 194, 0.12);
+            color: var(--text-primary);
+        }
+        .contact-card-linkedin:hover .contact-channel-arrow {
+            color: #0A66C2;
+            transform: translate(2px, -2px);
+        }
+        .contact-card-linkedin:hover .contact-channel-icon {
+            transform: scale(1.08);
+        }
+
+        /* 4. GitHub */
+        .contact-card-github .contact-channel-icon {
+            background-color: rgba(26, 10, 0, 0.08);
+            color: var(--text-primary);
+        }
+        .contact-card-github:hover {
+            border-color: rgba(26, 10, 0, 0.35);
+            background-color: rgba(26, 10, 0, 0.03);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 10, 0, 0.1);
+            color: var(--text-primary);
+        }
+        .contact-card-github:hover .contact-channel-arrow {
+            color: var(--text-primary);
+            transform: translate(2px, -2px);
+        }
+        .contact-card-github:hover .contact-channel-icon {
+            transform: scale(1.08);
         }
 
         #preloader {
@@ -611,15 +732,13 @@
             left: 0;
             width: 100vw;
             height: 100dvh;
-            background-color: var(--bg-color);
+            background-color: var(--canvas);
             z-index: 99999;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             transition: opacity 0.8s ease, visibility 0.8s ease;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             visibility: visible !important;
             opacity: 1 !important;
         }
@@ -632,8 +751,8 @@
         .modern-spinner {
             width: 44px;
             height: 44px;
-            border: 3px solid var(--border-color);
-            border-top: 3px solid var(--accent-color);
+            border: 3px solid var(--border);
+            border-top: 3px solid var(--accent);
             border-radius: 50%;
             animation: spin 0.8s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
             margin: 0 auto;
@@ -664,16 +783,7 @@
         }
     </style>
 
-    <script>
-        // Early theme detection to prevent flash of wrong theme
-        (function () {
-            var s = localStorage.getItem('theme');
-            var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (s === 'dark' || (!s && d)) {
-                document.documentElement.setAttribute('data-bs-theme', 'dark');
-            }
-        })();
-    </script>
+
 </head>
 
 <body>
@@ -727,68 +837,56 @@
         })();
     </script>
 
-    <!-- FLOATING CONTROLS (NAV & THEME TOGGLE) -->
-    <div class="floating-controls-wrapper">
-        <div class="theme-toggle-container" id="floatingThemeToggle" title="Toggle Light/Dark Mode">
-            <i class="fa-solid fa-sun theme-icon-bg"></i>
-            <i class="fa-solid fa-moon theme-icon-bg"></i>
-            <div class="theme-toggle-btn">
-                <i class="fa-solid fa-sun" id="toggleInnerIcon" style="font-size: 12px;"></i>
-            </div>
-        </div>
+    <!-- FLOATING TOP NAVIGATION -->
+    <nav class="floating-nav" aria-label="Main Navigation">
+        <a href="#" class="floating-nav-link active" title="Home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="#experience" class="floating-nav-link" title="Experience">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Experience</span>
+        </a>
+        <a href="#projects" class="floating-nav-link" title="Projects">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span>Projects</span>
+        </a>
+        <a href="#skills" class="floating-nav-link" title="Skills">
+            <i class="fa-solid fa-gears"></i>
+            <span>Skills</span>
+        </a>
+    </nav>
 
-        <div class="nav-separator"></div>
-
-        <nav class="side-nav-pill">
-            <a href="#" class="side-nav-link active" title="Home">
-                <i class="fa-solid fa-house"></i>
-                <span class="nav-label">Home</span>
-            </a>
-            <a href="#experience" class="side-nav-link" title="Experience">
-                <i class="fa-solid fa-briefcase"></i>
-                <span class="nav-label">Experience</span>
-            </a>
-            <a href="#projects" class="side-nav-link" title="Projects">
-                <i class="fa-solid fa-laptop-code"></i>
-                <span class="nav-label">Projects</span>
-            </a>
-            <a href="#skills" class="side-nav-link" title="Skills">
-                <i class="fa-solid fa-gears"></i>
-                <span class="nav-label">Skills</span>
-            </a>
-        </nav>
-    </div>
-
-    <header class="hero-section py-5 d-flex align-items-center" style="min-height: 85vh;">
+    <header class="hero-section py-5 d-flex align-items-center" style="min-height: 85dvh;">
         <div class="container">
             <div class="row align-items-center">
                 <!-- PHOTO COLUMN -->
                 <div class="col-lg-5 order-1 order-lg-1 mb-5 mb-lg-0 text-center text-lg-end pe-lg-5"
                     data-aos="fade-right" data-aos-duration="1200">
                     <div class="d-inline-block position-relative">
-                        <!-- Added subtle glow behind image to mimic Gia Jung's aesthetic -->
+                        <!-- Warm maroon ambient glow behind photo -->
                         <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 rounded-4"
-                            style="background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(59, 130, 246, 0.05) 70%); filter: blur(25px); z-index: -1;">
+                            style="background: radial-gradient(circle, rgba(125, 29, 63, 0.12) 0%, rgba(180, 80, 60, 0.04) 70%); filter: blur(28px); z-index: -1;">
                         </div>
-                        <img src="assets/self_photo.jpg" alt="Farhan Faiq Renardi" class="img-fluid rounded-4 shadow-lg"
-                            style="max-height: 420px; width: auto; object-fit: cover; border: 1px solid rgba(128,128,128,0.2); filter: grayscale(30%) contrast(110%) brightness(0.95); transition: all 0.4s ease; cursor: pointer;"
+                        <img src="assets/self_photo.jpg" alt="Farhan Faiq Renardi" class="img-fluid rounded-4 hero-photo"
+                            style="max-height: 420px; width: auto; object-fit: cover; border: 1px solid var(--border); filter: grayscale(25%) contrast(108%) brightness(0.97); transition: filter 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1); cursor: pointer;"
                             onmouseover="this.style.filter='grayscale(0%) contrast(100%) brightness(1)'; this.style.transform='translateY(-5px)';"
-                            onmouseout="this.style.filter='grayscale(30%) contrast(110%) brightness(0.95)'; this.style.transform='translateY(0)';">
+                            onmouseout="this.style.filter='grayscale(25%) contrast(108%) brightness(0.97)'; this.style.transform='translateY(0)';">
                     </div>
                 </div>
 
                 <!-- TEXT COLUMN -->
                 <div class="col-lg-7 order-2 order-lg-2 text-center text-lg-start mt-4 mt-lg-0" data-aos="fade-left"
                     data-aos-duration="1200">
-                    <h1 class="fw-bolder text-dark mb-3"
-                        style="font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: -1.5px; line-height: 1.1;">Farhan Faiq Renardi</h1>
-                    <h2 class="fs-5 fs-md-4 mb-4 fw-bold text-gradient-apple"
-                        style="letter-spacing: -0.5px; min-height: 28px;"><span id="typewriter-text"></span><span
+                    <h1 class="fw-bold text-dark mb-3"
+                        style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 4.2rem); letter-spacing: -1.5px; line-height: 1.05;">Farhan Faiq Renardi</h1>
+                    <h2 class="fs-5 fs-md-4 mb-4 fw-semibold hero-typewriter-title"
+                        style="letter-spacing: -0.4px; min-height: 28px;"><span id="typewriter-text"></span><span
                             class="typewriter-cursor">|</span></h2>
 
                     <p class="text-secondary mb-5 apple-summary-text mx-auto mx-lg-0"
                         style="max-width: 100%; font-size: clamp(1rem, 2vw, 1.15rem); line-height: 1.7;">
-                        I build systems that move data, run models, and solve real bottlenecks. Experienced in shipping containerized ELT pipelines with dbt and Postgres, autonomous GenAI workflows with pgvector RAG and AST-secured Text-to-SQL, and responsive web applications. Passionate about clean architecture, developer tooling, and systems that just work.
+                        Currently spending my time building data pipelines, machine learning models, and practical AI systems designed for real business operations. As an AI & Data Engineer, I approach software through two critical lenses: technical reliability and business impact. From automated data workflows to agentic AI, I build systems that eliminate friction and help teams make faster, data-driven decisions.
                     </p>
 
                     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
@@ -803,36 +901,36 @@
 
     <main>
         <section id="experience" class="container">
-            <h3 class="text-center section-title" data-aos="zoom-in-up">Professional Experience</h3>
+            <h3 class="text-center section-title" data-aos="fade-up">Professional Experience</h3>
 
             <div class="row justify-content-center mt-5">
                 <div class="col-lg-10">
-                    <div class="row mb-5 align-items-center" data-aos="zoom-in-right" data-aos-delay="100">
-                        <div class="col-md-3 text-md-end">
+                    <div class="row mb-5 align-items-start" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-md-3 text-md-end mb-3 mb-md-0">
                             <span class="badge bg-primary fs-6 px-3 py-2 rounded-pill">Nov 2025 - May 2026</span>
                         </div>
-                        <div class="col-md-9 border-start border-primary border-3 ps-4 py-2">
+                        <div class="col-md-9 ps-4 py-2" style="border-left: 2px solid var(--accent); margin-left: -1px;">
                             <h4 class="h5 fw-bold mb-1">Data Scientist Intern</h4>
                             <p class="text-secondary fw-semibold mb-2">Telkom Indonesia (HCSP Division)</p>
                             <ul class="text-muted mb-0">
-                                <li>Engineered automated scraping pipelines across 770 web sources using Playwright and BeautifulSoup, saving 100+ manual hours.</li>
-                                <li>Elevated legacy HR dataset integrity to >90% by processing and cleaning 1,600+ records using Python (Pandas).</li>
-                                <li>Improved recruitment matching by optimizing an employee-role classification model (Logistic Regression) with hyperparameter tuning.</li>
+                                <li>Saved 100+ manual hours by building automated web scraping pipelines across 770 sources using Playwright and BeautifulSoup, orchestrated with n8n.</li>
+                                <li>Raised dataset integrity to &gt;90% across legacy HR systems by cleaning and validating 1,600+ employee records using Python (Pandas).</li>
+                                <li>Supported employee-role matching by developing and tuning a profile matchup model using Logistic Regression with scikit-learn.</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="row mb-4 align-items-center" data-aos="zoom-in-left" data-aos-delay="200">
-                        <div class="col-md-3 text-md-end">
+                    <div class="row mb-4 align-items-start" data-aos="fade-up" data-aos-delay="200">
+                        <div class="col-md-3 text-md-end mb-3 mb-md-0">
                             <span class="badge bg-dark fs-6 px-3 py-2 rounded-pill">Dec 2023 - Feb 2024</span>
                         </div>
-                        <div class="col-md-9 border-start border-dark border-3 ps-4 py-2">
+                        <div class="col-md-9 ps-4 py-2" style="border-left: 2px solid var(--text-secondary); margin-left: -1px;">
                             <h4 class="h5 fw-bold mb-1">Data Analyst Intern</h4>
                             <p class="text-secondary fw-semibold mb-2">Semen Indonesia Group (Pricing & Margin Management)</p>
                             <ul class="text-muted mb-0">
-                                <li>Cut weekly reporting preparation time by 60% by automating data aggregation and executive reporting workflows through Power BI.</li>
-                                <li>Tracked regional market margins across 45 territories by deploying 2 interactive dashboards directly utilized by Pricing Management.</li>
-                                <li>Guided pricing strategy by delivering weekly profitability analysis on operational and financial datasets using Python and Excel.</li>
+                                <li>Cut weekly reporting preparation time by 60% by automating data aggregation and executive reporting workflows in Power BI.</li>
+                                <li>Enabled Pricing Management to track margins across 45 regional territories by designing and deploying 2 interactive dashboards in Power BI.</li>
+                                <li>Guided regional pricing adjustments by delivering weekly profitability and cost-trend analyses across operational datasets using Python and Excel.</li>
                             </ul>
                         </div>
                     </div>
@@ -842,58 +940,38 @@
 
         <section id="projects" style="background-color: transparent;">
             <div class="container">
-                <h3 class="text-center section-title" data-aos="zoom-in-up">Featured Projects</h3>
-                <p class="text-center text-muted mb-5" data-aos="zoom-in-up" data-aos-delay="100">
+                <h3 class="text-center section-title" data-aos="fade-up">Featured Projects</h3>
+                <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100">
                     Production systems, automated data pipelines, and agentic workflows.
                 </p>
 
                 <!-- Project 1: LogistiQ -->
-                <div class="card project-card p-4 p-lg-5 mb-5" data-aos="zoom-in" data-aos-delay="150">
-                    <div class="row align-items-center mb-4">
-                        <div class="col-lg-8">
-                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                                <span class="badge bg-primary px-3 py-2 rounded-pill">Flagship Production ERP</span>
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">Undergraduate Capstone</span>
-                            </div>
-                            <h4 class="h3 fw-bold mb-2">LogistiQ - Enterprise Logistics ERP &amp; AI Copilot</h4>
-                            <p class="text-primary fw-semibold mb-3">CV Qirana Furniture | Django REST, React, PostgreSQL 16 + pgvector, Gemini AI, Docker</p>
+                <div class="card project-card p-4 p-lg-5 mb-5" data-aos="fade-up" data-aos-delay="150">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h4 class="h3 fw-bold mb-2">LogistiQ - Logistics &amp; Inventory Management System</h4>
+                            <p class="text-primary fw-semibold mb-3">CV Qirana Furniture | Django REST, React, PostgreSQL, pgvector, Gemini AI, Docker</p>
                             <p class="text-muted mb-3" style="line-height: 1.7;">
-                                Enterprise-grade logistics and warehouse management ERP engineered for international furniture exporter CV Qirana Furniture (Jepara, Indonesia). Replaced fragmented paper slips and Excel workbooks with a centralized relational database and AI-driven workflows. Features 97.8% root code reduction (refactored monolith App.js from 3,935 lines to 87 lines), centralized management of 312 materials and 657 item-supplier pricing maps across 10 factory subdivisions, sub-150ms pgvector RAG over SOPs, AST-secured Text-to-SQL (<code class="text-dark">sqlparse</code> guardrails enforcing 100% mutation block rate), and Gemini Vision OCR converting delivery orders to structured records in under 5 seconds.
+                                A web-based logistics and inventory management system built for CV Qirana Furniture to replace paper records and fragmented spreadsheets with a single relational database. Manages materials, purchase orders, and supplier pricing maps across 10 factory subdivisions. Integrated Gemini Vision OCR to convert physical delivery receipts into structured database records in seconds, and added a pgvector search assistant so staff can quickly retrieve warehouse SOPs and stock records.
                             </p>
                             <div class="d-flex flex-wrap gap-2 pt-2">
                                 <a href="https://farhanrenardi.github.io/LogistiQ/" target="_blank"
                                     class="btn btn-primary rounded-pill px-4 py-2 shadow-sm d-inline-flex align-items-center">
-                                    View Live Documentation <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
+                                    View Documentation <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
                                 </a>
-                                <a href="https://github.com/farhanrenardi/LogistiQ" target="_blank"
-                                    class="btn btn-outline-dark rounded-pill px-4 py-2 shadow-sm d-inline-flex align-items-center">
-                                    GitHub Repository <i class="fa-brands fa-github ms-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-                            <div class="p-3 bg-light rounded-4 border text-start">
-                                <h6 class="fw-bold mb-2 text-dark">Core Architecture Metrics</h6>
-                                <ul class="list-unstyled small text-muted mb-0">
-                                    <li class="mb-1"><strong>Codebase:</strong> 97.8% root refactoring reduction</li>
-                                    <li class="mb-1"><strong>RAG Latency:</strong> &lt; 150ms semantic search</li>
-                                    <li class="mb-1"><strong>SQL Safety:</strong> 100% AST mutation prevention</li>
-                                    <li class="mb-1"><strong>OCR Extraction:</strong> 15 min &rarr; &lt; 5s (&ge; 90% accuracy)</li>
-                                    <li><strong>Database:</strong> PostgreSQL 16 + pgvector (Docker)</li>
-                                </ul>
                             </div>
                         </div>
                     </div>
 
                     <!-- 3-Card Interactive Video Snapshots -->
-                    <h5 class="h6 fw-bold text-uppercase text-secondary tracking-wider mb-3">System Interface Snapshots (Hover / Tap to Play)</h5>
+                    <h5 class="h6 fw-bold text-uppercase text-secondary tracking-wider mb-3">System Interface Snapshots</h5>
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="snapshot-video-card h-100"
-                                data-title="Supply Chain Analytics Dashboard"
+                                data-title="Analytics Dashboard"
                                 data-desc="Executive visibility into active requests, division allocations, inventory valuations, and audit logs."
-                                data-tags="Django REST, React, PostgreSQL 16, Chart.js, Docker"
-                                title="Click to amplify in HD">
+                                data-tags="Django REST, React, PostgreSQL"
+                                >
                                 <div class="snapshot-video-wrapper">
                                     <video preload="none" poster="assets/snapshots/snapshot1.png" playsinline muted loop class="w-100 rounded mb-0 shadow-sm">
                                         <source src="assets/snapshots/snapshot1.mp4" type="video/mp4">
@@ -902,17 +980,17 @@
                                     <div class="snapshot-expand-badge"><i class="fa-solid fa-expand"></i></div>
                                 </div>
                                 <div class="p-3">
-                                    <h6 class="fw-bold mb-1">Supply Chain Analytics Dashboard</h6>
+                                    <h6 class="fw-bold mb-1">Analytics Dashboard</h6>
                                     <p class="small text-muted mb-0">Executive visibility into active requests, division allocations, inventory valuations, and audit logs.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="snapshot-video-card h-100"
-                                data-title="Logistics AI Copilot Drawer"
-                                data-desc="Contextual slide-out assistant answering inventory queries and dispatch protocols with pgvector RAG."
+                                data-title="Logistics AI assistant"
+                                data-desc="Contextual assistant answering inventory, SOP, and doing research on the latest goods price in the market."
                                 data-tags="Gemini AI, pgvector, RAG, Semantic Search, FastAPI"
-                                title="Click to amplify in HD">
+                                >
                                 <div class="snapshot-video-wrapper">
                                     <video preload="none" poster="assets/snapshots/snapshot2.png" playsinline muted loop class="w-100 rounded mb-0 shadow-sm">
                                         <source src="assets/snapshots/snapshot2.mp4" type="video/mp4">
@@ -921,8 +999,8 @@
                                     <div class="snapshot-expand-badge"><i class="fa-solid fa-expand"></i></div>
                                 </div>
                                 <div class="p-3">
-                                    <h6 class="fw-bold mb-1">Logistics AI Copilot Drawer</h6>
-                                    <p class="small text-muted mb-0">Contextual slide-out assistant answering inventory queries and dispatch protocols with pgvector RAG.</p>
+                                    <h6 class="fw-bold mb-1">Logistics AI assistant</h6>
+                                    <p class="small text-muted mb-0">Contextual assistant answering inventory, SOP, and doing research on the latest goods price in the market.</p>
                                 </div>
                             </div>
                         </div>
@@ -930,8 +1008,8 @@
                             <div class="snapshot-video-card h-100"
                                 data-title="AST-Verified Text-to-SQL Results"
                                 data-desc="Live natural-language Text-to-SQL results with syntax validation, schema introspection, and guardrails."
-                                data-tags="Text-to-SQL, sqlparse AST, PostgreSQL 16, Guardrails, Security"
-                                title="Click to amplify in HD">
+                                data-tags="sqlparse, PostgreSQL"
+                                >
                                 <div class="snapshot-video-wrapper">
                                     <video preload="none" poster="assets/snapshots/snapshot6.png" playsinline muted loop class="w-100 rounded mb-0 shadow-sm">
                                         <source src="assets/snapshots/snapshot6.mp4" type="video/mp4">
@@ -949,72 +1027,36 @@
                 </div>
 
                 <!-- Project 2: Worka 2.0 -->
-                <div class="card project-card p-4 p-lg-5 mb-5" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="row align-items-center mb-4">
-                        <div class="col-lg-8">
-                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                                <span class="badge bg-primary px-3 py-2 rounded-pill">Data Engineering &amp; ELT</span>
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">Automated Labor Market Intelligence</span>
-                            </div>
-                            <h4 class="h3 fw-bold mb-2">Worka - Automated Labor Market ELT Platform &amp; Self-Healing Ingestion</h4>
-                            <p class="text-primary fw-semibold mb-3">Python, FastAPI, dbt Core, PostgreSQL 15, pgvector, Playwright, Gemini Flash, Docker</p>
+                <div class="card project-card p-4 p-lg-5 mb-5" data-aos="fade-up" data-aos-delay="200">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h4 class="h3 fw-bold mb-2">Worka - Job Intelligence Platform</h4>
+                            <p class="text-primary fw-semibold mb-3">dbt Core, PostgreSQL, pgvector, FastAPI, Playwright, Docker</p>
                             <p class="text-muted mb-3" style="line-height: 1.7;">
-                                End-to-end containerized ELT data pipeline collecting, modeling, enriching, and serving regional tech labor market data. Features a two-tier self-healing scraper cascading to Gemini Flash on DOM drift, Kimball star schema modeling with dbt Core marts (<code class="text-dark">fact_job_postings</code>, <code class="text-dark">dim_companies</code>, <code class="text-dark">dim_skills</code>, <code class="text-dark">dim_locations</code>), pgvector semantic CV matching (60% cosine similarity + 40% skill taxonomy overlap), and high-throughput async FastAPI v2 REST endpoints.
+                                An automated ELT pipeline built to collect and standardize fragmented job postings across multiple hiring sites. Scrapes job listings automatically using Playwright, transforms raw records into structured star-schema tables using dbt Core, and serves market trend analytics via a FastAPI backend. Includes vector similarity search using PostgreSQL pgvector to match candidate resumes against active job listings.
                             </p>
                             <div class="d-flex flex-wrap gap-2 pt-2">
-                                <a href="https://farhanrenardi.github.io/-worka-jobmapper_and_scraper/" target="_blank"
+                                <a href="https://farhanrenardi.github.io/worka/" target="_blank"
                                     class="btn btn-primary rounded-pill px-4 py-2 shadow-sm d-inline-flex align-items-center">
-                                    View Live Documentation <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
+                                    View Documentation <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
                                 </a>
-                                <a href="https://github.com/farhanrenardi/-worka-jobmapper_and_scraper" target="_blank"
-                                    class="btn btn-outline-dark rounded-pill px-4 py-2 shadow-sm d-inline-flex align-items-center">
-                                    GitHub Repository <i class="fa-brands fa-github ms-2"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-                            <div class="p-3 bg-light rounded-4 border text-start">
-                                <h6 class="fw-bold mb-2 text-dark">Data Pipeline Highlights</h6>
-                                <ul class="list-unstyled small text-muted mb-0">
-                                    <li class="mb-1"><strong>Ingestion:</strong> Two-tier scraper with Gemini Flash fallback</li>
-                                    <li class="mb-1"><strong>Marts:</strong> Kimball Star Schema (<code class="text-dark">fact_job_postings</code>)</li>
-                                    <li class="mb-1"><strong>Semantic Match:</strong> pgvector 768-d embeddings (60/40 hybrid)</li>
-                                    <li class="mb-1"><strong>Endpoints:</strong> Async FastAPI v2 REST with pagination</li>
-                                    <li><strong>Deployment:</strong> Multi-container Docker compose environment</li>
-                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 3: Agentic DataOps -->
-                <div class="card project-card p-4 p-lg-5 mb-5" data-aos="zoom-in" data-aos-delay="250">
-                    <div class="row align-items-center mb-4">
-                        <div class="col-lg-8">
-                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                                <span class="badge bg-primary px-3 py-2 rounded-pill">AI Agents &amp; Data Quality</span>
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">IBM SkillsBuild Capstone</span>
-                            </div>
+                <div class="card project-card p-4 p-lg-5 mb-5" data-aos="fade-up" data-aos-delay="250">
+                    <div class="row mb-4">
+                        <div class="col-12">
                             <h4 class="h3 fw-bold mb-2">Agentic DataOps - Autonomous Self-Healing ETL &amp; Data Quality Guardian</h4>
-                            <p class="text-primary fw-semibold mb-3">Langflow 1.0.19, Google Generative AI (Gemini Flash), Docker, PostgreSQL 16, PyArrow, Pandas</p>
+                            <p class="text-primary fw-semibold mb-3">Langflow 1.0.19, Google Generative AI (Gemini Flash), Docker, PostgreSQL, PyArrow, Pandas</p>
                             <p class="text-muted mb-3" style="line-height: 1.7;">
                                 Autonomous self-healing ETL and data quality guardian pipeline orchestrating untrusted tabular data remediation. Features automated data auditing for schema drift and encoding corruption via Langflow, dynamic Pandas transformation synthesis by Gemini Flash to resolve historical anomalies like Excel date serial offsets, high-throughput memory-safe 500k-row chunking (<code class="text-dark">chunksize=50,000</code>) via PyArrow, and auto-generated PostgreSQL DDL schemas for immediate relational ingestion.
                             </p>
                             <div class="d-flex flex-wrap gap-2 pt-2">
                                 <button type="button" class="btn btn-outline-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#dataopsFlowModal">View Workflow Canvas <i class="fa-solid fa-diagram-project ms-1"></i></button>
                                 <a href="assets/Agentic_DataOps_Capstone.json" download="Agentic_DataOps_Capstone.json" class="btn btn-outline-secondary rounded-pill px-4">Download Pipeline JSON <i class="fa-solid fa-download ms-1"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
-                            <div class="p-3 bg-light rounded-4 border text-start">
-                                <h6 class="fw-bold mb-2 text-dark">DataOps Highlights</h6>
-                                <ul class="list-unstyled small text-muted mb-0">
-                                    <li class="mb-1"><strong>Visual DAG:</strong> Langflow 1.0.19 visual workflow DAG</li>
-                                    <li class="mb-1"><strong>Self-Healing:</strong> Dynamic Pandas transformation synthesis</li>
-                                    <li class="mb-1"><strong>Sanitization:</strong> Excel date serial resolution &amp; anomaly quarantine</li>
-                                    <li class="mb-1"><strong>Vectorized Load:</strong> PyArrow 500k-row chunking (50k rows/batch)</li>
-                                    <li><strong>Target Store:</strong> Auto-synthesized PostgreSQL 16 DDL schemas</li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -1033,9 +1075,6 @@
                                     <h6 class="fw-bold mb-0 text-dark">Langflow Multi-Stage Visual Pipeline Canvas</h6>
                                     <p class="small text-muted mb-0">End-to-end self-healing orchestration DAG with Gemini Flash remediation and automated DDL synthesis.</p>
                                 </div>
-                                <span class="badge bg-primary-subtle text-primary border rounded-pill px-3 py-2 align-self-start align-self-sm-center">
-                                    <i class="fa-solid fa-expand me-1"></i> Click to Zoom
-                                </span>
                             </div>
                         </div>
                     </div>
@@ -1044,12 +1083,8 @@
                 <!-- Projects 4 & 5 Grid: Machine Learning & Enterprise Impact -->
                 <div class="row g-4 mb-5">
                     <!-- Project 4: Medical Image Classification -->
-                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="card project-card p-4 h-100 d-flex flex-column">
-                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                                <span class="badge bg-primary px-3 py-2 rounded-pill">Computer Vision</span>
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">Deep Learning</span>
-                            </div>
                             <h4 class="h5 fw-bold mb-2">Medical Image Classification using Deep Learning</h4>
                             <p class="small text-primary mb-3">Transfer Learning (EfficientNetB3), TensorFlow, Keras, Hugging Face Spaces</p>
                             <p class="text-muted flex-grow-1" style="line-height: 1.7;">
@@ -1063,15 +1098,10 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Enterprise Business Impact Card A: Telkom Indonesia -->
-                    <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="350">
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="350">
                         <div class="card project-card p-4 h-100 d-flex flex-column">
-                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                                <span class="badge bg-primary px-3 py-2 rounded-pill">Enterprise Analytics</span>
-                                <span class="badge bg-dark px-3 py-2 rounded-pill">Telkom Indonesia</span>
-                            </div>
-                            <h4 class="h5 fw-bold mb-2">Telkom Indonesia - Employee Profile Match-Up Optimization</h4>
+                            <h4 class="h5 fw-bold mb-2">Employee Profile Match-Up Optimization</h4>
                             <p class="small text-primary mb-3">Logistic Regression, Scikit-learn</p>
                             <p class="text-muted flex-grow-1" style="line-height: 1.7;">
                                 Re-engineered and optimized an employee-role matching model for Telkom Indonesia. Simplified model architecture using Logistic Regression and Scikit-learn, improving stakeholder interpretability and recruitment evaluation while maintaining high predictive fidelity across talent competency profiles.
@@ -1085,13 +1115,8 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Enterprise Business Impact Card B: Semen Indonesia Group -->
-                <div class="card project-card p-4 p-lg-5 mb-4" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                        <span class="badge bg-primary px-3 py-2 rounded-pill">Business Intelligence</span>
-                        <span class="badge bg-dark px-3 py-2 rounded-pill">Semen Indonesia Group</span>
-                    </div>
+                <div class="card project-card p-4 p-lg-5 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <h4 class="h4 fw-bold mb-2">Semen Indonesia Group - Sourcing &amp; Pricing Monitoring Dashboards</h4>
                     <p class="text-primary fw-semibold mb-3">Power BI, Python</p>
                     <p class="text-muted mb-4" style="line-height: 1.7;">
@@ -1164,12 +1189,12 @@
 
         <section id="skills" class="text-center mt-5 mb-5 overflow-hidden">
             <div class="container">
-                <h3 class="section-title" data-aos="zoom-in-up">Technical Stack</h3>
-                <p class="text-muted mb-4" data-aos="zoom-in-up" data-aos-delay="100">Tools, technologies, and concepts
+                <h3 class="section-title" data-aos="fade-up">Technical Stack</h3>
+                <p class="text-muted mb-4" data-aos="fade-up" data-aos-delay="100">Tools, technologies, and concepts
                     I use to solve business problems.</p>
             </div>
 
-            <div class="slider-container" data-aos="zoom-in" data-aos-delay="200">
+            <div class="slider-container" data-aos="fade-up" data-aos-delay="200">
                 <div class="slider-track" id="sliderTrack">
 
                     <!-- Programming Languages -->
@@ -1268,7 +1293,7 @@
                         <p class="fw-bold mb-0">Excel</p>
                     </div>
                     <div class="slide-item">
-                        <img src="https://cdn.simpleicons.org/tableau/E97627" class="slide-icon-img" alt="Tableau">
+                        <img src="assets/tableau.svg" class="slide-icon-img" alt="Tableau">
                         <p class="fw-bold mb-0">Tableau</p>
                     </div>
 
@@ -1292,49 +1317,105 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <footer class="bg-dark text-white text-center py-5">
+    <footer class="site-footer text-center py-5">
         <div class="container">
-            <h4 class="mb-3 fw-bold">Farhan Faiq Renardi</h4>
-            <div class="mb-4">
-                <a href="https://www.linkedin.com/in/farhanfaiq" class="text-white text-decoration-none mx-2 fs-5"
-                    target="_blank"><i class="devicon-linkedin-plain"></i></a>
-                <a href="https://github.com/farhanrenardi" class="text-white text-decoration-none mx-2 fs-5"
-                    target="_blank"><i class="devicon-github-original"></i></a>
+            <h4 class="mb-2 fw-bold" style="font-family: 'Cormorant Garamond', serif; letter-spacing: -0.5px; font-size: 1.85rem;">Farhan Faiq Renardi</h4>
+            <p class="mb-4 small" style="color: rgba(255, 255, 255, 0.75);">AI &amp; Data Engineer &bull; Jakarta, Indonesia</p>
+            
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-4">
+                <a href="https://wa.me/6282266520790" class="footer-social-btn"
+                    target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="mailto:farhanfaiqrenardi@gmail.com" class="footer-social-btn"
+                    aria-label="Send Email" title="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/farhanfaiq" class="footer-social-btn"
+                    target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/farhanrenardi" class="footer-social-btn"
+                    target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
             </div>
-            <p class="mb-0 text-muted small">&copy; 2026 Designed and Developed by Farhan Faiq Renardi.</p>
+
+            <hr style="border-color: rgba(255, 255, 255, 0.12); max-width: 480px; margin: 1.5rem auto;">
+
+            <p class="mb-2 small" style="color: rgba(255, 255, 255, 0.75);">
+                Have an inquiry or project in mind? <a href="mailto:farhanfaiqrenardi@gmail.com" class="text-white text-decoration-underline" style="text-underline-offset: 3px;">Let's talk</a>
+            </p>
+            <p class="mb-0 small" style="color: rgba(255, 255, 255, 0.55); font-size: 0.82rem;">
+                &copy; 2026 Farhan Faiq Renardi. Built with modern web standards.
+            </p>
         </div>
     </footer>
 
     <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="max-width: 450px;">
-            <div class="modal-content" style="border-radius: 20px;">
-                <div class="modal-header border-bottom-0 pb-0">
-                    <h5 class="modal-title fw-bold" id="contactModalLabel">Get in Touch</h5>
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 440px;">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 22px; background: var(--surface-raised);">
+                <div class="modal-header border-bottom-0 pb-1 pt-4 px-4">
+                    <h5 class="modal-title fw-bold text-dark" id="contactModalLabel" style="font-family: 'Cormorant Garamond', serif; font-size: 1.65rem; letter-spacing: -0.5px;">Get in Touch</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-4 text-center">
-                    <p class="text-muted mb-2">Choose how you'd like to connect with me.</p>
-                    <p class="text-secondary small mb-4"><i class="fa-solid fa-location-dot me-1 text-danger"></i> Jakarta, Indonesia</p>
-                    <div class="d-grid gap-3">
-                        <a href="https://wa.me/6282266520790" target="_blank"
-                            class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm"
-                            style="background-color: #25D366; border-radius: 12px; transition: transform 0.2s; font-size: 0.95rem;">
-                            <i class="fa-brands fa-whatsapp fs-4 me-2"></i> WhatsApp / Phone (+62 822-6652-0790)
+                <div class="modal-body p-4 pt-2">
+                    <p class="text-secondary small mb-1">Choose how you'd like to connect with me.</p>
+                    <p class="text-muted small mb-3" style="font-size: 0.8rem;">
+                        <i class="fa-solid fa-location-dot me-1 text-danger"></i> Jakarta, Indonesia &bull; UTC+7
+                    </p>
+                    
+                    <div class="d-flex flex-column gap-2">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/6282266520790" target="_blank" rel="noopener noreferrer"
+                            class="contact-channel-card contact-card-whatsapp" aria-label="Chat on WhatsApp">
+                            <div class="contact-channel-icon">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-channel-info">
+                                <div class="contact-channel-title">WhatsApp</div>
+                                <div class="contact-channel-handle">+62 822-6652-0790</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square contact-channel-arrow"></i>
                         </a>
+
+                        <!-- Email -->
                         <a href="mailto:farhanfaiqrenardi@gmail.com"
-                            class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm"
-                            style="background-color: #EA4335; border-radius: 12px; transition: transform 0.2s; font-size: 0.95rem;">
-                            <i class="fa-solid fa-envelope fs-4 me-2"></i> Email (farhanfaiqrenardi@gmail.com)
+                            class="contact-channel-card contact-card-email" aria-label="Send Email">
+                            <div class="contact-channel-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="contact-channel-info">
+                                <div class="contact-channel-title">Email</div>
+                                <div class="contact-channel-handle">farhanfaiqrenardi@gmail.com</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square contact-channel-arrow"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/farhanfaiq" target="_blank"
-                            class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm"
-                            style="background-color: #0A66C2; border-radius: 12px; transition: transform 0.2s; font-size: 0.95rem;">
-                            <i class="fa-brands fa-linkedin fs-4 me-2"></i> LinkedIn
+
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/farhanfaiq" target="_blank" rel="noopener noreferrer"
+                            class="contact-channel-card contact-card-linkedin" aria-label="LinkedIn Profile">
+                            <div class="contact-channel-icon">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                            <div class="contact-channel-info">
+                                <div class="contact-channel-title">LinkedIn</div>
+                                <div class="contact-channel-handle">linkedin.com/in/farhanfaiq</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square contact-channel-arrow"></i>
                         </a>
-                        <a href="https://github.com/farhanrenardi" target="_blank"
-                            class="btn btn-lg text-white d-flex align-items-center justify-content-center shadow-sm"
-                            style="background-color: #24292e; border-radius: 12px; transition: transform 0.2s; font-size: 0.95rem;">
-                            <i class="fa-brands fa-github fs-4 me-2"></i> GitHub
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/farhanrenardi" target="_blank" rel="noopener noreferrer"
+                            class="contact-channel-card contact-card-github" aria-label="GitHub Profile">
+                            <div class="contact-channel-icon">
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+                            <div class="contact-channel-info">
+                                <div class="contact-channel-title">GitHub</div>
+                                <div class="contact-channel-handle">github.com/farhanrenardi</div>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square contact-channel-arrow"></i>
                         </a>
                     </div>
                 </div>
@@ -1439,13 +1520,13 @@
 
                     <!-- Wrapper berwarna dark khusus untuk frame demo AI -->
                     <div class="position-relative w-100 h-100 rounded"
-                        style="background-color: #1c1c1e; border: 1px solid var(--border-color); overflow: hidden; min-height: 600px;">
+                        style="background-color: #1a0a00; border: 1px solid var(--border); overflow: hidden; min-height: 600px;">
                         <!-- Motion Loading Overlay -->
                         <div id="pmuLoadingOverlay"
                             class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center"
-                            style="background-color: #1c1c1e; color: #F5F5F7; z-index: 10;">
+                            style="background-color: #1a0a00; color: var(--surface-raised); z-index: 10;">
                             <div class="modern-spinner mb-4"
-                                style="border-top-color: #0A84FF; border-left-color: rgba(255,255,255,0.1); border-right-color: rgba(255,255,255,0.1); border-bottom-color: rgba(255,255,255,0.1);">
+                                style="border-top-color: var(--accent); border-left-color: rgba(245,239,230,0.1); border-right-color: rgba(245,239,230,0.1); border-bottom-color: rgba(245,239,230,0.1);">
                             </div>
                             <h4 class="fw-bold mb-2">Setting things up...</h4>
                             <p class="text-secondary text-center px-4" style="max-width: 500px;">
@@ -1483,7 +1564,7 @@
                 </div>
                 <div class="modal-body p-4 pt-2">
                     <p class="text-muted small mb-3">
-                        Visual inspection of the multi-stage Langflow orchestration pipeline. Switch tabs to inspect Stage 1 (profiling, automated schema inspection, and dynamic transformation synthesis via Gemini Flash) and Stage 2 (audit report generation, corruption quarantine, and PostgreSQL 16 DDL synthesis).
+                        Visual inspection of the multi-stage Langflow orchestration pipeline. Switch tabs to inspect Stage 1 (profiling, automated schema inspection, and dynamic transformation synthesis via Gemini Flash) and Stage 2 (audit report generation, corruption quarantine, and PostgreSQL DDL synthesis).
                     </p>
 
                     <!-- Tabs for Stage 1 & Stage 2 -->
@@ -1535,7 +1616,7 @@
                                     <i class="fa-solid fa-table me-1 text-primary"></i> SQL DDL Generator
                                 </span>
                                 <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-2">
-                                    <i class="fa-solid fa-server me-1 text-primary"></i> PostgreSQL 16 Target
+                                    <i class="fa-solid fa-server me-1 text-primary"></i> PostgreSQL Target
                                 </span>
                             </div>
                             <div class="text-center rounded-4 overflow-hidden border bg-dark p-2" style="max-height: 65vh; overflow-y: auto;">
@@ -1567,9 +1648,6 @@
             <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; background: var(--card-bg); overflow: hidden;">
                 <div class="modal-header border-bottom-0 pb-2 px-4 pt-4">
                     <div class="d-flex align-items-center gap-2">
-                        <span class="badge bg-primary px-3 py-2 rounded-pill">
-                            <i class="fa-solid fa-film me-1"></i> HD Theater
-                        </span>
                         <h5 class="modal-title fw-bold" id="videoAmplifyModalLabel">Video Walkthrough</h5>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1588,7 +1666,7 @@
                     </div>
                 </div>
                 <div class="modal-footer border-top-0 pt-0 px-4 pb-4">
-                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Close Theater</button>
+                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -1598,47 +1676,15 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // 1. Initialize AOS Animation
+        // 1. Initialize AOS Animation — once:true for performance (no re-trigger on scroll-up)
         AOS.init({
-            once: false,
-            offset: 80,
-            duration: 900,
-            easing: 'ease-out-cubic',
+            once: true,
+            offset: 60,
+            duration: 700,
+            easing: 'ease-out-quart',
         });
 
-        // 2. Theme Toggle Logic
-        const toggleContainer = document.getElementById('floatingThemeToggle');
-        const toggleInnerIcon = document.getElementById('toggleInnerIcon');
-
-        const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        // Apply theme based on save or system preference
-        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-            document.documentElement.setAttribute('data-bs-theme', 'dark');
-            if (toggleInnerIcon) toggleInnerIcon.className = 'fa-solid fa-moon';
-        } else {
-            document.documentElement.setAttribute('data-bs-theme', 'light');
-            if (toggleInnerIcon) toggleInnerIcon.className = 'fa-solid fa-sun';
-        }
-
-        if (toggleContainer) {
-            toggleContainer.addEventListener('click', () => {
-                const currentTheme = document.documentElement.getAttribute('data-bs-theme');
-
-                if (currentTheme === 'dark') {
-                    document.documentElement.setAttribute('data-bs-theme', 'light');
-                    localStorage.setItem('theme', 'light');
-                    if (toggleInnerIcon) toggleInnerIcon.className = 'fa-solid fa-sun';
-                } else {
-                    document.documentElement.setAttribute('data-bs-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                    if (toggleInnerIcon) toggleInnerIcon.className = 'fa-solid fa-moon';
-                }
-            });
-        }
-
-        // 3. Infinite Slider Clone Logic
+        // 2. Infinite Slider Clone Logic
         const sliderTrack = document.getElementById('sliderTrack');
         sliderTrack.innerHTML += sliderTrack.innerHTML;
 
@@ -1752,9 +1798,9 @@
             pmuDemoModal.addEventListener('show.bs.modal', loadGradio);
         }
 
-        // 7. Scroll Events (Side Nav Active State & Back to Top)
+        // 6. Scroll Events (Floating Nav Active State & Back to Top)
         const sections = document.querySelectorAll('section[id], header');
-        const navLinks = document.querySelectorAll('.side-nav-link');
+        const navLinks = document.querySelectorAll('.floating-nav-link');
         const backToTop = document.getElementById('backToTop');
 
         window.addEventListener('scroll', () => {
@@ -1770,7 +1816,7 @@
             // Active Nav link highlighting
             sections.forEach(current => {
                 const sectionHeight = current.offsetHeight;
-                const sectionTop = current.offsetTop - 100;
+                const sectionTop = current.offsetTop - 110;
                 let sectionId = current.getAttribute('id');
                 if (!sectionId && current.tagName === 'HEADER') sectionId = ''; // Home case
 
@@ -1801,10 +1847,10 @@
         });
         // 7. Typewriter Effect
         const twWords = [
-            "AI & Data Engineer",
-            "Production GenAI & Vector Systems",
-            "ELT Pipelines & dbt Core",
-            "Full-Stack Software Engineer"
+            "AI Engineer",
+            "Data Engineer",
+            "Workflow Automation",
+            "Software Engineer"
         ];
         let twIndex = 0;
         let twTimer;
