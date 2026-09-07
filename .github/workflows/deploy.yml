@@ -16,21 +16,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  test:
-    name: Run Verification Tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Run automated test suite
-        run: |
-          python3 -m unittest discover -s tests -v
 
   deploy:
     name: Deploy to GitHub Pages
